@@ -1,16 +1,5 @@
 /* ====================================
-   BASIC SETTINGS
-==================================== */
-
-const weddingAddress =
-  "서울특별시 구로구 경인로 610";
-
-const weddingPlace =
-  "더 링크 서울 트리뷰트 포트폴리오 호텔";
-
-
-/* ====================================
-   LANGUAGE
+   TRANSLATIONS
 ==================================== */
 
 const translations = {
@@ -19,18 +8,6 @@ const translations = {
 
     title:
       "김건우 ♥ 고가빈 결혼식에 초대합니다",
-
-    groom:
-      "신랑",
-
-    bride:
-      "신부",
-
-    groomName:
-      "김건우",
-
-    brideName:
-      "고가빈",
 
     weddingDate:
       "2026년 12월 19일 토요일",
@@ -44,6 +21,18 @@ const translations = {
     hall:
       "4층 플라자홀",
 
+    invitationMessage:
+      "웃는 모습이 닮았다는 말을 자주 들었습니다.<br><br>" +
+      "함께 웃는 모습도, 서로를 바라보는 마음도<br>" +
+      "어느새 조금씩 닮아왔나 봅니다.<br><br>" +
+      "이제는 같은 곳을 바라보며<br>" +
+      "오래도록 서로를 닮아가려 합니다.<br>" +
+      "저희의 새로운 시작을 함께해 주세요.",
+
+    familyIntroduction:
+      "김광일 · 유금수 의 아들&nbsp;&nbsp;<strong>건우</strong><br>" +
+      "고석헌 · 현시은 의 딸&nbsp;&nbsp;&nbsp;&nbsp;<strong>가빈</strong>",
+
     viewAll:
       "전체보기",
 
@@ -51,7 +40,8 @@ const translations = {
       "오시는 길",
 
     locationName:
-      "더 링크 서울 트리뷰트 포트폴리오 호텔<br>4층 플라자홀",
+      "더 링크 서울 트리뷰트 포트폴리오 호텔<br>" +
+      "4층 플라자홀",
 
     address:
       "서울특별시 구로구 경인로 610 (신도림동)",
@@ -66,7 +56,8 @@ const translations = {
       "지하철 이용 시",
 
     subwayDescription:
-      "1/2호선 신도림역 1번 출구 도보 10분<br>1호선 구로역 3번 출구 도보 5분",
+      "1/2호선 신도림역 1번 출구 도보 10분<br>" +
+      "1호선 구로역 3번 출구 도보 5분",
 
     shuttleTitle:
       "셔틀버스",
@@ -75,27 +66,25 @@ const translations = {
       "신도림역 1번 출구 (수시 운행)",
 
     carTitle:
-      "자가용 이용 시 (1시간 30분 무료 주차)",
+      "자가용 이용 시",
 
     carDescription:
-      "(호텔 문의 후 작성)",
+      "(호텔 문의 후 작성) (1시간 30분 무료 주차)",
+
+    receptionNoticeTitle:
+      "<strong>안내드립니다.</strong>",
+
+    receptionNoticeText:
+      "연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>" +
+      "에스컬레이터를 이용해 편하게 이동하실 수 있습니다.",
 
     accountTitle:
       "마음 전하실 곳",
 
     accountMessage:
-      "축하해 주시는 따뜻한 마음에 깊이 감사드립니다.<br>귀한 마음을 감사히 간직하겠습니다.",
+      "축하해 주시는 따뜻한 마음에 깊이 감사드립니다.<br>" +
+      "귀한 마음을 감사히 간직하겠습니다."
 
-    invitationMessage:
-      "스쳐 지나갔던 인연이 우연으로 다시 맞닿아<br>운명처럼 하나가 되었습니다.<br>이제 서로에게 영원을 약속하고자 합니다.<br>저희 두 사람의 첫걸음을<br>소중한 분들과 함께하고 싶습니다.",
-
-    familyIntroduction:
-      "김광일 · 유금수 의 아들  <strong>건우</strong><br>고석헌 · 현시은 의 딸  <strong>가빈</strong>",
-    receptionNoticeTitle:
-      "<strong>안내드립니다.</strong>",
-
-    receptionNoticeText:
-      "연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>에스컬레이터를 이용해 이동하실 수 있습니다.",
   },
 
 
@@ -103,18 +92,6 @@ const translations = {
 
     title:
       "キム・ゴヌ ♥ コ・ガビン 結婚式のご案内",
-
-    groom:
-      "新郎",
-
-    bride:
-      "新婦",
-
-    groomName:
-      "キム・ゴヌ",
-
-    brideName:
-      "コ・ガビン",
 
     weddingDate:
       "2026年12月19日 土曜日",
@@ -128,6 +105,18 @@ const translations = {
     hall:
       "4階 PLAZA HALL",
 
+    invitationMessage:
+      "笑った顔が似ていると、よく言われてきました。<br><br>" +
+      "一緒に笑う姿も、お互いを想う気持ちも、<br>" +
+      "いつの間にか少しずつ似てきたようです。<br><br>" +
+      "これからは同じ未来を見つめながら、<br>" +
+      "いつまでもお互いに似ていけたらと思います。<br>" +
+      "私たちの新しい門出を、ぜひ一緒に見守ってください。",
+
+    familyIntroduction:
+      "キム・グァンイル · ユ・グムス の息子&nbsp;&nbsp;<strong>ゴヌ</strong><br>" +
+      "コ・ソクホン · ヒョン・シウン の娘&nbsp;&nbsp;<strong>ガビン</strong>",
+
     viewAll:
       "すべて見る",
 
@@ -135,7 +124,8 @@ const translations = {
       "アクセス",
 
     locationName:
-      "The Link Seoul, a Tribute Portfolio Hotel<br>4階 PLAZA HALL",
+      "The Link Seoul, a Tribute Portfolio Hotel<br>" +
+      "4階 PLAZA HALL",
 
     address:
       "ソウル特別市 九老区 京仁路610",
@@ -150,7 +140,8 @@ const translations = {
       "地下鉄をご利用の場合",
 
     subwayDescription:
-      "1・2号線 新道林駅 1番出口から徒歩10分<br>1号線 九老駅 3番出口から徒歩5分",
+      "1・2号線 新道林駅 1番出口から徒歩10分<br>" +
+      "1号線 九老駅 3番出口から徒歩5分",
 
     shuttleTitle:
       "シャトルバス",
@@ -164,21 +155,27 @@ const translations = {
     carDescription:
       "駐車場の詳細は後ほどご案内いたします。",
 
-    invitationMessage:
-      "一度すれ違ったご縁が、偶然に再び重なり、<br>運命のようにひとつになりました。<br>これからお互いに永遠を誓い、<br>ふたりの新たな一歩を<br>大切な皆さまと共に迎えたいと思います。",
-
-    familyIntroduction:
-      "キム・グァンイル · ユ・グムス の息子  <strong>ゴヌ</strong><br>コ・ソクホン · ヒョン・シウン の娘   <strong>ガビン</strong>",
-
     receptionNoticeTitle:
       "<strong>ご案内</strong>",
 
     receptionNoticeText:
-      "披露宴会場は挙式会場の一つ上の4M階にございます。<br>エスカレーターをご利用いただけます。",
+      "披露宴会場は挙式会場の一つ上の4M階にございます。<br>" +
+      "エスカレーターをご利用いただけます。",
+
+    accountTitle:
+      "마음 전하실 곳",
+
+    accountMessage:
+      ""
+
   }
 
 };
 
+
+/* ====================================
+   LANGUAGE
+==================================== */
 
 let currentLanguage = "ko";
 
@@ -187,7 +184,8 @@ function setLanguage(language) {
 
   currentLanguage = language;
 
-  document.documentElement.lang = language;
+  document.documentElement.lang =
+    language;
 
   document.title =
     translations[language].title;
@@ -200,30 +198,43 @@ function setLanguage(language) {
       const key =
         element.dataset.i18n;
 
-      const value =
+      const translatedText =
         translations[language][key];
 
-      if (value !== undefined) {
-        element.innerHTML = value;
+      if (translatedText !== undefined) {
+
+        element.innerHTML =
+          translatedText;
+
       }
 
     });
 
 
-  document
-    .getElementById("korButton")
-    .classList.toggle(
+  const korButton =
+    document.getElementById(
+      "korButton"
+    );
+
+  const jpnButton =
+    document.getElementById(
+      "jpnButton"
+    );
+
+
+  if (korButton) {
+    korButton.classList.toggle(
       "active",
       language === "ko"
     );
+  }
 
-
-  document
-    .getElementById("jpnButton")
-    .classList.toggle(
+  if (jpnButton) {
+    jpnButton.classList.toggle(
       "active",
       language === "ja"
     );
+  }
 
 
   const accountSection =
@@ -259,55 +270,75 @@ function setLanguage(language) {
 
   if (language === "ja") {
 
-    accountSection.style.display =
-      "none";
+    if (accountSection) {
+      accountSection.style.display =
+        "none";
+    }
 
-    flowerSection.style.display =
-      "none";
+    if (flowerSection) {
+      flowerSection.style.display =
+        "none";
+    }
 
+    if (naverMap) {
+      naverMap.classList.add(
+        "hidden"
+      );
+    }
 
-    naverMap.classList.add(
-      "hidden"
-    );
+    if (googleMap) {
+      googleMap.classList.remove(
+        "hidden"
+      );
+    }
 
-    googleMap.classList.remove(
-      "hidden"
-    );
+    if (navigationSection) {
+      navigationSection.classList.add(
+        "hidden"
+      );
+    }
 
-
-    navigationSection.classList.add(
-      "hidden"
-    );
-
-    transportationSection.classList.add(
-      "hidden"
-    );
+    if (transportationSection) {
+      transportationSection.classList.add(
+        "hidden"
+      );
+    }
 
   } else {
 
-    accountSection.style.display =
-      "";
+    if (accountSection) {
+      accountSection.style.display =
+        "";
+    }
 
-    flowerSection.style.display =
-      "";
+    if (flowerSection) {
+      flowerSection.style.display =
+        "";
+    }
 
+    if (naverMap) {
+      naverMap.classList.remove(
+        "hidden"
+      );
+    }
 
-    naverMap.classList.remove(
-      "hidden"
-    );
+    if (googleMap) {
+      googleMap.classList.add(
+        "hidden"
+      );
+    }
 
-    googleMap.classList.add(
-      "hidden"
-    );
+    if (navigationSection) {
+      navigationSection.classList.remove(
+        "hidden"
+      );
+    }
 
-
-    navigationSection.classList.remove(
-      "hidden"
-    );
-
-    transportationSection.classList.remove(
-      "hidden"
-    );
+    if (transportationSection) {
+      transportationSection.classList.remove(
+        "hidden"
+      );
+    }
 
   }
 
@@ -338,38 +369,220 @@ if (
 }
 
 
-document
-  .getElementById("korButton")
-  .addEventListener(
+const korButton =
+  document.getElementById(
+    "korButton"
+  );
+
+if (korButton) {
+
+  korButton.addEventListener(
     "click",
     () => setLanguage("ko")
   );
 
+}
 
-document
-  .getElementById("jpnButton")
-  .addEventListener(
+
+const jpnButton =
+  document.getElementById(
+    "jpnButton"
+  );
+
+if (jpnButton) {
+
+  jpnButton.addEventListener(
     "click",
     () => setLanguage("ja")
   );
+
+}
+
+
+/* ====================================
+   NAVIGATION
+==================================== */
+
+const weddingPlace =
+  "더 링크 서울 트리뷰트 포트폴리오 호텔";
+
+
+const naverButton =
+  document.getElementById(
+    "naverButton"
+  );
+
+if (naverButton) {
+
+  naverButton.addEventListener(
+    "click",
+    () => {
+
+      const query =
+        encodeURIComponent(
+          weddingPlace
+        );
+
+      window.location.href =
+        `nmap://search?query=${query}&appname=wedding.invitation`;
+
+      setTimeout(() => {
+
+        window.location.href =
+          `https://map.naver.com/p/search/${query}`;
+
+      }, 1200);
+
+    }
+  );
+
+}
+
+
+const tmapButton =
+  document.getElementById(
+    "tmapButton"
+  );
+
+if (tmapButton) {
+
+  tmapButton.addEventListener(
+    "click",
+    () => {
+
+      const query =
+        encodeURIComponent(
+          weddingPlace
+        );
+
+      window.location.href =
+        `tmap://search?name=${query}`;
+
+    }
+  );
+
+}
+
+
+const kakaoButton =
+  document.getElementById(
+    "kakaoButton"
+  );
+
+if (kakaoButton) {
+
+  kakaoButton.addEventListener(
+    "click",
+    () => {
+
+      const query =
+        encodeURIComponent(
+          weddingPlace
+        );
+
+      window.location.href =
+        `https://map.kakao.com/link/search/${query}`;
+
+    }
+  );
+
+}
+
+
+/* ====================================
+   ACCOUNT COPY
+==================================== */
+
+document
+  .querySelectorAll(
+    ".copy-button"
+  )
+  .forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      async () => {
+
+        const account =
+          button.dataset.account;
+
+        try {
+
+          await navigator.clipboard
+            .writeText(account);
+
+          const originalText =
+            button.textContent;
+
+          button.textContent =
+            "완료";
+
+          setTimeout(() => {
+
+            button.textContent =
+              originalText;
+
+          }, 1200);
+
+        } catch (error) {
+
+          console.error(
+            "계좌번호 복사 실패",
+            error
+          );
+
+        }
+
+      }
+    );
+
+  });
 
 
 /* ====================================
    GALLERY
 ==================================== */
 
-const galleryImages = [
+const isVersion3 =
+  document.body.classList.contains(
+    "version3"
+  );
 
+
+/*
+  version3 갤러리
+  02 / 05 / 06 / 08 제외
+*/
+const galleryImages =
+  isVersion3
+    ? [
+        "images/gallery01.jpg",
+        "images/gallery03.jpg",
+        "images/gallery04.jpg",
+        "images/gallery07.jpg",
+        "images/gallery09.jpg",
+        "images/gallery10.jpg"
+      ]
+    : [
+        "images/gallery01.jpg",
+        "images/gallery02.jpg",
+        "images/gallery03.jpg",
+        "images/gallery04.jpg",
+        "images/gallery05.jpg",
+        "images/gallery06.jpg",
+        "images/gallery07.jpg",
+        "images/gallery08.jpg",
+        "images/gallery09.jpg"
+      ];
+
+
+/*
+  version3에서 남색 필터를 적용할 사진
+*/
+const mutedImages = [
   "images/gallery01.jpg",
-  "images/gallery02.jpg",
   "images/gallery03.jpg",
-  "images/gallery04.jpg",
-  "images/gallery05.jpg",
-  "images/gallery06.jpg",
-  "images/gallery07.jpg",
-  "images/gallery08.jpg",
-  "images/gallery09.jpg"
-
+  "images/gallery04.jpg"
 ];
 
 
@@ -381,7 +594,6 @@ const galleryMainImage =
     "galleryMainImage"
   );
 
-
 const galleryPreview =
   document.getElementById(
     "galleryPreview"
@@ -392,15 +604,31 @@ let galleryInterval = null;
 
 
 /* ====================================
-   GALLERY PREVIEW
+   PREVIEW
 ==================================== */
 
 function renderPreview() {
 
-  galleryPreview.innerHTML = "";
+  if (!galleryPreview) {
+    return;
+  }
+
+  galleryPreview.innerHTML =
+    "";
 
 
-  for (let i = 0; i < 5; i++) {
+  const previewCount =
+    Math.min(
+      5,
+      galleryImages.length
+    );
+
+
+  for (
+    let i = 0;
+    i < previewCount;
+    i++
+  ) {
 
     const imageIndex =
       (
@@ -411,15 +639,37 @@ function renderPreview() {
 
 
     const image =
-      document.createElement("img");
+      document.createElement(
+        "img"
+      );
 
 
     image.src =
-      galleryImages[imageIndex];
-
+      galleryImages[
+        imageIndex
+      ];
 
     image.alt =
       `Wedding gallery ${imageIndex + 1}`;
+
+
+    /*
+      version3 특정 사진에만 필터 적용
+    */
+    if (
+      isVersion3 &&
+      mutedImages.includes(
+        galleryImages[
+          imageIndex
+        ]
+      )
+    ) {
+
+      image.classList.add(
+        "muted-photo"
+      );
+
+    }
 
 
     image.addEventListener(
@@ -456,12 +706,18 @@ function renderPreview() {
 
 
 /* ====================================
-   MAIN GALLERY UPDATE
+   MAIN IMAGE
 ==================================== */
 
 function updateGallery() {
 
-  galleryMainImage.style.opacity = 0;
+  if (!galleryMainImage) {
+    return;
+  }
+
+
+  galleryMainImage.style.opacity =
+    0;
 
 
   setTimeout(() => {
@@ -470,6 +726,27 @@ function updateGallery() {
       galleryImages[
         currentGalleryIndex
       ];
+
+
+    if (isVersion3) {
+
+      galleryMainImage.classList.toggle(
+        "muted-photo",
+        mutedImages.includes(
+          galleryImages[
+            currentGalleryIndex
+          ]
+        )
+      );
+
+    } else {
+
+      galleryMainImage.classList.remove(
+        "muted-photo"
+      );
+
+    }
+
 
     galleryMainImage.style.opacity =
       1;
@@ -488,12 +765,17 @@ function updateGallery() {
 
 function startGalleryAutoPlay() {
 
+  if (!galleryMainImage) {
+    return;
+  }
+
   galleryInterval =
     setInterval(() => {
 
       currentGalleryIndex =
         (
-          currentGalleryIndex + 1
+          currentGalleryIndex +
+          1
         ) %
         galleryImages.length;
 
@@ -512,7 +794,8 @@ function stopGalleryAutoPlay() {
       galleryInterval
     );
 
-    galleryInterval = null;
+    galleryInterval =
+      null;
 
   }
 
@@ -528,20 +811,18 @@ function restartGalleryAutoPlay() {
 }
 
 
-startGalleryAutoPlay();
-
-renderPreview();
-
-
 /* ====================================
-   MAIN GALLERY LEFT / RIGHT BUTTON
+   MAIN ARROWS
 ==================================== */
 
-document
-  .getElementById(
+const galleryPrevButton =
+  document.getElementById(
     "galleryPrevButton"
-  )
-  .addEventListener(
+  );
+
+if (galleryPrevButton) {
+
+  galleryPrevButton.addEventListener(
     "click",
     () => {
 
@@ -560,18 +841,24 @@ document
     }
   );
 
+}
 
-document
-  .getElementById(
+
+const galleryNextButton =
+  document.getElementById(
     "galleryNextButton"
-  )
-  .addEventListener(
+  );
+
+if (galleryNextButton) {
+
+  galleryNextButton.addEventListener(
     "click",
     () => {
 
       currentGalleryIndex =
         (
-          currentGalleryIndex + 1
+          currentGalleryIndex +
+          1
         ) %
         galleryImages.length;
 
@@ -582,9 +869,11 @@ document
     }
   );
 
+}
+
 
 /* ====================================
-   FULL SCREEN GALLERY
+   FULL SCREEN
 ==================================== */
 
 const galleryModal =
@@ -607,17 +896,18 @@ const fullscreenThumbnails =
 
 function openGallery() {
 
-  stopGalleryAutoPlay();
+  if (!galleryModal) {
+    return;
+  }
 
+  stopGalleryAutoPlay();
 
   galleryModal.classList.add(
     "open"
   );
 
-
   document.body.style.overflow =
     "hidden";
-
 
   updateFullscreenGallery();
 
@@ -626,27 +916,32 @@ function openGallery() {
 
 function closeGallery() {
 
+  if (!galleryModal) {
+    return;
+  }
+
   galleryModal.classList.remove(
     "open"
   );
 
-
   document.body.style.overflow =
     "";
 
-
-  startGalleryAutoPlay();
+  restartGalleryAutoPlay();
 
 }
 
 
 function updateFullscreenGallery() {
 
+  if (!fullscreenImage) {
+    return;
+  }
+
   fullscreenImage.src =
     galleryImages[
       currentGalleryIndex
     ];
-
 
   renderFullscreenThumbnails();
 
@@ -654,6 +949,10 @@ function updateFullscreenGallery() {
 
 
 function renderFullscreenThumbnails() {
+
+  if (!fullscreenThumbnails) {
+    return;
+  }
 
   fullscreenThumbnails.innerHTML =
     "";
@@ -663,12 +962,12 @@ function renderFullscreenThumbnails() {
     (imageSrc, index) => {
 
       const thumbnail =
-        document.createElement("img");
-
+        document.createElement(
+          "img"
+        );
 
       thumbnail.src =
         imageSrc;
-
 
       thumbnail.alt =
         `Wedding thumbnail ${index + 1}`;
@@ -714,10 +1013,10 @@ function showNextImage() {
 
   currentGalleryIndex =
     (
-      currentGalleryIndex + 1
+      currentGalleryIndex +
+      1
     ) %
     galleryImages.length;
-
 
   updateFullscreenGallery();
 
@@ -734,304 +1033,169 @@ function showPreviousImage() {
     ) %
     galleryImages.length;
 
-
   updateFullscreenGallery();
 
 }
 
 
-document
-  .getElementById(
+/* 전체보기 버튼
+   version3에는 없으므로 있을 때만 작동 */
+
+const openGalleryButton =
+  document.getElementById(
     "openGalleryButton"
-  )
-  .addEventListener(
+  );
+
+if (openGalleryButton) {
+
+  openGalleryButton.addEventListener(
     "click",
     openGallery
   );
 
+}
 
-document
-  .getElementById(
+
+const closeGalleryButton =
+  document.getElementById(
     "closeGalleryButton"
-  )
-  .addEventListener(
+  );
+
+if (closeGalleryButton) {
+
+  closeGalleryButton.addEventListener(
     "click",
     closeGallery
   );
 
+}
 
-document
-  .getElementById(
+
+const nextImageButton =
+  document.getElementById(
     "nextImageButton"
-  )
-  .addEventListener(
+  );
+
+if (nextImageButton) {
+
+  nextImageButton.addEventListener(
     "click",
     showNextImage
   );
 
+}
 
-document
-  .getElementById(
+
+const previousImageButton =
+  document.getElementById(
     "previousImageButton"
-  )
-  .addEventListener(
+  );
+
+if (previousImageButton) {
+
+  previousImageButton.addEventListener(
     "click",
     showPreviousImage
   );
 
+}
+
 
 /* ====================================
-   FULL SCREEN MOBILE SWIPE
+   MOBILE SWIPE
 ==================================== */
 
 let touchStartX = 0;
-
 let touchEndX = 0;
 
 
-fullscreenImage.addEventListener(
-  "touchstart",
-  (event) => {
+if (galleryModal) {
 
-    touchStartX =
-      event.changedTouches[0]
-        .screenX;
+  galleryModal.addEventListener(
+    "touchstart",
+    (event) => {
 
-  }
-);
+      touchStartX =
+        event.changedTouches[0]
+          .screenX;
 
-
-fullscreenImage.addEventListener(
-  "touchend",
-  (event) => {
-
-    touchEndX =
-      event.changedTouches[0]
-        .screenX;
-
-
-    const difference =
-      touchStartX -
-      touchEndX;
-
-
-    if (
-      Math.abs(difference) <
-      40
-    ) {
-
-      return;
-
+    },
+    {
+      passive: true
     }
-
-
-    if (difference > 0) {
-
-      showNextImage();
-
-    } else {
-
-      showPreviousImage();
-
-    }
-
-  }
-);
-
-
-/* ====================================
-   ACCOUNT TAB
-==================================== */
-
-const accountTabs =
-  document.querySelectorAll(
-    ".account-tab"
   );
 
 
-accountTabs.forEach(
-  (button) => {
+  galleryModal.addEventListener(
+    "touchend",
+    (event) => {
 
-    button.addEventListener(
-      "click",
-      () => {
+      touchEndX =
+        event.changedTouches[0]
+          .screenX;
 
-        accountTabs.forEach(
-          tab =>
-            tab.classList.remove(
-              "active"
-            )
-        );
+      const difference =
+        touchStartX -
+        touchEndX;
 
 
-        button.classList.add(
-          "active"
-        );
+      if (
+        Math.abs(difference) <
+        40
+      ) {
 
-
-        const side =
-          button.dataset.side;
-
-
-        document
-          .getElementById(
-            "groomAccounts"
-          )
-          .classList.toggle(
-            "hidden",
-            side !== "groom"
-          );
-
-
-        document
-          .getElementById(
-            "brideAccounts"
-          )
-          .classList.toggle(
-            "hidden",
-            side !== "bride"
-          );
+        return;
 
       }
+
+
+      if (difference > 0) {
+
+        showNextImage();
+
+      } else {
+
+        showPreviousImage();
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
+}
+
+
+/* ====================================
+   START
+==================================== */
+
+if (
+  galleryMainImage &&
+  galleryPreview
+) {
+
+  /*
+    첫 번째 사진 필터도
+    페이지가 뜨자마자 바로 적용
+  */
+
+  if (isVersion3) {
+
+    galleryMainImage.classList.toggle(
+      "muted-photo",
+      mutedImages.includes(
+        galleryImages[0]
+      )
     );
 
   }
-);
 
 
-/* ====================================
-   COPY ACCOUNT
-==================================== */
+  renderPreview();
 
-document
-  .querySelectorAll(
-    ".copy-button"
-  )
-  .forEach(
-    button => {
+  startGalleryAutoPlay();
 
-      button.addEventListener(
-        "click",
-        async () => {
-
-          const account =
-            button.dataset.account;
-
-
-          try {
-
-            await navigator.clipboard
-              .writeText(account);
-
-
-            const originalText =
-              button.textContent;
-
-
-            button.textContent =
-              "완료";
-
-
-            setTimeout(() => {
-
-              button.textContent =
-                originalText;
-
-            }, 1200);
-
-          } catch (error) {
-
-            console.error(
-              "계좌번호 복사 실패:",
-              error
-            );
-
-          }
-
-        }
-      );
-
-    }
-  );
-
-
-/* ====================================
-   NAVIGATION
-==================================== */
-
-
-/* NAVER MAP */
-
-document
-  .getElementById(
-    "naverMapButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      const query =
-        encodeURIComponent(
-          weddingPlace
-        );
-
-
-      window.location.href =
-        `nmap://search?query=${query}&appname=wedding.invitation`;
-
-
-      setTimeout(() => {
-
-        window.location.href =
-          `https://map.naver.com/p/search/${query}`;
-
-      }, 1200);
-
-    }
-  );
-
-
-/* TMAP */
-
-document
-  .getElementById(
-    "tmapButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      const query =
-        encodeURIComponent(
-          weddingPlace
-        );
-
-
-      window.location.href =
-        `tmap://search?name=${query}`;
-
-    }
-  );
-
-
-/* KAKAO MAP / KAKAO NAVI */
-
-document
-  .getElementById(
-    "kakaoNaviButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-      const query =
-        encodeURIComponent(
-          weddingPlace
-        );
-
-
-      window.location.href =
-        `https://map.kakao.com/link/search/${query}`;
-
-    }
-  );
+}

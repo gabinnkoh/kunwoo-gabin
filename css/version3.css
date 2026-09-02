@@ -1,0 +1,489 @@
+body {
+
+  background: #ded4cf;
+
+}
+
+
+.invitation {
+
+  background: #fcf8f5;
+
+}
+
+
+.language-switch {
+
+  background: rgba(
+    251,
+    246,
+    243,
+    0.88
+  );
+
+}
+
+
+/* =================================
+   INTRO
+================================= */
+
+.couple-section {
+
+  padding-top: 76px;
+
+  padding-bottom: 84px;
+
+  background: #fcf8f5;
+
+  color: #4e4140;
+
+}
+
+
+.hero-title {
+
+  bottom: 32px;
+
+  font-size: 17px;
+
+  font-weight: 400;
+
+  letter-spacing: 0.22em;
+
+  text-shadow:
+    0 2px 12px
+    rgba(40, 18, 18, 0.4);
+
+}
+
+
+.wedding-info {
+
+  line-height: 2;
+
+}
+
+
+.venue-name {
+
+  color: #875657;
+
+}
+
+
+.invitation-message {
+
+  margin-top: 62px;
+
+  color: #855b5d;
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 2.3;
+
+  letter-spacing: 0.015em;
+
+}
+
+
+.family-introduction {
+
+  margin-top: 44px;
+
+  color: #5d4c4a;
+
+}
+
+
+/* =================================
+   COMMON SECTION
+================================= */
+
+.section {
+
+  padding-top: 76px;
+
+  padding-bottom: 76px;
+
+}
+
+
+.section-heading {
+
+  margin-bottom: 42px;
+
+  letter-spacing: 0.16em;
+
+}
+
+
+/* =================================
+   CALENDAR
+================================= */
+
+.calendar-section {
+
+  background: #f3ebe7;
+
+  color: #514342;
+
+}
+
+
+.section-title {
+
+  color: #805253;
+
+  letter-spacing: 0.23em;
+
+}
+
+
+.calendar-year {
+
+  color: #705d5a;
+
+}
+
+
+.wedding-day {
+
+  background: #a65e61;
+
+  box-shadow:
+    0 4px 12px
+    rgba(110, 54, 57, 0.2);
+
+}
+
+
+/* =================================
+   LOCATION
+================================= */
+
+.location-section {
+
+  background: #eee3de;
+
+  color: #50413f;
+
+}
+
+
+.location-section
+.section-heading {
+
+  color: #794d4e;
+
+}
+
+
+.location-name {
+
+  font-weight: 500;
+
+}
+
+
+.navigation-buttons button {
+
+  border-color: #c9aea8;
+
+  background: #faf5f2;
+
+  color: #69494a;
+
+}
+
+
+/* =================================
+   FLOWER
+================================= */
+
+.flower-section {
+
+  padding-top: 58px;
+
+  padding-bottom: 58px;
+
+  background: #fcf8f5;
+
+}
+
+
+.flower-section p {
+
+  color: #72615f;
+
+}
+
+
+/* =================================
+   VERSION 3 GALLERY
+================================= */
+
+.gallery-section {
+
+  padding-left: 0;
+
+  padding-right: 0;
+
+  background: #fcf8f5;
+
+}
+
+
+.gallery-section
+.section-heading {
+
+  padding-left: 28px;
+
+  padding-right: 28px;
+
+  color: #794d4e;
+
+}
+
+
+/* 큰 사진 */
+
+.gallery-main {
+
+  position: relative;
+
+  width: calc(100% - 20px);
+
+  margin-left: 10px;
+
+  margin-right: 10px;
+
+  aspect-ratio: 3 / 3.7;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #eadfda;
+
+}
+
+
+.gallery-main img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+}
+
+
+/*
+  Version3의 특정 사진에만
+  남색 계열 분위기 적용
+*/
+
+.gallery-main img.muted-photo {
+
+  filter:
+    contrast(0.97)
+    brightness(0.96)
+    hue-rotate(8deg);
+
+}
+
+
+/* 작은 사진 */
+
+.gallery-preview {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  gap: 6px;
+
+  padding:
+    8px 10px 0;
+
+  background: transparent;
+
+}
+
+
+.gallery-preview img {
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  overflow: hidden;
+
+  border-radius: 6px;
+
+  opacity: 0.55;
+
+}
+
+
+.gallery-preview img.active {
+
+  opacity: 1;
+
+}
+
+
+/*
+  작은 사진도
+  동일한 필터 적용
+*/
+
+.gallery-preview
+img.muted-photo {
+
+  filter:
+    contrast(0.97)
+    brightness(0.96)
+    hue-rotate(8deg);
+
+}
+
+
+/* =================================
+   RECEPTION
+================================= */
+
+.reception-notice-section {
+
+  padding-top: 52px;
+
+  padding-bottom: 52px;
+
+  background: #a26768;
+
+  border: 0;
+
+  color: #fff;
+
+}
+
+
+.reception-notice-title {
+
+  margin-bottom: 16px;
+
+  font-size: 14px;
+
+  letter-spacing: 0.08em;
+
+}
+
+
+.reception-notice-text {
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  line-height: 2;
+
+}
+
+
+/* =================================
+   ACCOUNT
+================================= */
+
+.account-section {
+
+  padding-top: 80px;
+
+  background: #f7efeb;
+
+  color: #50413f;
+
+}
+
+
+.account-section
+.section-heading {
+
+  color: #794d4e;
+
+}
+
+
+.account-side {
+
+  margin-top: 45px;
+
+}
+
+
+.account-side +
+.account-side {
+
+  margin-top: 52px;
+
+}
+
+
+.account-side-title {
+
+  color: #794d4e;
+
+  letter-spacing: 0.05em;
+
+}
+
+
+.account-list {
+
+  border-color:
+    rgba(
+      121,
+      77,
+      78,
+      0.18
+    );
+
+}
+
+
+.account-row {
+
+  min-height: 82px;
+
+  border-color:
+    rgba(
+      121,
+      77,
+      78,
+      0.18
+    );
+
+}
+
+
+.copy-button {
+
+  border-color: #b88888;
+
+  color: #805253;
+
+  background: transparent;
+
+}

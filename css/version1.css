@@ -1,0 +1,60 @@
+body {
+  background: #efede9;
+}
+
+.invitation {
+  background: #fff;
+}
+
+.couple-section {
+  background: #fff;
+  color: #444;
+}
+
+.calendar-section {
+  background: #faf9f7;
+  color: #444;
+}
+
+.wedding-day {
+  background: #b47b78;
+}
+
+.location-section {
+  background: #f5f3f0;
+  color: #444;
+}
+
+.flower-section {
+  background: #fff;
+}
+
+.gallery-section {
+  background: #fff;
+}
+
+.reception-notice-section {
+  background: #f7f5f2;
+
+  border-top: 1px solid #ebe7e1;
+  border-bottom: 1px solid #ebe7e1;
+}
+
+.reception-notice-text {
+  color: #666;
+}
+
+.account-section {
+  background: #fff;
+  color: #444;
+}
+
+.section-heading,
+.section-title {
+  color: #555;
+}
+
+.copy-button {
+  border-color: #cfc9c2;
+  color: #666;
+}
