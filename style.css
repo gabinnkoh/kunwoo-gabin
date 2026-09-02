@@ -1,0 +1,875 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #efede9;
+  color: #353535;
+
+  font-family:
+    "Times New Roman",
+    "AppleMyungjo",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+}
+
+.hero-title,
+.person-name,
+.section-heading,
+.section-title,
+.wedding-info {
+  font-family:
+    "Times New Roman",
+    "AppleMyungjo",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+}
+
+/* ===============================
+   MAIN LAYOUT
+================================ */
+
+.invitation {
+  width: 100%;
+  max-width: 480px;
+
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  min-height: 100vh;
+}
+
+.section {
+  padding: 75px 25px;
+}
+
+.section-heading {
+  margin: 0 0 36px;
+
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  letter-spacing: 2px;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+}
+
+.main-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.hero-title {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 28px;
+
+  text-align: center;
+
+  color: #fff;
+
+  font-size: 25px;
+  font-weight: 400;
+
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* ===============================
+   LANGUAGE
+================================ */
+
+.language-switch {
+  position: fixed;
+
+  top: 20px;
+  right: max(20px, calc((100vw - 480px) / 2 + 20px));
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 8px 11px;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+
+  font-size: 11px;
+}
+
+.language-button {
+  border: 0;
+  background: transparent;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  color: #999;
+}
+
+.language-button.active {
+  color: #222;
+  font-weight: 700;
+}
+
+
+/* ===============================
+   MAIN PHOTO
+================================ */
+
+.hero-section {
+  width: 100%;
+}
+
+.main-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  /*
+    중요:
+    height를 고정하지 않기 때문에
+    원본 사진이 크롭되지 않는다.
+  */
+
+  object-fit: contain;
+}
+
+
+/* ===============================
+   COUPLE
+================================ */
+
+.couple-section {
+  padding: 55px 35px 70px;
+
+  text-align: center;
+}
+
+.couple-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  margin-bottom: 45px;
+}
+
+.role {
+  margin-bottom: 9px;
+
+  color: #9b9289;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+}
+
+.person-name {
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 2px;
+}
+
+.wedding-info {
+  line-height: 1.8;
+}
+
+.wedding-info p {
+  margin: 3px 0;
+
+  font-size: 15px;
+}
+
+.wedding-info .venue-name {
+  margin-top: 17px;
+
+  font-weight: 500;
+}
+
+
+/* ===============================
+   CALENDAR
+================================ */
+
+.calendar-section {
+  background: #faf9f7;
+
+  text-align: center;
+}
+
+.section-title {
+  font-family: Georgia, serif;
+
+  font-size: 22px;
+
+  letter-spacing: 4px;
+}
+
+.calendar-year {
+  margin-top: 7px;
+  margin-bottom: 35px;
+
+  color: #999;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+}
+
+.calendar {
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+
+  gap: 7px 4px;
+
+  align-items: center;
+
+  max-width: 360px;
+
+  margin: 0 auto;
+}
+
+.calendar > div {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  aspect-ratio: 1;
+
+  font-size: 12px;
+}
+
+.calendar-header {
+  color: #999;
+
+  font-size: 9px !important;
+
+  letter-spacing: 1px;
+}
+
+.sunday {
+  color: #b58c86;
+}
+
+.saturday {
+  color: #8392a2;
+}
+
+.wedding-day {
+  width: 34px;
+  height: 34px;
+
+  justify-self: center;
+
+  border-radius: 50%;
+
+  background: #ba8f83;
+
+  color: #fff;
+
+  font-weight: 600;
+}
+.invitation-message {
+  margin-top: 55px;
+
+  color: #555;
+
+  font-family:
+    "AppleMyungjo",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 2.1;
+
+  text-align: center;
+}
+
+.family-introduction {
+  margin-top: 45px;
+
+  color: #666;
+
+  font-size: 13px;
+
+  line-height: 2;
+
+  text-align: center;
+
+  font-family:
+    "AppleMyungjo",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+}
+
+.family-introduction strong {
+  color: #333;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  font-family:
+    "AppleMyungjo",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+}
+
+/* ===============================
+   GALLERY
+================================ */
+
+.gallery-section {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.gallery-main {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 3 / 4;
+
+  overflow: hidden;
+
+  background: #eee;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  transition: opacity 0.3s ease;
+}
+
+.view-all-button {
+  position: absolute;
+
+  right: 12px;
+  bottom: 12px;
+
+  padding: 8px 13px;
+
+  border: 0;
+  border-radius: 18px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  color: #fff;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.gallery-preview {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 4px;
+
+  margin-top: 5px;
+}
+
+.gallery-preview img {
+  width: 100%;
+
+  aspect-ratio: 1;
+
+  object-fit: cover;
+
+  cursor: pointer;
+
+  opacity: 0.8;
+}
+
+.gallery-preview img.active {
+  opacity: 1;
+
+  outline: 2px solid #777;
+  outline-offset: -2px;
+}
+
+
+/* ===============================
+   LOCATION
+================================ */
+
+.location-section {
+  background: #faf9f7;
+
+  text-align: center;
+}
+
+.location-name {
+  margin-bottom: 10px;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+.address {
+  margin-bottom: 28px;
+
+  color: #777;
+
+  font-size: 12px;
+}
+
+.map {
+  width: 100%;
+  height: 300px;
+
+  background: #eee;
+
+  overflow: hidden;
+}
+
+.map-placeholder {
+  display: flex;
+
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+.map-placeholder small {
+  display: block;
+
+  margin-top: 10px;
+
+  font-size: 10px;
+}
+
+
+/* navigation */
+
+.navigation-section {
+  margin-top: 45px;
+}
+
+.navigation-section h3 {
+  margin-bottom: 7px;
+
+  font-size: 14px;
+}
+
+.navigation-section p {
+  margin-top: 0;
+
+  color: #888;
+
+  font-size: 12px;
+}
+
+.navigation-buttons {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin-top: 22px;
+}
+
+.navigation-button {
+  padding: 13px 5px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 6px;
+
+  background: #fff;
+
+  color: #444;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+
+/* transportation */
+
+.transportation {
+  margin-top: 55px;
+
+  text-align: left;
+}
+
+.transport-item {
+  padding: 21px 0;
+
+  border-bottom: 1px solid #e7e3de;
+}
+
+.transport-item h3 {
+  margin: 0 0 9px;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.transport-item p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 12px;
+
+  line-height: 1.8;
+}
+
+
+/* ===============================
+   ACCOUNT
+================================ */
+
+.account-section {
+  text-align: center;
+}
+
+.account-message {
+  margin-bottom: 35px;
+
+  color: #777;
+
+  font-size: 13px;
+
+  line-height: 2;
+}
+
+.account-tabs {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  margin-bottom: 20px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.account-tab {
+  padding: 14px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #aaa;
+
+  cursor: pointer;
+}
+
+.account-tab.active {
+  color: #333;
+
+  border-bottom: 2px solid #555;
+}
+
+.account-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 17px 5px;
+
+  border-bottom: 1px solid #eee;
+
+  text-align: left;
+}
+
+.account-person {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.account-person strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.account-person span {
+  color: #777;
+
+  font-size: 12px;
+}
+
+.copy-button {
+  padding: 7px 11px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 5px;
+
+  background: #fff;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ===============================
+   FLOWER
+================================ */
+
+.flower-section {
+  padding: 42px 28px;
+
+  background: #fff;
+
+  text-align: center;
+  
+}
+
+.flower-section p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* =======
+ RECEPTION NOTICE
+=========*/
+.reception-notice-section {
+  padding: 70px 28px;
+
+  background: #f7f5f2;
+
+  text-align: center;
+
+}
+
+.reception-notice-title {
+  margin: 0 0 14px;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.reception-notice-title strong {
+  font-weight: 600;
+}
+
+.reception-notice-text {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* ===============================
+   FULL SCREEN GALLERY
+================================ */
+
+.gallery-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: none;
+
+  flex-direction: column;
+
+  background: #000;
+}
+
+.gallery-modal.open {
+  display: flex;
+}
+
+.gallery-close {
+  position: absolute;
+
+  top: max(16px, env(safe-area-inset-top));
+  right: 16px;
+
+  z-index: 20;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: white;
+
+  font-size: 35px;
+  font-weight: 200;
+
+  cursor: pointer;
+}
+
+.fullscreen-image-container {
+  display: flex;
+
+  flex: 1;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 0;
+}
+
+.fullscreen-image-container img {
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+.gallery-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 15;
+
+  transform: translateY(-50%);
+
+  width: 45px;
+  height: 70px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 50px;
+
+  cursor: pointer;
+}
+
+.gallery-arrow-left {
+  left: 0;
+}
+
+.gallery-arrow-right {
+  right: 0;
+}
+
+.fullscreen-thumbnails {
+  display: flex;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  overflow-x: auto;
+
+  padding:
+    10px
+    10px
+    max(15px, env(safe-area-inset-bottom));
+
+  background: #000;
+}
+
+.fullscreen-thumbnails::-webkit-scrollbar {
+  display: none;
+}
+
+.fullscreen-thumbnails img {
+  flex: 0 0 55px;
+
+  width: 55px;
+  height: 55px;
+
+  object-fit: cover;
+
+  opacity: 0.45;
+
+  cursor: pointer;
+}
+
+.fullscreen-thumbnails img.active {
+  opacity: 1;
+
+  outline: 2px solid white;
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .language-switch {
+    right: 15px;
+  }
+
+}
