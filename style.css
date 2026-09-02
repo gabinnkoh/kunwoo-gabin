@@ -9,29 +9,20 @@ body {
 }
 
 body {
+  margin: 0;
   background: #efede9;
-  color: #353535;
-
-  font-family:
-    "Times New Roman",
-    "AppleMyungjo",
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    serif;
+  font-weight: 400;
 }
 
-.hero-title,
-.person-name,
-.section-heading,
-.section-title,
-.wedding-info {
-  font-family:
-    "Times New Roman",
-    "AppleMyungjo",
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    serif;
+
+html[lang="ko"] body {
+  font-family: "Noto Serif KR", serif;
 }
+
+html[lang="ja"] body {
+  font-family: "Noto Serif JP", serif;
+}
+
 
 /* ===============================
    MAIN LAYOUT
@@ -228,7 +219,6 @@ body {
 }
 
 .section-title {
-  font-family: Georgia, serif;
 
   font-size: 22px;
 
@@ -306,12 +296,6 @@ body {
 
   color: #555;
 
-  font-family:
-    "AppleMyungjo",
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    serif;
-
   font-size: 14px;
   font-weight: 400;
 
@@ -331,11 +315,6 @@ body {
 
   text-align: center;
 
-  font-family:
-    "AppleMyungjo",
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    serif;
 }
 
 .family-introduction strong {
@@ -346,11 +325,6 @@ body {
 
   letter-spacing: 1px;
 
-  font-family:
-    "AppleMyungjo",
-    "Hiragino Mincho ProN",
-    "Yu Mincho",
-    serif;
 }
 
 /* ===============================
@@ -674,7 +648,7 @@ body {
 ================================ */
 
 .flower-section {
-  padding: 42px 28px;
+  padding: 60px 28px 100px 28px;
 
   background: #fff;
 
