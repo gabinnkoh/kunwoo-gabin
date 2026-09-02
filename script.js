@@ -173,11 +173,39 @@ const translations = {
 };
 
 
+
 /* ====================================
    LANGUAGE
 ==================================== */
 
 let currentLanguage = "ko";
+
+
+const languageToggleButton =
+  document.getElementById(
+    "languageToggleButton"
+  );
+
+
+function updateLanguageButton() {
+
+  if (!languageToggleButton) {
+    return;
+  }
+
+  languageToggleButton.textContent =
+    currentLanguage === "ko"
+      ? "KOR"
+      : "JPN";
+
+  languageToggleButton.setAttribute(
+    "aria-label",
+    currentLanguage === "ko"
+      ? "일본어로 변경"
+      : "한국어로 변경"
+  );
+
+}
 
 
 function setLanguage(language) {
@@ -190,6 +218,8 @@ function setLanguage(language) {
   document.title =
     translations[language].title;
 
+
+  /* 텍스트 번역 */
 
   document
     .querySelectorAll("[data-i18n]")
@@ -211,31 +241,10 @@ function setLanguage(language) {
     });
 
 
-  const korButton =
-    document.getElementById(
-      "korButton"
-    );
-
-  const jpnButton =
-    document.getElementById(
-      "jpnButton"
-    );
+  updateLanguageButton();
 
 
-  if (korButton) {
-    korButton.classList.toggle(
-      "active",
-      language === "ko"
-    );
-  }
-
-  if (jpnButton) {
-    jpnButton.classList.toggle(
-      "active",
-      language === "ja"
-    );
-  }
-
+  /* 언어별 섹션 */
 
   const accountSection =
     document.getElementById(
@@ -269,6 +278,16 @@ function setLanguage(language) {
 
 
   if (language === "ja") {
+
+    /*
+      일본어:
+      - 계좌 숨김
+      - 화환 안내 숨김
+      - 네이버 지도 숨김
+      - Google Maps 표시
+      - 네비게이션 숨김
+      - 교통 안내 숨김
+    */
 
     if (accountSection) {
       accountSection.style.display =
@@ -305,6 +324,10 @@ function setLanguage(language) {
     }
 
   } else {
+
+    /*
+      한국어
+    */
 
     if (accountSection) {
       accountSection.style.display =
@@ -345,6 +368,7 @@ function setLanguage(language) {
 }
 
 
+
 /* ====================================
    INITIAL LANGUAGE
 ==================================== */
@@ -355,6 +379,7 @@ const browserLanguage =
 
 
 if (
+  browserLanguage &&
   browserLanguage
     .toLowerCase()
     .startsWith("ja")
@@ -369,34 +394,29 @@ if (
 }
 
 
-const korButton =
-  document.getElementById(
-    "korButton"
-  );
 
-if (korButton) {
+/* ====================================
+   LANGUAGE TOGGLE
+==================================== */
 
-  korButton.addEventListener(
+if (languageToggleButton) {
+
+  languageToggleButton.addEventListener(
     "click",
-    () => setLanguage("ko")
+    () => {
+
+      const nextLanguage =
+        currentLanguage === "ko"
+          ? "ja"
+          : "ko";
+
+      setLanguage(nextLanguage);
+
+    }
   );
 
 }
 
-
-const jpnButton =
-  document.getElementById(
-    "jpnButton"
-  );
-
-if (jpnButton) {
-
-  jpnButton.addEventListener(
-    "click",
-    () => setLanguage("ja")
-  );
-
-}
 
 
 /* ====================================
@@ -411,6 +431,7 @@ const naverButton =
   document.getElementById(
     "naverButton"
   );
+
 
 if (naverButton) {
 
@@ -439,10 +460,12 @@ if (naverButton) {
 }
 
 
+
 const tmapButton =
   document.getElementById(
     "tmapButton"
   );
+
 
 if (tmapButton) {
 
@@ -464,10 +487,12 @@ if (tmapButton) {
 }
 
 
+
 const kakaoButton =
   document.getElementById(
     "kakaoButton"
   );
+
 
 if (kakaoButton) {
 
@@ -489,6 +514,7 @@ if (kakaoButton) {
 }
 
 
+
 /* ====================================
    ACCOUNT COPY
 ==================================== */
@@ -505,6 +531,10 @@ document
 
         const account =
           button.dataset.account;
+
+        if (!account) {
+          return;
+        }
 
         try {
 
@@ -539,6 +569,7 @@ document
   });
 
 
+
 /* ====================================
    GALLERY
 ==================================== */
@@ -550,9 +581,12 @@ const isVersion3 =
 
 
 /*
-  version3 갤러리
-  02 / 05 / 06 / 08 제외
+  Version3 갤러리
+
+  현재 사용:
+  01 / 03 / 04 / 07 / 09 / 10
 */
+
 const galleryImages =
   isVersion3
     ? [
@@ -577,16 +611,22 @@ const galleryImages =
 
 
 /*
-  version3에서 남색 필터를 적용할 사진
+  Version3에서
+  필터를 적용할 사진
 */
+
 const mutedImages = [
+
   "images/gallery01.jpg",
   "images/gallery03.jpg",
   "images/gallery04.jpg"
+
 ];
 
 
 let currentGalleryIndex = 0;
+
+let galleryInterval = null;
 
 
 const galleryMainImage =
@@ -599,8 +639,6 @@ const galleryPreview =
     "galleryPreview"
   );
 
-
-let galleryInterval = null;
 
 
 /* ====================================
@@ -652,10 +690,14 @@ function renderPreview() {
     image.alt =
       `Wedding gallery ${imageIndex + 1}`;
 
+    image.loading =
+      "lazy";
+
 
     /*
-      version3 특정 사진에만 필터 적용
+      Version3 필터
     */
+
     if (
       isVersion3 &&
       mutedImages.includes(
@@ -672,6 +714,24 @@ function renderPreview() {
     }
 
 
+    /*
+      첫 번째 썸네일은
+      현재 큰 사진
+    */
+
+    if (i === 0) {
+
+      image.classList.add(
+        "active"
+      );
+
+    }
+
+
+    /*
+      썸네일 클릭
+    */
+
     image.addEventListener(
       "click",
       () => {
@@ -687,15 +747,6 @@ function renderPreview() {
     );
 
 
-    if (i === 0) {
-
-      image.classList.add(
-        "active"
-      );
-
-    }
-
-
     galleryPreview.appendChild(
       image
     );
@@ -703,6 +754,7 @@ function renderPreview() {
   }
 
 }
+
 
 
 /* ====================================
@@ -759,6 +811,7 @@ function updateGallery() {
 }
 
 
+
 /* ====================================
    AUTO PLAY
 ==================================== */
@@ -768,6 +821,10 @@ function startGalleryAutoPlay() {
   if (!galleryMainImage) {
     return;
   }
+
+
+  stopGalleryAutoPlay();
+
 
   galleryInterval =
     setInterval(() => {
@@ -786,20 +843,22 @@ function startGalleryAutoPlay() {
 }
 
 
+
 function stopGalleryAutoPlay() {
 
-  if (galleryInterval) {
-
-    clearInterval(
-      galleryInterval
-    );
-
-    galleryInterval =
-      null;
-
+  if (!galleryInterval) {
+    return;
   }
 
+  clearInterval(
+    galleryInterval
+  );
+
+  galleryInterval =
+    null;
+
 }
+
 
 
 function restartGalleryAutoPlay() {
@@ -811,6 +870,7 @@ function restartGalleryAutoPlay() {
 }
 
 
+
 /* ====================================
    MAIN ARROWS
 ==================================== */
@@ -819,6 +879,7 @@ const galleryPrevButton =
   document.getElementById(
     "galleryPrevButton"
   );
+
 
 if (galleryPrevButton) {
 
@@ -844,10 +905,12 @@ if (galleryPrevButton) {
 }
 
 
+
 const galleryNextButton =
   document.getElementById(
     "galleryNextButton"
   );
+
 
 if (galleryNextButton) {
 
@@ -872,6 +935,7 @@ if (galleryNextButton) {
 }
 
 
+
 /* ====================================
    FULL SCREEN
 ==================================== */
@@ -894,24 +958,30 @@ const fullscreenThumbnails =
   );
 
 
+
 function openGallery() {
 
   if (!galleryModal) {
     return;
   }
 
+
   stopGalleryAutoPlay();
+
 
   galleryModal.classList.add(
     "open"
   );
 
+
   document.body.style.overflow =
     "hidden";
+
 
   updateFullscreenGallery();
 
 }
+
 
 
 function closeGallery() {
@@ -920,16 +990,20 @@ function closeGallery() {
     return;
   }
 
+
   galleryModal.classList.remove(
     "open"
   );
 
+
   document.body.style.overflow =
     "";
 
-  restartGalleryAutoPlay();
+
+  startGalleryAutoPlay();
 
 }
+
 
 
 function updateFullscreenGallery() {
@@ -938,14 +1012,17 @@ function updateFullscreenGallery() {
     return;
   }
 
+
   fullscreenImage.src =
     galleryImages[
       currentGalleryIndex
     ];
 
+
   renderFullscreenThumbnails();
 
 }
+
 
 
 function renderFullscreenThumbnails() {
@@ -953,6 +1030,7 @@ function renderFullscreenThumbnails() {
   if (!fullscreenThumbnails) {
     return;
   }
+
 
   fullscreenThumbnails.innerHTML =
     "";
@@ -966,11 +1044,15 @@ function renderFullscreenThumbnails() {
           "img"
         );
 
+
       thumbnail.src =
         imageSrc;
 
       thumbnail.alt =
         `Wedding thumbnail ${index + 1}`;
+
+      thumbnail.loading =
+        "lazy";
 
 
       if (
@@ -994,6 +1076,8 @@ function renderFullscreenThumbnails() {
 
           updateFullscreenGallery();
 
+          updateGallery();
+
         }
       );
 
@@ -1009,6 +1093,11 @@ function renderFullscreenThumbnails() {
 }
 
 
+
+/* ====================================
+   FULLSCREEN NEXT / PREVIOUS
+==================================== */
+
 function showNextImage() {
 
   currentGalleryIndex =
@@ -1018,9 +1107,11 @@ function showNextImage() {
     ) %
     galleryImages.length;
 
+
   updateFullscreenGallery();
 
 }
+
 
 
 function showPreviousImage() {
@@ -1033,18 +1124,27 @@ function showPreviousImage() {
     ) %
     galleryImages.length;
 
+
   updateFullscreenGallery();
 
 }
 
 
-/* 전체보기 버튼
-   version3에는 없으므로 있을 때만 작동 */
+
+/* ====================================
+   FULLSCREEN BUTTONS
+==================================== */
+
+/*
+  Version3에는 전체보기 버튼이 없으므로
+  존재할 때만 이벤트 연결
+*/
 
 const openGalleryButton =
   document.getElementById(
     "openGalleryButton"
   );
+
 
 if (openGalleryButton) {
 
@@ -1056,10 +1156,12 @@ if (openGalleryButton) {
 }
 
 
+
 const closeGalleryButton =
   document.getElementById(
     "closeGalleryButton"
   );
+
 
 if (closeGalleryButton) {
 
@@ -1071,10 +1173,12 @@ if (closeGalleryButton) {
 }
 
 
+
 const nextImageButton =
   document.getElementById(
     "nextImageButton"
   );
+
 
 if (nextImageButton) {
 
@@ -1086,10 +1190,12 @@ if (nextImageButton) {
 }
 
 
+
 const previousImageButton =
   document.getElementById(
     "previousImageButton"
   );
+
 
 if (previousImageButton) {
 
@@ -1101,11 +1207,64 @@ if (previousImageButton) {
 }
 
 
+
+/* ====================================
+   MODAL BACKGROUND CLICK
+==================================== */
+
+if (galleryModal) {
+
+  galleryModal.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        event.target ===
+        galleryModal
+      ) {
+
+        closeGallery();
+
+      }
+
+    }
+  );
+
+}
+
+
+
+/* ====================================
+   ESC KEY
+==================================== */
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (
+      event.key === "Escape" &&
+      galleryModal &&
+      galleryModal.classList.contains(
+        "open"
+      )
+    ) {
+
+      closeGallery();
+
+    }
+
+  }
+);
+
+
+
 /* ====================================
    MOBILE SWIPE
 ==================================== */
 
 let touchStartX = 0;
+
 let touchEndX = 0;
 
 
@@ -1133,6 +1292,7 @@ if (galleryModal) {
       touchEndX =
         event.changedTouches[0]
           .screenX;
+
 
       const difference =
         touchStartX -
@@ -1168,18 +1328,28 @@ if (galleryModal) {
 }
 
 
+
 /* ====================================
-   START
+   START GALLERY
 ==================================== */
 
 if (
   galleryMainImage &&
-  galleryPreview
+  galleryPreview &&
+  galleryImages.length > 0
 ) {
 
   /*
-    첫 번째 사진 필터도
-    페이지가 뜨자마자 바로 적용
+    HTML에 적혀 있는 src와 관계없이
+    JS 배열의 첫 번째 사진으로 통일
+  */
+
+  galleryMainImage.src =
+    galleryImages[0];
+
+
+  /*
+    Version3 첫 사진 필터
   */
 
   if (isVersion3) {

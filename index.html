@@ -23,27 +23,16 @@
   <link rel="stylesheet" href="css/version1.css">
 </head>
 
-
 <body>
 
   <div class="language-switch">
 
     <button
-      id="korButton"
-      class="language-button active"
-      type="button"
-    >
-      KOR
-    </button>
-
-    <span>/</span>
-
-    <button
-      id="jpnButton"
+      id="languageToggleButton"
       class="language-button"
       type="button"
     >
-      JPN
+      KOR
     </button>
 
   </div>
@@ -61,7 +50,6 @@
         alt="Wedding"
         class="main-image"
       >
-
 
     </section>
 
@@ -98,11 +86,14 @@
         class="invitation-message"
         data-i18n="invitationMessage"
       >
-        스쳐 지나갔던 인연이 우연으로 다시 맞닿아<br>
-        운명처럼 하나가 되었습니다.<br>
-        이제 서로에게 영원을 약속하고자 합니다.<br>
-        저희 두 사람의 첫걸음을<br>
-        소중한 분들과 함께하고 싶습니다.
+        웃는 모습이 닮았다는 말을 자주 들었습니다.<br><br>
+
+        함께 웃는 모습도, 서로를 바라보는 마음도<br>
+        어느새 조금씩 닮아왔나 봅니다.<br><br>
+
+        이제는 같은 곳을 바라보며<br>
+        오래도록 서로를 닮아가려 합니다.<br>
+        저희의 새로운 시작을 함께해 주세요.
       </div>
 
 
@@ -216,6 +207,7 @@
       >
         <div class="map-placeholder">
           NAVER MAP
+
           <small>
             API 연결 후 지도가 표시됩니다.
           </small>
@@ -255,7 +247,6 @@
         <p data-i18n="navigationDescription">
           앱을 열어 길 안내를 시작해보세요.
         </p>
-
 
         <div class="navigation-buttons">
 
@@ -320,11 +311,11 @@
         <div class="transport-item">
 
           <strong data-i18n="carTitle">
-            자가용 이용 시 (1시간 30분 무료 주차)
+            자가용 이용 시
           </strong>
 
           <p data-i18n="carDescription">
-            (호텔 문의 후 작성)
+            (호텔 문의 후 작성) (1시간 30분 무료 주차)
           </p>
 
         </div>
@@ -334,7 +325,7 @@
     </section>
 
 
-    <!-- FLOWER NOTICE -->
+    <!-- FLOWER -->
 
     <section
       id="flowerSection"
@@ -361,7 +352,6 @@
         GALLERY
       </h2>
 
-
       <div class="gallery-main">
 
         <img
@@ -374,7 +364,6 @@
           id="galleryPrevButton"
           class="gallery-main-arrow gallery-main-arrow-left"
           type="button"
-          aria-label="Previous image"
         >
           ‹
         </button>
@@ -383,7 +372,6 @@
           id="galleryNextButton"
           class="gallery-main-arrow gallery-main-arrow-right"
           type="button"
-          aria-label="Next image"
         >
           ›
         </button>
@@ -477,7 +465,7 @@
             <button
               class="copy-button"
               type="button"
-              data-account="123456789"
+              data-account="00은행 123456789"
             >
               복사
             </button>
@@ -495,7 +483,7 @@
             <button
               class="copy-button"
               type="button"
-              data-account="123456789"
+              data-account="00은행 123456789"
             >
               복사
             </button>
@@ -525,7 +513,7 @@
             <button
               class="copy-button"
               type="button"
-              data-account="123456789"
+              data-account="00은행 123456789"
             >
               복사
             </button>
@@ -553,7 +541,6 @@
       id="closeGalleryButton"
       class="gallery-close"
       type="button"
-      aria-label="Close gallery"
     >
       ×
     </button>
@@ -562,11 +549,9 @@
       id="previousImageButton"
       class="gallery-arrow gallery-arrow-left"
       type="button"
-      aria-label="Previous image"
     >
       ‹
     </button>
-
 
     <div class="fullscreen-image-container">
 
@@ -578,16 +563,13 @@
 
     </div>
 
-
     <button
       id="nextImageButton"
       class="gallery-arrow gallery-arrow-right"
       type="button"
-      aria-label="Next image"
     >
       ›
     </button>
-
 
     <div
       id="fullscreenThumbnails"
@@ -599,6 +581,35 @@
 
 
   <script src="script.js"></script>
+
+  <script>
+    const languageToggleButton =
+      document.getElementById("languageToggleButton");
+
+    function syncLanguageToggleButton() {
+      if (!languageToggleButton) return;
+
+      languageToggleButton.textContent =
+        currentLanguage === "ja"
+          ? "JPN"
+          : "KOR";
+    }
+
+    syncLanguageToggleButton();
+
+    languageToggleButton?.addEventListener(
+      "click",
+      () => {
+        const nextLanguage =
+          currentLanguage === "ko"
+            ? "ja"
+            : "ko";
+
+        setLanguage(nextLanguage);
+        syncLanguageToggleButton();
+      }
+    );
+  </script>
 
 </body>
 

@@ -1,49 +1,76 @@
+/* =================================
+   RESET
+================================= */
+
 * {
   box-sizing: border-box;
 }
+
 
 html {
   scroll-behavior: smooth;
 }
 
+
 body {
   margin: 0;
+
   font-weight: 400;
-  -webkit-font-smoothing: antialiased;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  text-rendering:
+    optimizeLegibility;
 }
+
 
 html[lang="ko"] body {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family:
+    "Noto Sans KR",
+    sans-serif;
 }
 
+
 html[lang="ja"] body {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
 }
+
 
 button {
   font: inherit;
 }
 
+
 img {
   display: block;
+
   max-width: 100%;
 }
+
 
 .hidden {
   display: none !important;
 }
 
 
+
 /* =================================
-   PAGE
+   MAIN CONTAINER
 ================================= */
 
 .invitation {
   width: 100%;
+
   max-width: 480px;
-  margin: 0 auto;
+
   min-height: 100vh;
+
+  margin: 0 auto;
 }
+
 
 
 /* =================================
@@ -52,39 +79,82 @@ img {
 
 .language-switch {
   position: fixed;
+
   z-index: 100;
-  top: 18px;
-  right: max(18px, calc((100vw - 480px) / 2 + 18px));
+
+  top:
+    max(
+      18px,
+      env(safe-area-inset-top)
+    );
+
+  right:
+    max(
+      18px,
+      calc(
+        (100vw - 480px) / 2
+        + 18px
+      )
+    );
 
   display: flex;
-  gap: 6px;
+
   align-items: center;
+  justify-content: center;
 
-  padding: 8px 10px;
+  min-width: 48px;
 
-  background: rgba(255, 255, 255, 0.82);
+  padding: 8px 12px;
+
   border-radius: 20px;
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter:
+    blur(8px);
 
-  font-size: 11px;
+  -webkit-backdrop-filter:
+    blur(8px);
 }
+
 
 .language-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   padding: 0;
+
   border: 0;
+
   background: transparent;
+
+  color: #555;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+
   cursor: pointer;
 
-  color: #999;
-  font-size: 11px;
+  appearance: none;
+
+  -webkit-appearance: none;
 }
 
-.language-button.active {
-  color: #333;
-  font-weight: 600;
+
+.language-button:focus-visible {
+  outline:
+    1px solid
+    rgba(80, 80, 80, 0.4);
+
+  outline-offset: 4px;
+
+  border-radius: 2px;
 }
+
 
 
 /* =================================
@@ -93,19 +163,26 @@ img {
 
 .hero-section {
   position: relative;
+
   width: 100%;
 }
+
 
 .main-image {
   width: 100%;
+
   height: auto;
+
   object-fit: contain;
 }
 
+
 .hero-title {
   position: absolute;
+
   left: 0;
   right: 0;
+
   bottom: 28px;
 
   text-align: center;
@@ -114,10 +191,14 @@ img {
 
   font-size: 18px;
   font-weight: 400;
+
   letter-spacing: 0.16em;
 
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+  text-shadow:
+    0 1px 8px
+    rgba(0, 0, 0, 0.25);
 }
+
 
 
 /* =================================
@@ -125,61 +206,86 @@ img {
 ================================= */
 
 .couple-section {
-  padding: 64px 28px 72px;
+  padding:
+    64px
+    28px
+    72px;
+
   text-align: center;
 }
 
+
 .wedding-info {
   font-size: 14px;
+
   line-height: 1.9;
 }
+
 
 .wedding-info p {
   margin: 0;
 }
 
+
 .venue-name {
-  margin-top: 14px !important;
+  margin-top:
+    14px !important;
+
   font-weight: 600;
 }
+
 
 .invitation-message {
   margin-top: 54px;
 
   font-size: 14px;
+
   line-height: 2.1;
 }
+
 
 .family-introduction {
   margin-top: 38px;
 
   font-size: 14px;
+
   line-height: 2;
 }
 
+
 .family-introduction strong {
   font-size: 15px;
+
   font-weight: 600;
 }
 
 
+
 /* =================================
-   GENERAL SECTION
+   COMMON SECTION
 ================================= */
 
 .section {
-  padding: 64px 28px;
+  padding:
+    64px
+    28px;
 }
 
+
 .section-heading {
-  margin: 0 0 36px;
+  margin:
+    0
+    0
+    36px;
 
   text-align: center;
 
   font-size: 17px;
   font-weight: 500;
+
   letter-spacing: 0.08em;
 }
+
 
 
 /* =================================
@@ -190,67 +296,91 @@ img {
   text-align: center;
 }
 
+
 .section-title {
   font-size: 17px;
+
   letter-spacing: 0.18em;
 }
 
+
 .calendar-year {
   margin-top: 5px;
+
   margin-bottom: 34px;
 
   font-size: 12px;
+
   opacity: 0.7;
 }
 
+
 .calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 11px 4px;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap:
+    11px
+    4px;
 
   align-items: center;
 
   font-size: 12px;
 }
 
+
 .calendar > div {
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
   min-height: 30px;
 }
 
+
 .calendar-header {
   margin-bottom: 7px;
 
   font-size: 10px;
+
   font-weight: 500;
 
   opacity: 0.6;
 }
 
+
 .sunday {
   color: #bd7777;
 }
+
 
 .saturday {
   color: #74859a;
 }
 
+
 .wedding-day {
   width: 30px;
+
   height: 30px;
-  min-height: 30px !important;
+
+  min-height:
+    30px !important;
 
   margin: auto;
 
   border-radius: 50%;
 
-  color: #fff !important;
+  color:
+    #fff !important;
 
   font-weight: 500;
 }
+
 
 
 /* =================================
@@ -261,86 +391,135 @@ img {
   text-align: center;
 }
 
+
 .location-name {
   font-size: 15px;
+
   line-height: 1.8;
+
   font-weight: 500;
 }
 
+
 .location-address {
-  margin: 10px 0 28px;
+  margin:
+    10px
+    0
+    28px;
 
   font-size: 12px;
+
   line-height: 1.7;
 
   opacity: 0.7;
 }
 
+
+
+/* =================================
+   MAP
+================================= */
+
 .map {
   width: 100%;
+
   height: 280px;
+
   overflow: hidden;
 
   background: #eee;
 }
 
+
 .map iframe {
+  display: block;
+
   width: 100%;
+
   height: 100%;
 }
+
 
 .map-placeholder {
   width: 100%;
+
   height: 100%;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   align-items: center;
 
-  font-size: 13px;
-  letter-spacing: 0.08em;
-
   color: #777;
+
+  font-size: 13px;
+
+  letter-spacing: 0.08em;
 }
+
 
 .map-placeholder small {
   margin-top: 8px;
 
   font-size: 10px;
+
   letter-spacing: 0;
 }
+
+
+
+/* =================================
+   NAVIGATION
+================================= */
 
 .navigation-section {
   padding-top: 36px;
 }
 
+
 .navigation-section h3 {
   margin: 0;
 
   font-size: 14px;
+
   font-weight: 600;
 }
 
+
 .navigation-section p {
-  margin: 7px 0 18px;
+  margin:
+    7px
+    0
+    18px;
 
   font-size: 12px;
 
   opacity: 0.7;
 }
 
+
 .navigation-buttons {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
   gap: 7px;
 }
+
 
 .navigation-buttons button {
   min-height: 42px;
 
-  border: 1px solid #ddd;
+  border:
+    1px solid
+    #ddd;
+
   background: #fff;
+
   border-radius: 4px;
 
   cursor: pointer;
@@ -348,20 +527,36 @@ img {
   font-size: 12px;
 }
 
+
+
+/* =================================
+   TRANSPORT
+================================= */
+
 .transportation-section {
   margin-top: 42px;
 
   text-align: left;
 }
 
+
 .transport-item {
-  padding: 20px 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding:
+    20px
+    0;
+
+  border-top:
+    1px solid
+    rgba(0, 0, 0, 0.08);
 }
 
+
 .transport-item:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom:
+    1px solid
+    rgba(0, 0, 0, 0.08);
 }
+
 
 .transport-item strong {
   display: block;
@@ -369,30 +564,35 @@ img {
   margin-bottom: 8px;
 
   font-size: 13px;
+
   font-weight: 600;
 }
+
 
 .transport-item p {
   margin: 0;
 
   font-size: 12px;
+
   line-height: 1.8;
 
   opacity: 0.72;
 }
 
 
+
 /* =================================
-   FLOWER NOTICE
+   FLOWER
 ================================= */
 
 .flower-section {
-  padding: 48px 28px;
-
-  background: #fff;
+  padding:
+    48px
+    28px;
 
   text-align: center;
 }
+
 
 .flower-section p {
   margin: 0;
@@ -400,8 +600,10 @@ img {
   color: #777;
 
   font-size: 13px;
+
   line-height: 2;
 }
+
 
 
 /* =================================
@@ -410,17 +612,29 @@ img {
 
 .gallery-section {
   padding-left: 0;
+
   padding-right: 0;
 }
 
-.gallery-section .section-heading {
-  padding: 0 28px;
+
+.gallery-section
+.section-heading {
+  padding:
+    0
+    28px;
 }
+
+
+
+/* =================================
+   GALLERY MAIN
+================================= */
 
 .gallery-main {
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 3 / 4;
 
   overflow: hidden;
@@ -428,59 +642,116 @@ img {
   background: #eee;
 }
 
+
 .gallery-main img {
+  display: block;
+
   width: 100%;
+
   height: 100%;
 
   object-fit: cover;
-  object-position: center center;
 
-  transition: opacity 0.3s ease;
+  object-position:
+    center center;
+
+  transition:
+    opacity
+    0.3s ease;
 }
+
+
+
+/* =================================
+   GALLERY MAIN ARROW
+================================= */
 
 .gallery-main-arrow {
   position: absolute;
+
   z-index: 5;
+
   top: 50%;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%);
 
   width: 42px;
+
   height: 60px;
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
+  padding: 0;
+
   border: 0;
-  background: rgba(0, 0, 0, 0.18);
+
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
 
   color: #fff;
 
   font-size: 38px;
+
   font-weight: 200;
+
+  line-height: 1;
 
   cursor: pointer;
 }
+
 
 .gallery-main-arrow-left {
   left: 0;
 }
 
+
 .gallery-main-arrow-right {
   right: 0;
 }
 
+
+
+/* =================================
+   GALLERY PREVIEW
+================================= */
+
 .gallery-preview {
+  width: 100%;
+
+  min-height: 72px;
+
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
   gap: 4px;
 
-  padding: 5px 0 0;
+  padding:
+    5px
+    0
+    0;
 }
 
+
 .gallery-preview img {
+  display: block;
+
   width: 100%;
+
   aspect-ratio: 1 / 1;
 
   object-fit: cover;
@@ -489,25 +760,45 @@ img {
 
   opacity: 0.55;
 
-  transition: opacity 0.2s ease;
+  transition:
+    opacity
+    0.2s ease;
 }
+
 
 .gallery-preview img.active {
   opacity: 1;
 }
 
+
+
+/* =================================
+   GALLERY FOOTER
+================================= */
+
 .gallery-footer {
   display: flex;
+
   justify-content: flex-end;
 
-  padding: 14px 18px 0;
+  padding:
+    14px
+    18px
+    0;
 }
 
+
 .view-all-button {
-  padding: 5px 0;
+  padding:
+    5px
+    0;
 
   border: 0;
-  border-bottom: 1px solid currentColor;
+
+  border-bottom:
+    1px solid
+    currentColor;
+
   background: transparent;
 
   cursor: pointer;
@@ -516,33 +807,45 @@ img {
 }
 
 
+
 /* =================================
-   RECEPTION NOTICE
+   RECEPTION
 ================================= */
 
 .reception-notice-section {
-  padding: 42px 28px;
+  padding:
+    42px
+    28px;
 
   text-align: center;
 }
 
+
 .reception-notice-title {
-  margin: 0 0 14px;
+  margin:
+    0
+    0
+    14px;
 
   font-size: 14px;
+
   line-height: 1.6;
 }
+
 
 .reception-notice-title strong {
   font-weight: 600;
 }
 
+
 .reception-notice-text {
   margin: 0;
 
   font-size: 13px;
+
   line-height: 1.9;
 }
+
 
 
 /* =================================
@@ -553,77 +856,113 @@ img {
   padding-bottom: 90px;
 }
 
+
 .account-message {
-  margin: -10px 0 0;
+  margin:
+    -10px
+    0
+    0;
 
   text-align: center;
 
   font-size: 13px;
+
   line-height: 1.9;
 
   opacity: 0.72;
 }
 
+
 .account-side {
   margin-top: 38px;
 }
 
-.account-side + .account-side {
+
+.account-side +
+.account-side {
   margin-top: 45px;
 }
 
+
 .account-side-title {
-  margin: 0 0 13px;
+  margin:
+    0
+    0
+    13px;
 
   font-size: 14px;
+
   font-weight: 600;
 }
 
+
 .account-list {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top:
+    1px solid
+    rgba(0, 0, 0, 0.1);
 }
+
 
 .account-row {
   min-height: 76px;
 
   display: flex;
-  justify-content: space-between;
+
+  justify-content:
+    space-between;
+
   align-items: center;
 
   gap: 15px;
 
-  padding: 14px 0;
+  padding:
+    14px
+    0;
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom:
+    1px solid
+    rgba(0, 0, 0, 0.1);
 }
+
 
 .account-person {
   min-width: 0;
 
   display: flex;
+
   flex-direction: column;
 
   gap: 7px;
 }
 
+
 .account-person strong {
   font-size: 13px;
+
   font-weight: 500;
 }
 
-/* 기존보다 2px 크게 */
+
 .account-person span {
   font-size: 15px;
+
   line-height: 1.5;
 }
+
 
 .copy-button {
   flex-shrink: 0;
 
-  padding: 7px 11px;
+  padding:
+    7px
+    11px;
 
-  border: 1px solid #ccc;
+  border:
+    1px solid
+    #ccc;
+
   background: transparent;
+
   border-radius: 3px;
 
   cursor: pointer;
@@ -632,12 +971,14 @@ img {
 }
 
 
+
 /* =================================
-   FULL SCREEN GALLERY
+   FULLSCREEN GALLERY
 ================================= */
 
 .gallery-modal {
   position: fixed;
+
   z-index: 1000;
 
   inset: 0;
@@ -647,104 +988,176 @@ img {
   background: #000;
 }
 
+
 .gallery-modal.open {
   display: block;
 }
 
+
 .fullscreen-image-container {
   position: absolute;
 
-  inset: 0 0 90px;
+  inset:
+    0
+    0
+    90px;
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 }
 
+
 .fullscreen-image-container img {
   width: 100%;
+
   height: 100%;
 
   object-fit: contain;
 }
 
+
+
+/* =================================
+   FULLSCREEN CLOSE
+================================= */
+
 .gallery-close {
   position: absolute;
+
   z-index: 20;
 
-  top: max(18px, env(safe-area-inset-top));
+  top:
+    max(
+      18px,
+      env(safe-area-inset-top)
+    );
+
   right: 18px;
 
   width: 44px;
+
   height: 44px;
 
+  padding: 0;
+
   border: 0;
+
   background: transparent;
 
   color: #fff;
 
   font-size: 34px;
 
+  font-weight: 300;
+
+  line-height: 1;
+
   cursor: pointer;
 }
 
+
+
+/* =================================
+   FULLSCREEN ARROWS
+================================= */
+
 .gallery-arrow {
   position: absolute;
+
   z-index: 15;
 
   top: 50%;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%);
 
   width: 46px;
+
   height: 70px;
+
+  padding: 0;
 
   border: 0;
 
-  background: rgba(0, 0, 0, 0.22);
+  background:
+    rgba(
+      0,
+      0,
+      0,
+      0.22
+    );
 
   color: #fff;
 
   font-size: 42px;
 
+  font-weight: 200;
+
+  line-height: 1;
+
   cursor: pointer;
 }
+
 
 .gallery-arrow-left {
   left: 0;
 }
 
+
 .gallery-arrow-right {
   right: 0;
 }
+
+
+
+/* =================================
+   FULLSCREEN THUMBNAILS
+================================= */
 
 .fullscreen-thumbnails {
   position: absolute;
 
   left: 0;
   right: 0;
-  bottom: max(12px, env(safe-area-inset-bottom));
+
+  bottom:
+    max(
+      12px,
+      env(safe-area-inset-bottom)
+    );
 
   height: 64px;
 
   display: flex;
+
   gap: 5px;
 
   overflow-x: auto;
 
-  padding: 0 12px;
+  padding:
+    0
+    12px;
 
   scrollbar-width: none;
 }
+
 
 .fullscreen-thumbnails::-webkit-scrollbar {
   display: none;
 }
 
+
 .fullscreen-thumbnails img {
-  flex: 0 0 52px;
+  flex:
+    0
+    0
+    52px;
 
   width: 52px;
+
   height: 64px;
 
   object-fit: cover;
@@ -754,6 +1167,23 @@ img {
   cursor: pointer;
 }
 
+
 .fullscreen-thumbnails img.active {
   opacity: 1;
+}
+
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (
+  max-width: 480px
+) {
+
+  .language-switch {
+    right: 14px;
+  }
+
 }
