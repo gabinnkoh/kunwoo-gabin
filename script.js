@@ -148,7 +148,7 @@ const translations = {
       "新道林駅 1番出口より随時運行",
 
     carTitle:
-      "お車をご利用の場合",
+      "タクシーをご利用の場合",
 
     carDescription:
       "서울특별시 구로구 경인로 610<br>" +
@@ -201,7 +201,6 @@ function updateLanguageButton() {
 
 }
 
-
 function setLanguage(language) {
 
   currentLanguage =
@@ -224,8 +223,10 @@ function setLanguage(language) {
       const key =
         element.dataset.i18n;
 
+
       const translatedText =
         translations[language][key];
+
 
       if (
         translatedText !== undefined
@@ -248,50 +249,57 @@ function setLanguage(language) {
       "accountSection"
     );
 
+
   const flowerSection =
     document.getElementById(
       "flowerSection"
     );
 
-  const naverMap =
+
+  const kakaoMap =
     document.getElementById(
-      "naverMap"
+      "kakaoMap"
     );
+
 
   const googleMap =
     document.getElementById(
       "googleMap"
     );
 
-  const navigationSection =
-    document.getElementById(
-      "navigationSection"
-    );
-
-  const transportationSection =
-    document.getElementById(
-      "transportationSection"
-    );
-
 
 
   if (language === "ja") {
+
+    /*
+      일본어:
+      계좌 / 화환 숨김
+    */
 
     if (accountSection) {
       accountSection.style.display =
         "none";
     }
 
+
     if (flowerSection) {
       flowerSection.style.display =
         "none";
     }
 
-    if (naverMap) {
-      naverMap.classList.add(
+
+    /*
+      일본어:
+      카카오맵 숨김
+      Google Maps 표시
+    */
+
+    if (kakaoMap) {
+      kakaoMap.classList.add(
         "hidden"
       );
     }
+
 
     if (googleMap) {
       googleMap.classList.remove(
@@ -299,29 +307,38 @@ function setLanguage(language) {
       );
     }
 
-    if (navigationSection) {
-      navigationSection.classList.add(
-        "hidden"
-      );
-    }
 
   } else {
+
+    /*
+      한국어:
+      계좌 / 화환 표시
+    */
 
     if (accountSection) {
       accountSection.style.display =
         "";
     }
 
+
     if (flowerSection) {
       flowerSection.style.display =
         "";
     }
 
-    if (naverMap) {
-      naverMap.classList.remove(
+
+    /*
+      한국어:
+      카카오맵 표시
+      Google Maps 숨김
+    */
+
+    if (kakaoMap) {
+      kakaoMap.classList.remove(
         "hidden"
       );
     }
+
 
     if (googleMap) {
       googleMap.classList.add(
@@ -329,12 +346,28 @@ function setLanguage(language) {
       );
     }
 
-    if (navigationSection) {
-      navigationSection.classList.remove(
-        "hidden"
-      );
-    }
+  }
 
+
+  /*
+    숨겨져 있던 카카오맵이 다시 나타날 때
+    지도 크기를 다시 계산
+  */
+
+  if (
+    language === "ko" &&
+    typeof weddingMap !== "undefined"
+  ) {
+
+    setTimeout(() => {
+
+      weddingMap.relayout();
+
+      weddingMap.setCenter(
+        weddingLocation
+      );
+
+    }, 50);
 
   }
 
@@ -589,13 +622,19 @@ if (tmapNaviButton) {
   );
 
 }
-
 /* ====================================
    KAKAO MAP
 ==================================== */
 
 const kakaoMapContainer =
-  document.getElementById("kakaoMap");
+  document.getElementById(
+    "kakaoMap"
+  );
+
+
+let weddingMap = null;
+let weddingLocation = null;
+
 
 if (
   kakaoMapContainer &&
@@ -603,25 +642,33 @@ if (
   kakao.maps
 ) {
 
-  const weddingLocation =
+  weddingLocation =
     new kakao.maps.LatLng(
       37.505603818492,
       126.88387163888
     );
 
-  const weddingMap =
+
+  weddingMap =
     new kakao.maps.Map(
       kakaoMapContainer,
       {
-        center: weddingLocation,
+        center:
+          weddingLocation,
+
         level: 3
       }
     );
 
+
   new kakao.maps.Marker({
-    position: weddingLocation,
-    map: weddingMap
+    position:
+      weddingLocation,
+
+    map:
+      weddingMap
   });
+
 }
 
 /* ====================================
