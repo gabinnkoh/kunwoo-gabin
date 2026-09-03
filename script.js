@@ -515,6 +515,83 @@ if (kakaoNaviButton) {
 }
 
 /* ====================================
+   NAVER NAVI
+==================================== */
+
+const naverNaviButton =
+  document.getElementById(
+    "naverNaviButton"
+  );
+
+
+if (naverNaviButton) {
+
+  naverNaviButton.addEventListener(
+    "click",
+    () => {
+
+      const naverNaviUrl =
+        "nmap://navigation" +
+        "?dlat=37.505603818492" +
+        "&dlng=126.88387163888" +
+        "&dname=" +
+        encodeURIComponent(
+          "더 링크 서울, 트리뷰트 포트폴리오 호텔"
+        ) +
+        "&appname=" +
+        encodeURIComponent(
+          "https://gabinnkoh.github.io/kunwoo-gabin/"
+        );
+
+
+      window.location.href =
+        naverNaviUrl;
+
+    }
+  );
+
+}
+
+/* ====================================
+   TMAP NAVI
+==================================== */
+
+const tmapNaviButton =
+  document.getElementById(
+    "tmapNaviButton"
+  );
+
+
+if (tmapNaviButton) {
+
+  tmapNaviButton.addEventListener(
+    "click",
+    () => {
+
+      const destinationName =
+        encodeURIComponent(
+          "더 링크 서울, 트리뷰트 포트폴리오 호텔"
+        );
+
+
+      const tmapUrl =
+        "tmap://route" +
+        "?goalname=" +
+        destinationName +
+        "&goalx=126.88387163888" +
+        "&goaly=37.505603818492";
+
+
+      window.location.href =
+        tmapUrl;
+
+    }
+  );
+
+}
+
+
+/* ====================================
    ACCOUNT ACCORDION
 ==================================== */
 
