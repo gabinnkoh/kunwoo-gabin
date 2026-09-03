@@ -1,3 +1,17 @@
+
+/* ====================================
+   KAKAO SDK
+==================================== */
+
+if (
+  typeof Kakao !== "undefined" &&
+  !Kakao.isInitialized()
+) {
+  Kakao.init(
+    "cb43d22394f82941338749286deb8b60"
+  );
+}
+
 /* ====================================
    TRANSLATION
 ==================================== */
@@ -472,6 +486,32 @@ if (kakaoButton) {
     }
   );
 
+}
+
+/* ====================================
+   KAKAO NAVI
+==================================== */
+
+const kakaoNaviButton =
+  document.getElementById(
+    "kakaoNaviButton"
+  );
+
+if (kakaoNaviButton) {
+  kakaoNaviButton.addEventListener(
+    "click",
+    () => {
+      Kakao.Navi.start({
+        name:
+          "더 링크 서울, 트리뷰트 포트폴리오 호텔",
+
+        x: 126.88387163888,
+        y: 37.505603818492,
+
+        coordType: "wgs84"
+      });
+    }
+  );
 }
 
 /* ====================================
