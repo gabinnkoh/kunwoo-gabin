@@ -241,22 +241,7 @@
 
       <!-- NAVER MAP -->
 
-      <div
-        id="naverMap"
-        class="map"
-      >
-
-        <div class="map-placeholder">
-
-          NAVER MAP
-
-          <small>
-            API 연결 후 지도가 표시됩니다.
-          </small>
-
-        </div>
-
-      </div>
+      <div id="kakaoMap" class="map"></div>
 
 
 
@@ -313,7 +298,7 @@
             type="button"
             onclick="window.open('https://kko.to/d6XHIgvt1V', '_blank')"
           >
-            카카오내비
+            카카오맵
           </button>
 
           <button
@@ -673,6 +658,10 @@
   <script
     src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.2/kakao.min.js"
     crossorigin="anonymous">
+  </script>
+
+  <script
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb43d22394f82941338749286deb8b60">
   </script>
 
   <script src="script.js?v=20260903-2"></script>

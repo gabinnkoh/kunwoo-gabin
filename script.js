@@ -591,6 +591,26 @@ if (tmapNaviButton) {
 }
 
 
+const weddingLocation =
+  new kakao.maps.LatLng(
+    37.505603818492,
+    126.88387163888
+  );
+
+const weddingMap =
+  new kakao.maps.Map(
+    document.getElementById("kakaoMap"),
+    {
+      center: weddingLocation,
+      level: 3
+    }
+  );
+
+new kakao.maps.Marker({
+  position: weddingLocation,
+  map: weddingMap
+});
+
 /* ====================================
    ACCOUNT ACCORDION
 ==================================== */
