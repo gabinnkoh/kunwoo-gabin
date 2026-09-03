@@ -1068,7 +1068,7 @@ if (galleryModal) {
 }
 
 /* ====================================
-   WEDDING INFO REVEAL
+   WEDDING INFO - FIRST SCROLL REVEAL
 ==================================== */
 
 function initializeWeddingInfoReveal() {
@@ -1084,59 +1084,52 @@ function initializeWeddingInfoReveal() {
   }
 
 
-  if (
-    !(
-      "IntersectionObserver"
-      in window
-    )
-  ) {
+  let hasStarted = false;
+
+
+  function revealWeddingInfo() {
+
+    if (hasStarted) {
+      return;
+    }
+
+
+    const rect =
+      weddingInfo.getBoundingClientRect();
+
+
+    const isVisible =
+      rect.top < window.innerHeight &&
+      rect.bottom > 0;
+
+
+    if (!isVisible) {
+      return;
+    }
+
+
+    hasStarted = true;
+
 
     weddingInfo.classList.add(
       "is-visible"
     );
 
-    return;
+
+    window.removeEventListener(
+      "scroll",
+      revealWeddingInfo
+    );
+
   }
 
 
-  const observer =
-    new IntersectionObserver(
-
-      (entries) => {
-
-        entries.forEach(
-          (entry) => {
-
-            if (
-              !entry.isIntersecting
-            ) {
-              return;
-            }
-
-
-            entry.target.classList.add(
-              "is-visible"
-            );
-
-
-            observer.unobserve(
-              entry.target
-            );
-
-          }
-        );
-
-      },
-
-      {
-        threshold: 0.35
-      }
-
-    );
-
-
-  observer.observe(
-    weddingInfo
+  window.addEventListener(
+    "scroll",
+    revealWeddingInfo,
+    {
+      passive: true
+    }
   );
 
 }
