@@ -1,5 +1,5 @@
 /* ====================================
-   TRANSLATIONS
+   TRANSLATION
 ==================================== */
 
 const translations = {
@@ -9,17 +9,12 @@ const translations = {
     title:
       "김건우 ♥ 고가빈 결혼식에 초대합니다",
 
-    weddingDate:
-      "2026년 12월 19일 토요일",
+    weddingSummary:
+      "2026년 12월 19일 토요일 11시 40분<br>" +
+      "더링크 플라자홀 (4F)",
 
-    weddingTime:
-      "오전 11시 40분",
-
-    venue:
-      "더 링크 서울",
-
-    hall:
-      "4층 플라자홀",
+    calendarDate:
+      "2026년 12월 19일 토요일 오전 11시 40분",
 
     invitationMessage:
       "웃는 모습이 닮았다는 말을 자주 들었습니다.<br><br>" +
@@ -33,11 +28,8 @@ const translations = {
       "김광일 · 유금수 의 아들&nbsp;&nbsp;<strong>건우</strong><br>" +
       "고석헌 · 현시은 의 딸&nbsp;&nbsp;&nbsp;&nbsp;<strong>가빈</strong>",
 
-    viewAll:
-      "전체보기",
-
     locationTitle:
-      "오시는 길",
+      "LOCATION",
 
     locationName:
       "더 링크 서울 트리뷰트 포트폴리오 호텔<br>" +
@@ -69,14 +61,14 @@ const translations = {
       "자가용 이용 시",
 
     carDescription:
-      "(호텔 문의 후 작성) (1시간 30분 무료 주차)",
+      "서울특별시 구로구 경인로 610 (1시간 30분 무료 주차)",
 
     receptionNoticeTitle:
       "<strong>안내드립니다.</strong>",
 
     receptionNoticeText:
       "연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>" +
-      "에스컬레이터를 이용해 편하게 이동하실 수 있습니다.",
+      "에스컬레이터를 이용해 이동하실 수 있습니다.",
 
     accountTitle:
       "마음 전하실 곳",
@@ -93,17 +85,12 @@ const translations = {
     title:
       "キム・ゴヌ ♥ コ・ガビン 結婚式のご案内",
 
-    weddingDate:
-      "2026年12月19日 土曜日",
+    weddingSummary:
+      "2026年12月19日 土曜日 11時40分<br>" +
+      "THE LINK PLAZA HALL (4F)",
 
-    weddingTime:
-      "午前11時40分",
-
-    venue:
-      "THE LINK SEOUL",
-
-    hall:
-      "4階 PLAZA HALL",
+    calendarDate:
+      "2026年12月19日 土曜日 午前11時40分",
 
     invitationMessage:
       "笑った顔が似ていると、よく言われてきました。<br><br>" +
@@ -117,11 +104,8 @@ const translations = {
       "キム・グァンイル · ユ・グムス の息子&nbsp;&nbsp;<strong>ゴヌ</strong><br>" +
       "コ・ソクホン · ヒョン・シウン の娘&nbsp;&nbsp;<strong>ガビン</strong>",
 
-    viewAll:
-      "すべて見る",
-
     locationTitle:
-      "アクセス",
+      "LOCATION",
 
     locationName:
       "The Link Seoul, a Tribute Portfolio Hotel<br>" +
@@ -153,7 +137,9 @@ const translations = {
       "お車をご利用の場合",
 
     carDescription:
-      "駐車場の詳細は後ほどご案内いたします。",
+      "서울특별시 구로구 경인로 610<br>" +
+      "610 Gyeongin-ro, Guro-gu, Seoul<br>" +
+      "ソウル特別市 九老区 京仁路 610",
 
     receptionNoticeTitle:
       "<strong>ご案内</strong>",
@@ -163,7 +149,7 @@ const translations = {
       "エスカレーターをご利用いただけます。",
 
     accountTitle:
-      "마음 전하실 곳",
+      "",
 
     accountMessage:
       ""
@@ -178,7 +164,8 @@ const translations = {
    LANGUAGE
 ==================================== */
 
-let currentLanguage = "ko";
+let currentLanguage =
+  "ko";
 
 
 const languageToggleButton =
@@ -198,28 +185,23 @@ function updateLanguageButton() {
       ? "KOR"
       : "JPN";
 
-  languageToggleButton.setAttribute(
-    "aria-label",
-    currentLanguage === "ko"
-      ? "일본어로 변경"
-      : "한국어로 변경"
-  );
-
 }
 
 
 function setLanguage(language) {
 
-  currentLanguage = language;
+  currentLanguage =
+    language;
+
 
   document.documentElement.lang =
     language;
+
 
   document.title =
     translations[language].title;
 
 
-  /* 텍스트 번역 */
 
   document
     .querySelectorAll("[data-i18n]")
@@ -231,7 +213,9 @@ function setLanguage(language) {
       const translatedText =
         translations[language][key];
 
-      if (translatedText !== undefined) {
+      if (
+        translatedText !== undefined
+      ) {
 
         element.innerHTML =
           translatedText;
@@ -244,7 +228,6 @@ function setLanguage(language) {
   updateLanguageButton();
 
 
-  /* 언어별 섹션 */
 
   const accountSection =
     document.getElementById(
@@ -277,17 +260,8 @@ function setLanguage(language) {
     );
 
 
-  if (language === "ja") {
 
-    /*
-      일본어:
-      - 계좌 숨김
-      - 화환 안내 숨김
-      - 네이버 지도 숨김
-      - Google Maps 표시
-      - 네비게이션 숨김
-      - 교통 안내 숨김
-    */
+  if (language === "ja") {
 
     if (accountSection) {
       accountSection.style.display =
@@ -317,17 +291,7 @@ function setLanguage(language) {
       );
     }
 
-    if (transportationSection) {
-      transportationSection.classList.add(
-        "hidden"
-      );
-    }
-
   } else {
-
-    /*
-      한국어
-    */
 
     if (accountSection) {
       accountSection.style.display =
@@ -357,11 +321,6 @@ function setLanguage(language) {
       );
     }
 
-    if (transportationSection) {
-      transportationSection.classList.remove(
-        "hidden"
-      );
-    }
 
   }
 
@@ -396,7 +355,7 @@ if (
 
 
 /* ====================================
-   LANGUAGE TOGGLE
+   LANGUAGE BUTTON
 ==================================== */
 
 if (languageToggleButton) {
@@ -410,7 +369,9 @@ if (languageToggleButton) {
           ? "ja"
           : "ko";
 
-      setLanguage(nextLanguage);
+      setLanguage(
+        nextLanguage
+      );
 
     }
   );
@@ -452,7 +413,7 @@ if (naverButton) {
         window.location.href =
           `https://map.naver.com/p/search/${query}`;
 
-      }, 1200);
+      }, 1000);
 
     }
   );
@@ -513,7 +474,79 @@ if (kakaoButton) {
 
 }
 
+/* ====================================
+   ACCOUNT ACCORDION
+==================================== */
 
+const accountAccordions =
+  document.querySelectorAll(
+    ".account-accordion"
+  );
+
+
+accountAccordions.forEach(
+  (accordion) => {
+
+    const toggle =
+      accordion.querySelector(
+        ".account-toggle"
+      );
+
+    const label =
+      accordion.querySelector(
+        ".account-toggle-label"
+      );
+
+
+    if (!toggle) {
+      return;
+    }
+
+
+    toggle.addEventListener(
+      "click",
+      () => {
+
+        const willOpen =
+          !accordion.classList.contains(
+            "open"
+          );
+
+
+        accordion.classList.toggle(
+          "open",
+          willOpen
+        );
+
+
+        toggle.setAttribute(
+          "aria-expanded",
+          String(willOpen)
+        );
+
+
+        if (label) {
+
+          const side =
+            label.textContent.includes(
+              "신랑"
+            )
+              ? "신랑측"
+              : "신부측";
+
+
+          label.textContent =
+            willOpen
+              ? `${side} 계좌번호 접기`
+              : `${side} 계좌번호 보기`;
+
+        }
+
+      }
+    );
+
+  }
+);
 
 /* ====================================
    ACCOUNT COPY
@@ -536,16 +569,20 @@ document
           return;
         }
 
+
         try {
 
           await navigator.clipboard
             .writeText(account);
 
+
           const originalText =
             button.textContent;
 
+
           button.textContent =
             "완료";
+
 
           setTimeout(() => {
 
@@ -553,6 +590,7 @@ document
               originalText;
 
           }, 1200);
+
 
         } catch (error) {
 
@@ -580,40 +618,42 @@ const isVersion3 =
   );
 
 
-/*
-  Version3 갤러리
-
-  현재 사용:
-  01 / 03 / 04 / 07 / 09 / 10
-*/
-
 const galleryImages =
   isVersion3
+
     ? [
+
         "images/gallery01.jpg",
         "images/gallery03.jpg",
         "images/gallery04.jpg",
+
         "images/gallery07.jpg",
         "images/gallery09.jpg",
-        "images/gallery10.jpg"
+        "images/gallery10.jpg",
+
+        "images/gallery02.jpg",
+        "images/gallery05.jpg",
+        "images/gallery06.jpg"
+
       ]
+
     : [
+
         "images/gallery01.jpg",
         "images/gallery02.jpg",
         "images/gallery03.jpg",
+
         "images/gallery04.jpg",
         "images/gallery05.jpg",
         "images/gallery06.jpg",
+
         "images/gallery07.jpg",
         "images/gallery08.jpg",
         "images/gallery09.jpg"
+
       ];
 
 
-/*
-  Version3에서
-  필터를 적용할 사진
-*/
 
 const mutedImages = [
 
@@ -624,321 +664,16 @@ const mutedImages = [
 ];
 
 
-let currentGalleryIndex = 0;
+let currentGalleryIndex =
+  0;
 
-let galleryInterval = null;
 
 
-const galleryMainImage =
+const galleryGrid =
   document.getElementById(
-    "galleryMainImage"
+    "galleryGrid"
   );
 
-const galleryPreview =
-  document.getElementById(
-    "galleryPreview"
-  );
-
-
-
-/* ====================================
-   PREVIEW
-==================================== */
-
-function renderPreview() {
-
-  if (!galleryPreview) {
-    return;
-  }
-
-  galleryPreview.innerHTML =
-    "";
-
-
-  const previewCount =
-    Math.min(
-      5,
-      galleryImages.length
-    );
-
-
-  for (
-    let i = 0;
-    i < previewCount;
-    i++
-  ) {
-
-    const imageIndex =
-      (
-        currentGalleryIndex +
-        i
-      ) %
-      galleryImages.length;
-
-
-    const image =
-      document.createElement(
-        "img"
-      );
-
-
-    image.src =
-      galleryImages[
-        imageIndex
-      ];
-
-    image.alt =
-      `Wedding gallery ${imageIndex + 1}`;
-
-    image.loading =
-      "lazy";
-
-
-    /*
-      Version3 필터
-    */
-
-    if (
-      isVersion3 &&
-      mutedImages.includes(
-        galleryImages[
-          imageIndex
-        ]
-      )
-    ) {
-
-      image.classList.add(
-        "muted-photo"
-      );
-
-    }
-
-
-    /*
-      첫 번째 썸네일은
-      현재 큰 사진
-    */
-
-    if (i === 0) {
-
-      image.classList.add(
-        "active"
-      );
-
-    }
-
-
-    /*
-      썸네일 클릭
-    */
-
-    image.addEventListener(
-      "click",
-      () => {
-
-        currentGalleryIndex =
-          imageIndex;
-
-        updateGallery();
-
-        restartGalleryAutoPlay();
-
-      }
-    );
-
-
-    galleryPreview.appendChild(
-      image
-    );
-
-  }
-
-}
-
-
-
-/* ====================================
-   MAIN IMAGE
-==================================== */
-
-function updateGallery() {
-
-  if (!galleryMainImage) {
-    return;
-  }
-
-
-  galleryMainImage.style.opacity =
-    0;
-
-
-  setTimeout(() => {
-
-    galleryMainImage.src =
-      galleryImages[
-        currentGalleryIndex
-      ];
-
-
-    if (isVersion3) {
-
-      galleryMainImage.classList.toggle(
-        "muted-photo",
-        mutedImages.includes(
-          galleryImages[
-            currentGalleryIndex
-          ]
-        )
-      );
-
-    } else {
-
-      galleryMainImage.classList.remove(
-        "muted-photo"
-      );
-
-    }
-
-
-    galleryMainImage.style.opacity =
-      1;
-
-  }, 150);
-
-
-  renderPreview();
-
-}
-
-
-
-/* ====================================
-   AUTO PLAY
-==================================== */
-
-function startGalleryAutoPlay() {
-
-  if (!galleryMainImage) {
-    return;
-  }
-
-
-  stopGalleryAutoPlay();
-
-
-  galleryInterval =
-    setInterval(() => {
-
-      currentGalleryIndex =
-        (
-          currentGalleryIndex +
-          1
-        ) %
-        galleryImages.length;
-
-      updateGallery();
-
-    }, 3000);
-
-}
-
-
-
-function stopGalleryAutoPlay() {
-
-  if (!galleryInterval) {
-    return;
-  }
-
-  clearInterval(
-    galleryInterval
-  );
-
-  galleryInterval =
-    null;
-
-}
-
-
-
-function restartGalleryAutoPlay() {
-
-  stopGalleryAutoPlay();
-
-  startGalleryAutoPlay();
-
-}
-
-
-
-/* ====================================
-   MAIN ARROWS
-==================================== */
-
-const galleryPrevButton =
-  document.getElementById(
-    "galleryPrevButton"
-  );
-
-
-if (galleryPrevButton) {
-
-  galleryPrevButton.addEventListener(
-    "click",
-    () => {
-
-      currentGalleryIndex =
-        (
-          currentGalleryIndex -
-          1 +
-          galleryImages.length
-        ) %
-        galleryImages.length;
-
-      updateGallery();
-
-      restartGalleryAutoPlay();
-
-    }
-  );
-
-}
-
-
-
-const galleryNextButton =
-  document.getElementById(
-    "galleryNextButton"
-  );
-
-
-if (galleryNextButton) {
-
-  galleryNextButton.addEventListener(
-    "click",
-    () => {
-
-      currentGalleryIndex =
-        (
-          currentGalleryIndex +
-          1
-        ) %
-        galleryImages.length;
-
-      updateGallery();
-
-      restartGalleryAutoPlay();
-
-    }
-  );
-
-}
-
-
-
-/* ====================================
-   FULL SCREEN
-==================================== */
 
 const galleryModal =
   document.getElementById(
@@ -952,21 +687,96 @@ const fullscreenImage =
   );
 
 
-const fullscreenThumbnails =
+const galleryCounter =
   document.getElementById(
-    "fullscreenThumbnails"
+    "galleryCounter"
   );
 
 
+
+/* ====================================
+   GALLERY GRID
+==================================== */
+
+function renderGalleryGrid() {
+
+  if (!galleryGrid) {
+    return;
+  }
+
+
+  galleryGrid.innerHTML =
+    "";
+
+
+  galleryImages.forEach(
+    (imageSrc, index) => {
+
+      const image =
+        document.createElement(
+          "img"
+        );
+
+
+      image.src =
+        imageSrc;
+
+
+      image.alt =
+        `Wedding gallery ${index + 1}`;
+
+
+      image.loading =
+        "lazy";
+
+
+      if (
+        isVersion3 &&
+        mutedImages.includes(
+          imageSrc
+        )
+      ) {
+
+        image.classList.add(
+          "muted-photo"
+        );
+
+      }
+
+
+      image.addEventListener(
+        "click",
+        () => {
+
+          currentGalleryIndex =
+            index;
+
+          openGallery();
+
+        }
+      );
+
+
+      galleryGrid.appendChild(
+        image
+      );
+
+    }
+  );
+
+}
+
+
+
+/* ====================================
+   OPEN / CLOSE
+==================================== */
 
 function openGallery() {
 
   if (!galleryModal) {
     return;
   }
-
-
-  stopGalleryAutoPlay();
 
 
   galleryModal.classList.add(
@@ -999,12 +809,13 @@ function closeGallery() {
   document.body.style.overflow =
     "";
 
-
-  startGalleryAutoPlay();
-
 }
 
 
+
+/* ====================================
+   FULLSCREEN
+==================================== */
 
 function updateFullscreenGallery() {
 
@@ -1019,84 +830,36 @@ function updateFullscreenGallery() {
     ];
 
 
-  renderFullscreenThumbnails();
+  if (isVersion3) {
 
-}
+    fullscreenImage.classList.toggle(
+      "muted-photo",
+      mutedImages.includes(
+        galleryImages[
+          currentGalleryIndex
+        ]
+      )
+    );
 
+  } else {
 
+    fullscreenImage.classList.remove(
+      "muted-photo"
+    );
 
-function renderFullscreenThumbnails() {
-
-  if (!fullscreenThumbnails) {
-    return;
   }
 
 
-  fullscreenThumbnails.innerHTML =
-    "";
+  if (galleryCounter) {
 
+    galleryCounter.textContent =
+      `${currentGalleryIndex + 1} / ${galleryImages.length}`;
 
-  galleryImages.forEach(
-    (imageSrc, index) => {
-
-      const thumbnail =
-        document.createElement(
-          "img"
-        );
-
-
-      thumbnail.src =
-        imageSrc;
-
-      thumbnail.alt =
-        `Wedding thumbnail ${index + 1}`;
-
-      thumbnail.loading =
-        "lazy";
-
-
-      if (
-        index ===
-        currentGalleryIndex
-      ) {
-
-        thumbnail.classList.add(
-          "active"
-        );
-
-      }
-
-
-      thumbnail.addEventListener(
-        "click",
-        () => {
-
-          currentGalleryIndex =
-            index;
-
-          updateFullscreenGallery();
-
-          updateGallery();
-
-        }
-      );
-
-
-      fullscreenThumbnails
-        .appendChild(
-          thumbnail
-        );
-
-    }
-  );
+  }
 
 }
 
 
-
-/* ====================================
-   FULLSCREEN NEXT / PREVIOUS
-==================================== */
 
 function showNextImage() {
 
@@ -1132,30 +895,8 @@ function showPreviousImage() {
 
 
 /* ====================================
-   FULLSCREEN BUTTONS
+   GALLERY BUTTONS
 ==================================== */
-
-/*
-  Version3에는 전체보기 버튼이 없으므로
-  존재할 때만 이벤트 연결
-*/
-
-const openGalleryButton =
-  document.getElementById(
-    "openGalleryButton"
-  );
-
-
-if (openGalleryButton) {
-
-  openGalleryButton.addEventListener(
-    "click",
-    openGallery
-  );
-
-}
-
-
 
 const closeGalleryButton =
   document.getElementById(
@@ -1209,33 +950,7 @@ if (previousImageButton) {
 
 
 /* ====================================
-   MODAL BACKGROUND CLICK
-==================================== */
-
-if (galleryModal) {
-
-  galleryModal.addEventListener(
-    "click",
-    (event) => {
-
-      if (
-        event.target ===
-        galleryModal
-      ) {
-
-        closeGallery();
-
-      }
-
-    }
-  );
-
-}
-
-
-
-/* ====================================
-   ESC KEY
+   KEYBOARD
 ==================================== */
 
 document.addEventListener(
@@ -1243,14 +958,40 @@ document.addEventListener(
   (event) => {
 
     if (
-      event.key === "Escape" &&
-      galleryModal &&
-      galleryModal.classList.contains(
+      !galleryModal ||
+      !galleryModal.classList.contains(
         "open"
       )
     ) {
 
+      return;
+
+    }
+
+
+    if (
+      event.key === "Escape"
+    ) {
+
       closeGallery();
+
+    }
+
+
+    if (
+      event.key === "ArrowRight"
+    ) {
+
+      showNextImage();
+
+    }
+
+
+    if (
+      event.key === "ArrowLeft"
+    ) {
+
+      showPreviousImage();
 
     }
 
@@ -1260,12 +1001,11 @@ document.addEventListener(
 
 
 /* ====================================
-   MOBILE SWIPE
+   SWIPE
 ==================================== */
 
-let touchStartX = 0;
-
-let touchEndX = 0;
+let touchStartX =
+  0;
 
 
 if (galleryModal) {
@@ -1276,7 +1016,7 @@ if (galleryModal) {
 
       touchStartX =
         event.changedTouches[0]
-          .screenX;
+          .clientX;
 
     },
     {
@@ -1289,9 +1029,9 @@ if (galleryModal) {
     "touchend",
     (event) => {
 
-      touchEndX =
+      const touchEndX =
         event.changedTouches[0]
-          .screenX;
+          .clientX;
 
 
       const difference =
@@ -1327,45 +1067,307 @@ if (galleryModal) {
 
 }
 
-
-
 /* ====================================
-   START GALLERY
+   SCROLL REVEAL
 ==================================== */
 
+function initializeScrollReveal() {
+
+  const revealElements =
+    document.querySelectorAll(
+      ".reveal-on-scroll"
+    );
+
+
+  if (
+    revealElements.length === 0
+  ) {
+    return;
+  }
+
+
+  /*
+    IntersectionObserver를
+    지원하지 않는 브라우저
+  */
+
+  if (
+    !(
+      "IntersectionObserver"
+      in window
+    )
+  ) {
+
+    revealElements.forEach(
+      (element) => {
+
+        element.classList.add(
+          "is-visible"
+        );
+
+      }
+    );
+
+    return;
+  }
+
+
+  const observer =
+    new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (
+              !entry.isIntersecting
+            ) {
+              return;
+            }
+
+
+            /*
+              다음 화면 렌더링에서
+              클래스를 붙여야
+              transition이 확실하게 보임
+            */
+
+            window.requestAnimationFrame(
+              () => {
+
+                entry.target
+                  .classList.add(
+                    "is-visible"
+                  );
+
+              }
+            );
+
+
+            /*
+              최초 한 번만 실행
+            */
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+        );
+
+      },
+
+      {
+        threshold: 0.08,
+
+        rootMargin:
+          "0px 0px -8% 0px"
+      }
+
+    );
+
+
+  revealElements.forEach(
+    (element) => {
+
+      observer.observe(
+        element
+      );
+
+    }
+  );
+
+}
+
+
+/*
+  DOM이 완전히 준비된 다음
+  Observer 시작
+*/
+
 if (
-  galleryMainImage &&
-  galleryPreview &&
-  galleryImages.length > 0
+  document.readyState ===
+  "loading"
 ) {
 
-  /*
-    HTML에 적혀 있는 src와 관계없이
-    JS 배열의 첫 번째 사진으로 통일
-  */
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeScrollReveal
+  );
 
-  galleryMainImage.src =
-    galleryImages[0];
+} else {
+
+  initializeScrollReveal();
+
+}
+
+/* ====================================
+   BOTTOM PULL EFFECT
+==================================== */
+
+const invitation =
+  document.querySelector(
+    ".invitation"
+  );
 
 
-  /*
-    Version3 첫 사진 필터
-  */
+let bottomTouchStartY =
+  0;
 
-  if (isVersion3) {
 
-    galleryMainImage.classList.toggle(
-      "muted-photo",
-      mutedImages.includes(
-        galleryImages[0]
-      )
+let isBottomPulling =
+  false;
+
+
+
+function isPageBottom() {
+
+  return (
+    window.innerHeight +
+    window.scrollY >=
+    document.documentElement
+      .scrollHeight -
+    4
+  );
+
+}
+
+
+
+if (invitation) {
+
+  window.addEventListener(
+    "touchstart",
+    (event) => {
+
+      if (!isPageBottom()) {
+        return;
+      }
+
+
+      bottomTouchStartY =
+        event.touches[0]
+          .clientY;
+
+
+      isBottomPulling =
+        true;
+
+
+      invitation.classList.add(
+        "bottom-pulling"
+      );
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+
+  window.addEventListener(
+    "touchmove",
+    (event) => {
+
+      if (
+        !isBottomPulling ||
+        !isPageBottom()
+      ) {
+
+        return;
+
+      }
+
+
+      const currentY =
+        event.touches[0]
+          .clientY;
+
+
+      const movement =
+        bottomTouchStartY -
+        currentY;
+
+
+      if (
+        movement <= 0
+      ) {
+
+        return;
+
+      }
+
+
+      const pullAmount =
+        Math.min(
+          movement * 0.18,
+          28
+        );
+
+
+      invitation.style.setProperty(
+        "--bottom-pull",
+        `${pullAmount}px`
+      );
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+
+  function releaseBottomPull() {
+
+    if (!isBottomPulling) {
+      return;
+    }
+
+
+    isBottomPulling =
+      false;
+
+
+    invitation.classList.remove(
+      "bottom-pulling"
+    );
+
+
+    invitation.style.setProperty(
+      "--bottom-pull",
+      "0px"
     );
 
   }
 
 
-  renderPreview();
 
-  startGalleryAutoPlay();
+  window.addEventListener(
+    "touchend",
+    releaseBottomPull,
+    {
+      passive: true
+    }
+  );
+
+
+  window.addEventListener(
+    "touchcancel",
+    releaseBottomPull,
+    {
+      passive: true
+    }
+  );
 
 }
+
+
+
+/* ====================================
+   START
+==================================== */
+
+renderGalleryGrid();

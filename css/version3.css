@@ -14,14 +14,16 @@ body {
 
 .language-switch {
 
-  background: rgba(
-    251,
-    246,
-    243,
-    0.88
-  );
+  background:
+    rgba(
+      251,
+      246,
+      243,
+      0.88
+    );
 
 }
+
 
 
 /* =================================
@@ -41,31 +43,7 @@ body {
 }
 
 
-.hero-title {
-
-  bottom: 32px;
-
-  font-size: 17px;
-
-  font-weight: 400;
-
-  letter-spacing: 0.22em;
-
-  text-shadow:
-    0 2px 12px
-    rgba(40, 18, 18, 0.4);
-
-}
-
-
 .wedding-info {
-
-  line-height: 2;
-
-}
-
-
-.venue-name {
 
   color: #875657;
 
@@ -84,7 +62,8 @@ body {
 
   line-height: 2.3;
 
-  letter-spacing: 0.015em;
+  letter-spacing:
+    0.015em;
 
 }
 
@@ -96,6 +75,7 @@ body {
   color: #5d4c4a;
 
 }
+
 
 
 /* =================================
@@ -115,9 +95,11 @@ body {
 
   margin-bottom: 42px;
 
-  letter-spacing: 0.16em;
+  letter-spacing:
+    0.16em;
 
 }
+
 
 
 /* =================================
@@ -126,23 +108,22 @@ body {
 
 .calendar-section {
 
-  background: #f3ebe7;
+  background: #faf4ee;
 
   color: #514342;
 
 }
 
 
-.section-title {
+.calendar-section
+.section-heading {
 
   color: #805253;
-
-  letter-spacing: 0.23em;
 
 }
 
 
-.calendar-year {
+.calendar-date-text {
 
   color: #705d5a;
 
@@ -155,9 +136,15 @@ body {
 
   box-shadow:
     0 4px 12px
-    rgba(110, 54, 57, 0.2);
+    rgba(
+      110,
+      54,
+      57,
+      0.2
+    );
 
 }
+
 
 
 /* =================================
@@ -199,15 +186,12 @@ body {
 }
 
 
+
 /* =================================
    FLOWER
 ================================= */
 
 .flower-section {
-
-  padding-top: 58px;
-
-  padding-bottom: 58px;
 
   background: #fcf8f5;
 
@@ -221,15 +205,12 @@ body {
 }
 
 
+
 /* =================================
-   VERSION 3 GALLERY
+   GALLERY
 ================================= */
 
 .gallery-section {
-
-  padding-left: 0;
-
-  padding-right: 0;
 
   background: #fcf8f5;
 
@@ -239,115 +220,19 @@ body {
 .gallery-section
 .section-heading {
 
-  padding-left: 28px;
-
-  padding-right: 28px;
-
   color: #794d4e;
 
 }
 
 
-/* 큰 사진 */
+.gallery-grid img {
 
-.gallery-main {
-
-  position: relative;
-
-  width: calc(100% - 20px);
-
-  margin-left: 10px;
-
-  margin-right: 10px;
-
-  aspect-ratio: 3 / 3.7;
-
-  overflow: hidden;
-
-  border-radius: 10px;
-
-  background: #eadfda;
+  border-radius: 4px;
 
 }
 
 
-.gallery-main img {
-
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-
-}
-
-
-/*
-  Version3의 특정 사진에만
-  남색 계열 분위기 적용
-*/
-
-.gallery-main img.muted-photo {
-
-  filter:
-    contrast(0.97)
-    brightness(0.96)
-    hue-rotate(8deg);
-
-}
-
-
-/* 작은 사진 */
-
-.gallery-preview {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, 1fr);
-
-  gap: 6px;
-
-  padding:
-    8px 10px 0;
-
-  background: transparent;
-
-}
-
-
-.gallery-preview img {
-
-  width: 100%;
-
-  aspect-ratio: 1 / 1;
-
-  object-fit: cover;
-
-  overflow: hidden;
-
-  border-radius: 6px;
-
-  opacity: 0.55;
-
-}
-
-
-.gallery-preview img.active {
-
-  opacity: 1;
-
-}
-
-
-/*
-  작은 사진도
-  동일한 필터 적용
-*/
-
-.gallery-preview
+.gallery-grid
 img.muted-photo {
 
   filter:
@@ -358,15 +243,23 @@ img.muted-photo {
 }
 
 
+.fullscreen-image-container
+img.muted-photo {
+
+  filter:
+    contrast(0.97)
+    brightness(0.96)
+    hue-rotate(8deg);
+
+}
+
+
+
 /* =================================
-   RECEPTION
+   INFORMATION
 ================================= */
 
 .reception-notice-section {
-
-  padding-top: 52px;
-
-  padding-bottom: 52px;
 
   background: #a26768;
 
@@ -377,13 +270,16 @@ img.muted-photo {
 }
 
 
+.information-heading {
+
+  color: #fff;
+
+}
+
+
 .reception-notice-title {
 
-  margin-bottom: 16px;
-
-  font-size: 14px;
-
-  letter-spacing: 0.08em;
+  color: #fff;
 
 }
 
@@ -398,18 +294,15 @@ img.muted-photo {
       0.88
     );
 
-  line-height: 2;
-
 }
 
 
+
 /* =================================
-   ACCOUNT
+   UNUSED ACCOUNT STYLE
 ================================= */
 
 .account-section {
-
-  padding-top: 80px;
 
   background: #f7efeb;
 
@@ -426,54 +319,9 @@ img.muted-photo {
 }
 
 
-.account-side {
-
-  margin-top: 45px;
-
-}
-
-
-.account-side +
-.account-side {
-
-  margin-top: 52px;
-
-}
-
-
 .account-side-title {
 
   color: #794d4e;
-
-  letter-spacing: 0.05em;
-
-}
-
-
-.account-list {
-
-  border-color:
-    rgba(
-      121,
-      77,
-      78,
-      0.18
-    );
-
-}
-
-
-.account-row {
-
-  min-height: 82px;
-
-  border-color:
-    rgba(
-      121,
-      77,
-      78,
-      0.18
-    );
 
 }
 
@@ -483,7 +331,5 @@ img.muted-photo {
   border-color: #b88888;
 
   color: #805253;
-
-  background: transparent;
 
 }

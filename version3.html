@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
 
@@ -27,8 +27,6 @@
 
 <body class="version3">
 
-
-  <!-- LANGUAGE -->
 
   <div class="language-switch">
 
@@ -43,10 +41,11 @@
   </div>
 
 
+
   <main class="invitation">
 
 
-    <!-- MAIN PHOTO -->
+    <!-- HERO -->
 
     <section class="hero-section">
 
@@ -56,39 +55,36 @@
         class="main-image"
       >
 
+      <div class="hero-opening">
+
+        <div class="hero-opening-text">
+          WE'RE GETTING MARRIED
+        </div>
+
+      </div>
+
     </section>
 
 
-    <!-- WEDDING INTRO -->
+
+    <!-- INTRO -->
 
     <section class="couple-section">
 
-      <div class="wedding-info">
 
-        <p data-i18n="weddingDate">
-          2026년 12월 19일 토요일
-        </p>
+      <div class="wedding-info wedding-info-opening">
 
-        <p data-i18n="weddingTime">
-          오전 11시 40분
-        </p>
-
-        <p
-          class="venue-name"
-          data-i18n="venue"
-        >
-          더 링크 서울
-        </p>
-
-        <p data-i18n="hall">
-          4층 플라자홀
+        <p data-i18n="weddingSummary">
+          2026.12.19(토) 11:40<br>
+          더링크 플라자홀 (4F)
         </p>
 
       </div>
 
 
+
       <div
-        class="invitation-message"
+        class="invitation-message reveal-on-scroll"
         data-i18n="invitationMessage"
       >
         웃는 모습이 닮았다는 말을 자주 들었습니다.<br><br>
@@ -102,28 +98,35 @@
       </div>
 
 
+
       <div
-        class="family-introduction"
+        class="family-introduction reveal-on-scroll"
         data-i18n="familyIntroduction"
       >
         김광일 · 유금수 의 아들&nbsp;&nbsp;<strong>건우</strong><br>
         고석헌 · 현시은 의 딸&nbsp;&nbsp;&nbsp;&nbsp;<strong>가빈</strong>
       </div>
 
+
     </section>
+
 
 
     <!-- CALENDAR -->
 
     <section class="section calendar-section">
 
-      <div class="section-title">
-        DECEMBER
-      </div>
+      <h2 class="section-heading">
+        Wedding Day
+      </h2>
 
-      <div class="calendar-year">
-        2026
-      </div>
+      <p
+        class="calendar-date-text"
+        data-i18n="calendarDate"
+      >
+        2026년 12월 19일 토요일 오전 11시 40분
+      </p>
+
 
       <div class="calendar">
 
@@ -179,31 +182,40 @@
     </section>
 
 
+
     <!-- LOCATION -->
 
     <section class="section location-section">
 
-      <h2
-        class="section-heading"
-        data-i18n="locationTitle"
-      >
-        오시는 길
-      </h2>
 
-      <div
-        class="location-name"
-        data-i18n="locationName"
-      >
-        더 링크 서울 트리뷰트 포트폴리오 호텔<br>
-        4층 플라자홀
+      <div class="location-intro reveal-on-scroll">
+
+        <h2
+          class="section-heading"
+          data-i18n="locationTitle"
+        >
+          LOCATION
+        </h2>
+
+
+        <div
+          class="location-name"
+          data-i18n="locationName"
+        >
+          더 링크 서울 트리뷰트 포트폴리오 호텔<br>
+          4층 플라자홀
+        </div>
+
+
+        <p
+          class="location-address"
+          data-i18n="address"
+        >
+          서울특별시 구로구 경인로 610 (신도림동)
+        </p>
+
       </div>
 
-      <p
-        class="location-address"
-        data-i18n="address"
-      >
-        서울특별시 구로구 경인로 610 (신도림동)
-      </p>
 
 
       <div
@@ -212,14 +224,17 @@
       >
 
         <div class="map-placeholder">
+
           NAVER MAP
 
           <small>
             API 연결 후 지도가 표시됩니다.
           </small>
+
         </div>
 
       </div>
+
 
 
       <div
@@ -242,9 +257,10 @@
       </div>
 
 
+
       <div
         id="navigationSection"
-        class="navigation-section"
+        class="navigation-section reveal-on-scroll"
       >
 
         <h3 data-i18n="navigationTitle">
@@ -258,24 +274,15 @@
 
         <div class="navigation-buttons">
 
-          <button
-            id="tmapButton"
-            type="button"
-          >
+          <button id="tmapButton" type="button">
             TMAP
           </button>
 
-          <button
-            id="kakaoButton"
-            type="button"
-          >
+          <button id="kakaoButton" type="button">
             카카오내비
           </button>
 
-          <button
-            id="naverButton"
-            type="button"
-          >
+          <button id="naverButton" type="button">
             네이버지도
           </button>
 
@@ -284,12 +291,14 @@
       </div>
 
 
+
       <div
         id="transportationSection"
         class="transportation-section"
       >
 
-        <div class="transport-item">
+
+        <div class="transport-item reveal-on-scroll">
 
           <strong data-i18n="subwayTitle">
             지하철 이용 시
@@ -303,7 +312,7 @@
         </div>
 
 
-        <div class="transport-item">
+        <div class="transport-item reveal-on-scroll">
 
           <strong data-i18n="shuttleTitle">
             셔틀버스
@@ -316,7 +325,7 @@
         </div>
 
 
-        <div class="transport-item">
+        <div class="transport-item reveal-on-scroll">
 
           <strong data-i18n="carTitle">
             자가용 이용 시
@@ -328,19 +337,22 @@
 
         </div>
 
+
       </div>
+
 
     </section>
 
 
-    <!-- FLOWER NOTICE -->
+
+    <!-- FLOWER -->
 
     <section
       id="flowerSection"
       class="flower-section"
     >
 
-      <p>
+      <p class="reveal-on-scroll">
         저희의 시작을 축하해 주시는 마음만으로도<br>
         충분히 감사합니다.
         <br><br>
@@ -352,6 +364,7 @@
     </section>
 
 
+
     <!-- GALLERY -->
 
     <section class="section gallery-section">
@@ -360,68 +373,52 @@
         GALLERY
       </h2>
 
-
-      <div class="gallery-main">
-
-        <img
-          id="galleryMainImage"
-          class="muted-photo"
-          src="images/gallery01.jpg"
-          alt="Wedding gallery"
-        >
-
-        <button
-          id="galleryPrevButton"
-          class="gallery-main-arrow gallery-main-arrow-left"
-          type="button"
-          aria-label="Previous image"
-        >
-          ‹
-        </button>
-
-        <button
-          id="galleryNextButton"
-          class="gallery-main-arrow gallery-main-arrow-right"
-          type="button"
-          aria-label="Next image"
-        >
-          ›
-        </button>
-
-      </div>
-
-
       <div
-        id="galleryPreview"
-        class="gallery-preview"
+        id="galleryGrid"
+        class="gallery-grid"
       >
       </div>
 
     </section>
 
 
-    <!-- RECEPTION -->
+
+    <!-- INFORMATION -->
 
     <section class="reception-notice-section">
 
-      <p
-        class="reception-notice-title"
-        data-i18n="receptionNoticeTitle"
-      >
-        <strong>안내드립니다.</strong>
-      </p>
+      <div class="reveal-on-scroll">
 
-      <p
-        class="reception-notice-text"
-        data-i18n="receptionNoticeText"
-      >
-        연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>
-        에스컬레이터를 이용해 편하게 이동하실 수 있습니다.
-      </p>
+
+        <h2 class="information-heading">
+          INFORMATION
+        </h2>
+
+
+        <p
+          class="reception-notice-title"
+          data-i18n="receptionNoticeTitle"
+        >
+          <strong>안내드립니다.</strong>
+        </p>
+
+
+        <p
+          class="reception-notice-text"
+          data-i18n="receptionNoticeText"
+        >
+          연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>
+          에스컬레이터를 이용해 편하게 이동하실 수 있습니다.
+        </p>
+
+
+      </div>
 
     </section>
 
+
   </main>
+
 
 
   <!-- FULLSCREEN GALLERY -->
@@ -430,6 +427,7 @@
     id="galleryModal"
     class="gallery-modal"
   >
+
 
     <button
       id="closeGalleryButton"
@@ -473,45 +471,18 @@
 
 
     <div
-      id="fullscreenThumbnails"
-      class="fullscreen-thumbnails"
+      id="galleryCounter"
+      class="gallery-counter"
     >
+      1 / 9
     </div>
+
 
   </div>
 
 
   <script src="script.js"></script>
 
-  <script>
-    const languageToggleButton =
-      document.getElementById("languageToggleButton");
-
-    function syncLanguageToggleButton() {
-      if (!languageToggleButton) return;
-
-      languageToggleButton.textContent =
-        currentLanguage === "ja"
-          ? "JPN"
-          : "KOR";
-    }
-
-    syncLanguageToggleButton();
-
-    languageToggleButton?.addEventListener(
-      "click",
-      () => {
-        const nextLanguage =
-          currentLanguage === "ko"
-            ? "ja"
-            : "ko";
-
-        setLanguage(nextLanguage);
-        syncLanguageToggleButton();
-      }
-    );
-  </script>
 
 </body>
-
 </html>

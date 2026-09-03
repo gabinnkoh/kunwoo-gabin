@@ -15,15 +15,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   >
 
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/version1.css">
+  <link rel="stylesheet" href="css/version2.css">
 </head>
 
+
 <body>
+
+
+  <!-- LANGUAGE -->
 
   <div class="language-switch">
 
@@ -42,48 +46,61 @@
 
 
     <!-- MAIN PHOTO -->
+  <section class="hero-section">
 
-    <section class="hero-section">
+    <img
+      src="images/main.jpg"
+      alt="Wedding"
+      class="main-image"
+    >
+    
+  <div
+    class="hero-sparkles"
+    aria-hidden="true"
+  >
+    <span class="sparkle sparkle-1"></span>
+    <span class="sparkle sparkle-2"></span>
+    <span class="sparkle sparkle-3"></span>
+    <span class="sparkle sparkle-4"></span>
+    <span class="sparkle sparkle-5"></span>
+    <span class="sparkle sparkle-6"></span>
+    <span class="sparkle sparkle-7"></span>
+    <span class="sparkle sparkle-8"></span>
+    <span class="sparkle sparkle-9"></span>
+    <span class="sparkle sparkle-10"></span>
+    <span class="sparkle sparkle-11"></span>
+    <span class="sparkle sparkle-12"></span>
+    <span class="sparkle sparkle-13"></span>
+    <span class="sparkle sparkle-14"></span>
+    <span class="sparkle sparkle-15"></span>
+    <span class="sparkle sparkle-16"></span>
+    <span class="sparkle sparkle-17"></span>
+  </div>
 
-      <img
-        src="images/main.jpg"
-        alt="Wedding"
-        class="main-image"
-      >
+  </section>
 
-    </section>
 
 
     <!-- WEDDING INTRO -->
 
     <section class="couple-section">
 
-      <div class="wedding-info">
 
-        <p data-i18n="weddingDate">
-          2026년 12월 19일 토요일
+      <!-- 가운데에서 좌우로 펼쳐지는 날짜/장소 -->
+
+      <div class="wedding-info wedding-info-opening">
+        <p data-i18n="weddingSummary">
+          2026년 12월 19일 토요일 11시 40분<br>
+          더링크 플라자홀 (4F)
         </p>
-
-        <p data-i18n="weddingTime">
-          오전 11시 40분
-        </p>
-
-        <p
-          class="venue-name"
-          data-i18n="venue"
-        >
-          더 링크 서울
-        </p>
-
-        <p data-i18n="hall">
-          4층 플라자홀
-        </p>
-
       </div>
 
 
+
+      <!-- 초대 문구 -->
+
       <div
-        class="invitation-message"
+        class="invitation-message reveal-on-scroll"
         data-i18n="invitationMessage"
       >
         웃는 모습이 닮았다는 말을 자주 들었습니다.<br><br>
@@ -97,28 +114,39 @@
       </div>
 
 
+
+      <!-- 가족 소개 -->
+
       <div
-        class="family-introduction"
+        class="family-introduction reveal-on-scroll"
         data-i18n="familyIntroduction"
       >
         김광일 · 유금수 의 아들&nbsp;&nbsp;<strong>건우</strong><br>
         고석헌 · 현시은 의 딸&nbsp;&nbsp;&nbsp;&nbsp;<strong>가빈</strong>
       </div>
 
+
     </section>
+
 
 
     <!-- CALENDAR -->
 
     <section class="section calendar-section">
 
-      <div class="section-title">
-        DECEMBER
-      </div>
 
-      <div class="calendar-year">
-        2026
-      </div>
+      <h2 class="section-heading">
+        WEDDING DAY
+      </h2>
+
+
+      <p
+        class="calendar-date-text"
+        data-i18n="calendarDate"
+      >
+        2026년 12월 19일 토요일 오전 11시 40분
+      </p>
+
 
       <div class="calendar">
 
@@ -174,46 +202,66 @@
     </section>
 
 
+
     <!-- LOCATION -->
 
     <section class="section location-section">
 
-      <h2
-        class="section-heading"
-        data-i18n="locationTitle"
-      >
-        오시는 길
-      </h2>
 
-      <div
-        class="location-name"
-        data-i18n="locationName"
-      >
-        더 링크 서울 트리뷰트 포트폴리오 호텔<br>
-        4층 플라자홀
+      <!-- 지도는 움직이지 않고 제목/주소만 페이드업 -->
+
+      <div class="location-intro reveal-on-scroll">
+
+        <h2
+          class="section-heading"
+          data-i18n="locationTitle"
+        >
+          LOCATION
+        </h2>
+
+
+        <div
+          class="location-name"
+          data-i18n="locationName"
+        >
+          더 링크 서울 트리뷰트 포트폴리오 호텔<br>
+          4층 플라자홀
+        </div>
+
+
+        <p
+          class="location-address"
+          data-i18n="address"
+        >
+          서울특별시 구로구 경인로 610 (신도림동)
+        </p>
+
       </div>
 
-      <p
-        class="location-address"
-        data-i18n="address"
-      >
-        서울특별시 구로구 경인로 610 (신도림동)
-      </p>
 
+
+      <!-- NAVER MAP -->
 
       <div
         id="naverMap"
         class="map"
       >
+
         <div class="map-placeholder">
+
           NAVER MAP
 
           <small>
             API 연결 후 지도가 표시됩니다.
           </small>
+
         </div>
+
       </div>
 
+
+
+      <!-- GOOGLE MAP -->
 
       <div
         id="googleMap"
@@ -235,9 +283,12 @@
       </div>
 
 
+
+      <!-- NAVIGATION -->
+
       <div
         id="navigationSection"
-        class="navigation-section"
+        class="navigation-section reveal-on-scroll"
       >
 
         <h3 data-i18n="navigationTitle">
@@ -247,6 +298,7 @@
         <p data-i18n="navigationDescription">
           앱을 열어 길 안내를 시작해보세요.
         </p>
+
 
         <div class="navigation-buttons">
 
@@ -276,12 +328,16 @@
       </div>
 
 
+
+      <!-- TRANSPORT -->
+
       <div
         id="transportationSection"
         class="transportation-section"
       >
 
-        <div class="transport-item">
+
+        <div class="transport-item reveal-on-scroll">
 
           <strong data-i18n="subwayTitle">
             지하철 이용 시
@@ -295,7 +351,7 @@
         </div>
 
 
-        <div class="transport-item">
+        <div class="transport-item reveal-on-scroll">
 
           <strong data-i18n="shuttleTitle">
             셔틀버스
@@ -308,21 +364,23 @@
         </div>
 
 
-        <div class="transport-item">
+        <div class="transport-item reveal-on-scroll">
 
           <strong data-i18n="carTitle">
             자가용 이용 시
           </strong>
 
           <p data-i18n="carDescription">
-            (호텔 문의 후 작성) (1시간 30분 무료 주차)
+            서울특별시 구로구 경인로 610 (1시간 30분 무료 주차)
           </p>
 
         </div>
 
+
       </div>
 
     </section>
+
 
 
     <!-- FLOWER -->
@@ -332,7 +390,11 @@
       class="flower-section"
     >
 
-      <p>
+      <h2 class="section-heading reveal-on-scroll">
+        NOTICE
+      </h2>
+
+      <p class="reveal-on-scroll">
         저희의 시작을 축하해 주시는 마음만으로도<br>
         충분히 감사합니다.
         <br><br>
@@ -344,6 +406,7 @@
     </section>
 
 
+
     <!-- GALLERY -->
 
     <section class="section gallery-section">
@@ -352,182 +415,195 @@
         GALLERY
       </h2>
 
-      <div class="gallery-main">
-
-        <img
-          id="galleryMainImage"
-          src="images/gallery01.jpg"
-          alt="Wedding gallery"
-        >
-
-        <button
-          id="galleryPrevButton"
-          class="gallery-main-arrow gallery-main-arrow-left"
-          type="button"
-        >
-          ‹
-        </button>
-
-        <button
-          id="galleryNextButton"
-          class="gallery-main-arrow gallery-main-arrow-right"
-          type="button"
-        >
-          ›
-        </button>
-
-      </div>
-
-
       <div
-        id="galleryPreview"
-        class="gallery-preview"
+        id="galleryGrid"
+        class="gallery-grid"
       >
-      </div>
-
-
-      <div class="gallery-footer">
-
-        <button
-          id="openGalleryButton"
-          class="view-all-button"
-          type="button"
-          data-i18n="viewAll"
-        >
-          전체보기
-        </button>
-
       </div>
 
     </section>
 
 
-    <!-- RECEPTION -->
+
+    <!-- INFORMATION -->
 
     <section class="reception-notice-section">
 
-      <p
-        class="reception-notice-title"
-        data-i18n="receptionNoticeTitle"
-      >
-        <strong>안내드립니다.</strong>
-      </p>
+      <div class="reveal-on-scroll">
 
-      <p
-        class="reception-notice-text"
-        data-i18n="receptionNoticeText"
-      >
-        연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>
-        에스컬레이터를 이용해 편하게 이동하실 수 있습니다.
-      </p>
+
+        <h2 class="section-heading information-heading">
+          INFORMATION
+        </h2>
+
+        <p
+          class="reception-notice-text"
+          data-i18n="receptionNoticeText"
+        >
+          안내드립니다.<br><br>
+          연회장은 예식장 한 층 위인 4M층에 위치해 있으며,<br>
+          에스컬레이터를 이용해 이동하실 수 있습니다.
+        </p>
+
+
+      </div>
 
     </section>
 
 
-    <!-- ACCOUNT -->
+<!-- ACCOUNT -->
 
-    <section
-      id="accountSection"
-      class="section account-section"
+<section
+  id="accountSection"
+  class="section account-section"
+>
+
+  <h2 class="section-heading">
+    마음 전하실 곳
+  </h2>
+
+  <p class="account-message">
+    멀리서도 축하의 마음을 <br>
+    전하고 싶으신 분들을 위해 <br>
+    계좌번호를 안내드립니다. <br><br>
+    소중한 축하를 보내주셔서 감사드리며,<br>
+    따뜻한 마음에 깊이 감사드립니다.
+  </p>
+
+
+  <!-- 신랑측 -->
+
+  <div class="account-accordion">
+
+    <button
+      class="account-toggle"
+      type="button"
+      aria-expanded="false"
     >
+      <span class="account-toggle-label">
+        신랑측
+      </span>
 
-      <h2
-        class="section-heading"
-        data-i18n="accountTitle"
+      <span
+        class="account-arrow"
+        aria-hidden="true"
       >
-        마음 전하실 곳
-      </h2>
-
-      <p
-        class="account-message"
-        data-i18n="accountMessage"
-      >
-        축하해 주시는 따뜻한 마음에 깊이 감사드립니다.<br>
-        귀한 마음을 감사히 간직하겠습니다.
-      </p>
+        ⌄
+      </span>
+    </button>
 
 
-      <div class="account-side">
+    <div class="account-content">
 
-        <h3 class="account-side-title">
-          신랑측
-        </h3>
+      <div class="account-row">
 
-        <div class="account-list">
+        <div class="account-info">
 
-          <div class="account-row">
+          <span class="account-name">
+            아버지 김광일
+          </span>
 
-            <div class="account-person">
-              <strong>아버지 김광일</strong>
-              <span>00은행 123456789</span>
-            </div>
-
-            <button
-              class="copy-button"
-              type="button"
-              data-account="00은행 123456789"
-            >
-              복사
-            </button>
-
-          </div>
-
-
-          <div class="account-row">
-
-            <div class="account-person">
-              <strong>어머니 유금수</strong>
-              <span>00은행 123456789</span>
-            </div>
-
-            <button
-              class="copy-button"
-              type="button"
-              data-account="00은행 123456789"
-            >
-              복사
-            </button>
-
-          </div>
+          <span class="account-number">
+            00은행 123456789
+          </span>
 
         </div>
+
+        <button
+          class="copy-button"
+          type="button"
+          data-account="00은행 123456789"
+        >
+          복사
+        </button>
 
       </div>
 
 
-      <div class="account-side">
+      <div class="account-row">
 
-        <h3 class="account-side-title">
-          신부측
-        </h3>
+        <div class="account-info">
 
-        <div class="account-list">
+          <span class="account-name">
+            어머니 유금수
+          </span>
 
-          <div class="account-row">
-
-            <div class="account-person">
-              <strong>어머니 현시은</strong>
-              <span>00은행 123456789</span>
-            </div>
-
-            <button
-              class="copy-button"
-              type="button"
-              data-account="00은행 123456789"
-            >
-              복사
-            </button>
-
-          </div>
+          <span class="account-number">
+            00은행 123456789
+          </span>
 
         </div>
 
+        <button
+          class="copy-button"
+          type="button"
+          data-account="00은행 123456789"
+        >
+          복사
+        </button>
+
       </div>
 
-    </section>
+    </div>
+
+  </div>
 
 
+  <!-- 신부측 -->
+
+  <div class="account-accordion">
+
+    <button
+      class="account-toggle"
+      type="button"
+      aria-expanded="false"
+    >
+      <span class="account-toggle-label">
+        신부측
+      </span>
+
+      <span
+        class="account-arrow"
+        aria-hidden="true"
+      >
+        ⌄
+      </span>
+    </button>
+
+
+    <div class="account-content">
+
+      <div class="account-row">
+
+        <div class="account-info">
+
+          <span class="account-name">
+            어머니 현시은
+          </span>
+
+          <span class="account-number">
+            00은행 123456789
+          </span>
+
+        </div>
+
+        <button
+          class="copy-button"
+          type="button"
+          data-account="00은행 123456789"
+        >
+          복사
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
   </main>
+
 
 
   <!-- FULLSCREEN GALLERY -->
@@ -537,21 +613,28 @@
     class="gallery-modal"
   >
 
+
     <button
       id="closeGalleryButton"
       class="gallery-close"
       type="button"
+      aria-label="Close gallery"
     >
       ×
     </button>
+
+
 
     <button
       id="previousImageButton"
       class="gallery-arrow gallery-arrow-left"
       type="button"
+      aria-label="Previous image"
     >
       ‹
     </button>
+
+
 
     <div class="fullscreen-image-container">
 
@@ -563,54 +646,32 @@
 
     </div>
 
+
+
     <button
       id="nextImageButton"
       class="gallery-arrow gallery-arrow-right"
       type="button"
+      aria-label="Next image"
     >
       ›
     </button>
 
+
+
     <div
-      id="fullscreenThumbnails"
-      class="fullscreen-thumbnails"
+      id="galleryCounter"
+      class="gallery-counter"
     >
+      1 / 9
     </div>
+
 
   </div>
 
 
   <script src="script.js"></script>
 
-  <script>
-    const languageToggleButton =
-      document.getElementById("languageToggleButton");
-
-    function syncLanguageToggleButton() {
-      if (!languageToggleButton) return;
-
-      languageToggleButton.textContent =
-        currentLanguage === "ja"
-          ? "JPN"
-          : "KOR";
-    }
-
-    syncLanguageToggleButton();
-
-    languageToggleButton?.addEventListener(
-      "click",
-      () => {
-        const nextLanguage =
-          currentLanguage === "ko"
-            ? "ja"
-            : "ko";
-
-        setLanguage(nextLanguage);
-        syncLanguageToggleButton();
-      }
-    );
-  </script>
 
 </body>
-
 </html>
