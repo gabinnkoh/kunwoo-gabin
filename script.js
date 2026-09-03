@@ -590,26 +590,39 @@ if (tmapNaviButton) {
 
 }
 
+/* ====================================
+   KAKAO MAP
+==================================== */
 
-const weddingLocation =
-  new kakao.maps.LatLng(
-    37.505603818492,
-    126.88387163888
-  );
+const kakaoMapContainer =
+  document.getElementById("kakaoMap");
 
-const weddingMap =
-  new kakao.maps.Map(
-    document.getElementById("kakaoMap"),
-    {
-      center: weddingLocation,
-      level: 3
-    }
-  );
+if (
+  kakaoMapContainer &&
+  typeof kakao !== "undefined" &&
+  kakao.maps
+) {
 
-new kakao.maps.Marker({
-  position: weddingLocation,
-  map: weddingMap
-});
+  const weddingLocation =
+    new kakao.maps.LatLng(
+      37.505603818492,
+      126.88387163888
+    );
+
+  const weddingMap =
+    new kakao.maps.Map(
+      kakaoMapContainer,
+      {
+        center: weddingLocation,
+        level: 3
+      }
+    );
+
+  new kakao.maps.Marker({
+    position: weddingLocation,
+    map: weddingMap
+  });
+}
 
 /* ====================================
    ACCOUNT ACCORDION
