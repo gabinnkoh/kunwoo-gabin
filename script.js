@@ -2,6 +2,8 @@
 /* ====================================
    KAKAO SDK
 ==================================== */
+let weddingMap = null;
+let weddingLocation = null;
 
 if (
   typeof Kakao !== "undefined" &&
@@ -356,7 +358,7 @@ function setLanguage(language) {
 
   if (
     language === "ko" &&
-    typeof weddingMap !== "undefined"
+    weddingMap
   ) {
 
     setTimeout(() => {
@@ -630,10 +632,6 @@ const kakaoMapContainer =
   document.getElementById(
     "kakaoMap"
   );
-
-
-let weddingMap = null;
-let weddingLocation = null;
 
 
 if (
