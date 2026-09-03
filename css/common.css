@@ -788,6 +788,7 @@ img {
 
 
 /* 가운데부터 좌우로 열림 */
+/* 날짜/장소 - 화면에 들어왔을 때 가운데에서 좌우로 열림 */
 
 .wedding-info-opening {
   overflow: hidden;
@@ -795,6 +796,7 @@ img {
 
 
 .wedding-info-opening p {
+  margin: 0;
 
   opacity: 0;
 
@@ -805,26 +807,26 @@ img {
       0
       50%
     );
+}
 
+
+.wedding-info-opening.is-visible p {
   animation:
     weddingInfoOpen
-    4.2s
+    3.6s
     cubic-bezier(
       0.22,
       1,
       0.36,
       1
     )
-    0.35s
     forwards;
-
 }
 
 
 @keyframes weddingInfoOpen {
 
   0% {
-
     opacity: 0;
 
     clip-path:
@@ -834,17 +836,13 @@ img {
         0
         50%
       );
-
   }
-
 
   20% {
     opacity: 1;
   }
 
-
   100% {
-
     opacity: 1;
 
     clip-path:
@@ -854,11 +852,9 @@ img {
         0
         0
       );
-
   }
 
 }
-
 
 .invitation-message {
 
