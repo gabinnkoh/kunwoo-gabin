@@ -2,8 +2,6 @@
 /* ====================================
    KAKAO SDK
 ==================================== */
-let weddingMap = null;
-let weddingLocation = null;
 
 if (
   typeof Kakao !== "undefined" &&
