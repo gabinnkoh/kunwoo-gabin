@@ -212,7 +212,7 @@
         data-i18n="familyIntroduction"
       >
         김광일 · 유금수 의 아들&nbsp;&nbsp;<strong>건우</strong><br>
-        고석헌 · 현시은 의 딸&nbsp;&nbsp;&nbsp;&nbsp;<strong>가빈</strong>
+        고석헌 · 현시은 의 딸&nbsp;&nbsp;<strong>가빈</strong>
       </div>
 
     </section>
@@ -990,6 +990,64 @@
             }
           );
 
+          // 기본 상태: 한 손가락 스크롤을 위해 지도 조작 비활성화
+        map.setDraggable(false);
+        map.setZoomable(false);
+
+        container.addEventListener(
+          "touchstart",
+          (event) => {
+
+            if (event.touches.length >= 2) {
+
+              // 두 손가락일 때만 지도 조작 허용
+              map.setDraggable(true);
+              map.setZoomable(true);
+
+            } else {
+
+              map.setDraggable(false);
+              map.setZoomable(false);
+
+            }
+
+          },
+          {
+            passive: true
+          }
+        );
+
+
+        container.addEventListener(
+          "touchend",
+          (event) => {
+
+            if (event.touches.length < 2) {
+
+              map.setDraggable(false);
+              map.setZoomable(false);
+
+            }
+
+          },
+          {
+            passive: true
+          }
+        );
+
+
+        container.addEventListener(
+          "touchcancel",
+          () => {
+
+            map.setDraggable(false);
+            map.setZoomable(false);
+
+          },
+          {
+            passive: true
+          }
+        );
 
         const marker =
           new kakao.maps.Marker({
