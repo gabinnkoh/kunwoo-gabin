@@ -1774,3 +1774,55 @@ function initializeGalleryTitleAnimation() {
   );
 
 }
+
+/* ====================================
+   TOP OVERSCROLL PREVENTION
+==================================== */
+
+let topTouchStartY = 0;
+
+window.addEventListener(
+  "touchstart",
+  (event) => {
+
+    if (event.touches.length !== 1) {
+      return;
+    }
+
+    topTouchStartY =
+      event.touches[0].clientY;
+
+  },
+  {
+    passive: true
+  }
+);
+
+
+window.addEventListener(
+  "touchmove",
+  (event) => {
+
+    if (
+      event.touches.length !== 1 ||
+      window.scrollY > 0
+    ) {
+      return;
+    }
+
+    const currentY =
+      event.touches[0].clientY;
+
+    /*
+      페이지 최상단에서
+      손가락을 아래쪽으로 끌 때만 차단
+    */
+    if (currentY > topTouchStartY) {
+      event.preventDefault();
+    }
+
+  },
+  {
+    passive: false
+  }
+);

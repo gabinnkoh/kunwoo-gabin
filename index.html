@@ -36,7 +36,7 @@
 
   <link
     rel="stylesheet"
-    href="css/version4.css?v=20260905-2"
+    href="css/version4.css?v=20260905-3"
   >
 
 </head>
@@ -74,7 +74,7 @@
 
     <img
       id="v4HeroImage"
-      src="images/main.jpg?v=20260905-1"
+      src="images/main.jpg?v=20260905-2"
       alt="Wedding"
       class="v4-hero-image"
     >
@@ -990,64 +990,12 @@
             }
           );
 
-          // 기본 상태: 한 손가락 스크롤을 위해 지도 조작 비활성화
+        /*
+          지도 이동은 항상 금지
+          확대 / 축소만 허용
+        */
         map.setDraggable(false);
-        map.setZoomable(false);
-
-        container.addEventListener(
-          "touchstart",
-          (event) => {
-
-            if (event.touches.length >= 2) {
-
-              // 두 손가락일 때만 지도 조작 허용
-              map.setDraggable(true);
-              map.setZoomable(true);
-
-            } else {
-
-              map.setDraggable(false);
-              map.setZoomable(false);
-
-            }
-
-          },
-          {
-            passive: true
-          }
-        );
-
-
-        container.addEventListener(
-          "touchend",
-          (event) => {
-
-            if (event.touches.length < 2) {
-
-              map.setDraggable(false);
-              map.setZoomable(false);
-
-            }
-
-          },
-          {
-            passive: true
-          }
-        );
-
-
-        container.addEventListener(
-          "touchcancel",
-          () => {
-
-            map.setDraggable(false);
-            map.setZoomable(false);
-
-          },
-          {
-            passive: true
-          }
-        );
+        map.setZoomable(true); 
 
         const marker =
           new kakao.maps.Marker({
@@ -1068,7 +1016,7 @@
   <!-- EXISTING COMMON SCRIPT -->
 
   <script
-    src="script.js?v=20260905-2"
+    src="script.js?v=20260905-3"
   >
   </script>
 
