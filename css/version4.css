@@ -1120,6 +1120,10 @@ img {
   height: 100%;
 }
 
+#kakaoMap,
+#kakaoMap * {
+  touch-action: pan-y pinch-zoom !important;
+}
 
 /* =========================================
    NAVIGATION

@@ -838,8 +838,8 @@ const galleryImages =
         "images/gallery04.jpg",
 
         "images/gallery07.jpg",
-        "images/gallery09.jpg",
         "images/gallery10.jpg",
+        "images/gallery09.jpg",
 
         "images/gallery02.jpg",
         "images/gallery05.jpg",
@@ -855,8 +855,8 @@ const galleryImages =
        
         "images/gallery03.jpg",
 
-        "images/gallery04.jpg",
         "images/gallery05.jpg",
+        "images/gallery04.jpg",
         "images/gallery06.jpg",
 
         "images/gallery07.jpg",

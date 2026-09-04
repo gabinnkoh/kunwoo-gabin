@@ -36,7 +36,7 @@
 
   <link
     rel="stylesheet"
-    href="css/version4.css?v=20260905-5"
+    href="css/version4.css?v=20260905-6"
   >
 
 </head>
@@ -997,79 +997,6 @@
         map.setDraggable(false);
         map.setZoomable(true); 
 
-        /*
-          한 손가락:
-          지도 대신 페이지 스크롤
-
-          두 손가락:
-          카카오맵 확대/축소 허용
-        */
-
-        let mapTouchStartY = 0;
-        let mapLastTouchY = 0;
-
-        container.addEventListener(
-          "touchstart",
-          (event) => {
-
-            if (event.touches.length !== 1) {
-              return;
-            }
-
-            mapTouchStartY =
-              event.touches[0].clientY;
-
-            mapLastTouchY =
-              mapTouchStartY;
-
-          },
-          {
-            passive: true,
-            capture: true
-          }
-        );
-
-
-        container.addEventListener(
-          "touchmove",
-          (event) => {
-
-            /*
-              두 손가락이면 건드리지 않음
-              → 카카오맵 pinch zoom 사용
-            */
-            if (event.touches.length !== 1) {
-              return;
-            }
-
-            const currentY =
-              event.touches[0].clientY;
-
-            const movement =
-              mapLastTouchY -
-              currentY;
-
-            window.scrollBy(
-              0,
-              movement
-            );
-
-            mapLastTouchY =
-              currentY;
-
-            /*
-              카카오맵이 한 손가락 제스처를
-              추가 처리하지 못하도록 차단
-            */
-            event.preventDefault();
-            event.stopPropagation();
-
-          },
-          {
-            passive: false,
-            capture: true
-          }
-        );
 
         const marker =
           new kakao.maps.Marker({
@@ -1090,7 +1017,7 @@
   <!-- EXISTING COMMON SCRIPT -->
 
   <script
-    src="script.js?v=20260905-5"
+    src="script.js?v=20260905-6"
   >
   </script>
 
