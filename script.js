@@ -91,7 +91,7 @@ const translations = {
       "1호선 구로역 3번 출구 도보 5분",
 
     shuttleTitle:
-      "셔틀버스",
+      "셔틀버스 이용 시",
 
     shuttleDescription:
       "신도림역 1번 출구 (수시 운행)",
@@ -167,7 +167,7 @@ const translations = {
       "1号線 九老駅 3番出口から徒歩5分",
 
     shuttleTitle:
-      "シャトルバス",
+      "シャトルバスをご利用の場合",
 
     shuttleDescription:
       "新道林駅 1番出口より随時運行",
