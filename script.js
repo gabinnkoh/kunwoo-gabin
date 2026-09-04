@@ -8,7 +8,7 @@ if (
   !Kakao.isInitialized()
 ) {
   Kakao.init(
-    "cb43d22394f82941338749286deb8b60"
+    "877ccd7065d1d776c016af2014eda82e"
   );
 }
 
