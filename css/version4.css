@@ -2039,33 +2039,12 @@ html.reveal-ready
 
 .wedding-info-opening p {
   margin: 0;
-
   opacity: 1;
+  clip-path: none;
+  animation: none;
+  transform: none;
 }
 
-
-html.reveal-ready
-.wedding-info-opening p {
-  opacity: 0;
-
-  clip-path:
-    inset(
-      0
-      50%
-      0
-      50%
-    );
-}
-
-
-html.reveal-ready
-.wedding-info-opening.is-visible p {
-  animation:
-    v4WeddingOpen
-    2.1s
-    cubic-bezier(.22,1,.36,1)
-    forwards;
-}
 
 
 @keyframes v4WeddingOpen {
