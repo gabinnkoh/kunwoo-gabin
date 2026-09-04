@@ -349,27 +349,6 @@ function setLanguage(language) {
   }
 
 
-  /*
-    숨겨져 있던 카카오맵이 다시 나타날 때
-    지도 크기를 다시 계산
-  */
-
-  if (
-    language === "ko" &&
-    weddingMap
-  ) {
-
-    setTimeout(() => {
-
-      weddingMap.relayout();
-
-      weddingMap.setCenter(
-        weddingLocation
-      );
-
-    }, 50);
-
-  }
 
 }
 
@@ -622,50 +601,7 @@ if (tmapNaviButton) {
   );
 
 }
-/* ====================================
-   KAKAO MAP
-==================================== */
 
-const kakaoMapContainer =
-  document.getElementById(
-    "kakaoMap"
-  );
-
-
-if (
-  kakaoMapContainer &&
-  typeof kakao !== "undefined" &&
-  kakao.maps
-) {
-
-  weddingLocation =
-    new kakao.maps.LatLng(
-      37.505603818492,
-      126.88387163888
-    );
-
-
-  weddingMap =
-    new kakao.maps.Map(
-      kakaoMapContainer,
-      {
-        center:
-          weddingLocation,
-
-        level: 3
-      }
-    );
-
-
-  new kakao.maps.Marker({
-    position:
-      weddingLocation,
-
-    map:
-      weddingMap
-  });
-
-}
 
 /* ====================================
    ACCOUNT ACCORDION
