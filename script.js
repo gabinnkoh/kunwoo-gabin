@@ -1664,7 +1664,7 @@ initializeWeddingInfoReveal();
 /* ====================================
    VERSION 4 RANDOM HERO
 ==================================== */
-
+/*
 const v4HeroImage =
   document.getElementById(
     "v4HeroImage"
@@ -1723,4 +1723,4 @@ if (v4HeroImage) {
     selectedHero.className
   );
 
-}
+}*/
