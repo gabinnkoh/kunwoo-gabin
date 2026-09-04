@@ -655,14 +655,96 @@
   </div>
 
   <!-- Kakao JavaScript SDK -->
-  <script
-    src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.2/kakao.min.js"
-    crossorigin="anonymous">
-  </script>
+  <!-- Kakao JavaScript SDK : 카카오내비 -->
+<script
+  src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.2/kakao.min.js"
+  crossorigin="anonymous">
+</script>
 
 
-  <script src="script.js?v=20260904-2"></script>
+<!-- Kakao Maps JavaScript SDK -->
+<script
+  src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cb43d22394f82941338749286deb8b60&autoload=false">
+</script>
 
+
+<!-- 카카오맵만 독립적으로 실행 -->
+<script>
+  (function () {
+
+    const container =
+      document.getElementById("kakaoMap");
+
+    if (!container) {
+      console.error(
+        "카카오맵 영역 #kakaoMap을 찾을 수 없습니다."
+      );
+      return;
+    }
+
+
+    if (
+      typeof kakao === "undefined" ||
+      !kakao.maps
+    ) {
+      console.error(
+        "카카오맵 SDK를 불러오지 못했습니다."
+      );
+      return;
+    }
+
+
+    kakao.maps.load(function () {
+
+      try {
+
+        const weddingLocation =
+          new kakao.maps.LatLng(
+            37.505603818492,
+            126.88387163888
+          );
+
+
+        const map =
+          new kakao.maps.Map(
+            container,
+            {
+              center: weddingLocation,
+              level: 3
+            }
+          );
+
+
+        const marker =
+          new kakao.maps.Marker({
+            position: weddingLocation
+          });
+
+
+        marker.setMap(map);
+
+
+        console.log(
+          "카카오맵 로딩 완료"
+        );
+
+      } catch (error) {
+
+        console.error(
+          "카카오맵 생성 실패:",
+          error
+        );
+
+      }
+
+    });
+
+  })();
+</script>
+
+
+<!-- 기존 청첩장 JavaScript -->
+<script src="script.js?v=20260904-3"></script>
 
 </body>
 </html>
