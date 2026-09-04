@@ -36,7 +36,7 @@
 
   <link
     rel="stylesheet"
-    href="css/version4.css?v=20260905-8"
+    href="css/version4.css?v=20260905-9"
   >
 
 </head>
@@ -1013,6 +1013,9 @@
             }
           );
 
+        /*
+          지도 완전 고정
+        */
         map.setDraggable(false);
         map.setZoomable(false);
 
@@ -1022,61 +1025,6 @@
           });
 
         marker.setMap(map);
-
-
-        /* 지도 확대 버튼 */
-
-        const mapZoomInButton =
-          document.getElementById(
-            "mapZoomInButton"
-          );
-
-        if (mapZoomInButton) {
-
-          mapZoomInButton.addEventListener(
-            "click",
-            () => {
-
-              const currentLevel =
-                map.getLevel();
-
-              map.setLevel(
-                Math.max(
-                  1,
-                  currentLevel - 1
-                )
-              );
-
-            }
-          );
-
-        }
-
-
-        /* 지도 축소 버튼 */
-
-        const mapZoomOutButton =
-          document.getElementById(
-            "mapZoomOutButton"
-          );
-
-        if (mapZoomOutButton) {
-
-          mapZoomOutButton.addEventListener(
-            "click",
-            () => {
-
-              const currentLevel =
-                map.getLevel();
-
-              map.setLevel(
-                currentLevel + 1
-              );
-
-            }
-          );
-
-        }
 
       });
 
@@ -1089,7 +1037,7 @@
   <!-- EXISTING COMMON SCRIPT -->
 
   <script
-    src="script.js?v=20260905-8"
+    src="script.js?v=20260905-9"
   >
   </script>
 
