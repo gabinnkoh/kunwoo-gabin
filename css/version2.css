@@ -1,243 +1,345 @@
 /* =================================
+
    VERSION 2
+
 ================================= */
 
 body {
+
   background: #eeeae2;
+
 }
 
 
 .invitation {
+
   background: #fffdf8;
+
 }
 
 
 .language-switch {
+
   background: rgba(
+
     255,
+
     253,
+
     248,
+
     0.9
+
   );
+
 }
 
 
 /* =================================
+
    INTRO
+
 ================================= */
 
 .couple-section {
+
   padding-top: 0;
+
   padding-bottom: 84px;
 
   background: #fffdf8;
+
   color: #514e49;
+
 }
 
 
 .wedding-info {
+
   color: #746f68;
 
   line-height: 2;
+
 }
 
 
 .invitation-message {
+
   margin-top: 62px;
 
   color: #8b8278;
 
   font-size: 14px;
+
   font-weight: 400;
 
   line-height: 2.3;
 
   letter-spacing: 0.015em;
+
 }
 
 
 .family-introduction {
+
   margin-top: 44px;
 
   color: #58544f;
+
 }
 
 
 /* =================================
+
    SECTION
+
 ================================= */
 
 .section {
+
   padding-top: 76px;
+
   padding-bottom: 76px;
+
 }
 
 
 .section-heading {
+
   margin-bottom: 42px;
 
   letter-spacing: 0.16em;
+
 }
 
 
 /* =================================
+
    CALENDAR
+
 ================================= */
 
 .calendar-section {
+
   background: #fbf7ef;
+
   color: #514e49;
+
 }
 
 
 .calendar-section .section-heading {
+
   color: #817a72;
+
 }
 
 
 .calendar-date-text {
+
   color: #7c766f;
+
 }
 
 
 .wedding-day {
+
   background: #aaa095;
 
   box-shadow:
+
     0 4px 12px
+
     rgba(
+
       100,
+
       95,
+
       88,
+
       0.15
+
     );
+
 }
 
 
 /* =================================
+
    LOCATION
+
 ================================= */
 
 .location-section {
+
   background: #faf7f0;
+
   color: #514e49;
+
 }
 
 
 .location-section .section-heading {
+
   color: #7a746c;
+
 }
 
 
 .location-name {
+
   font-weight: 500;
+
 }
 
 
 .location-address {
+
   color: #736e68;
+
 }
 
 
 .navigation-buttons button {
+
   border-color: #ddd7cd;
 
   background: #fffdf8;
 
   color: #6f6962;
+
 }
 
 
 .transport-item {
+
   border-color: rgba(
+
     110,
+
     105,
+
     98,
+
     0.12
+
   );
+
 }
 
 
 /* =================================
+
    FLOWER
+
 ================================= */
 
 .flower-section {
+
   background: #fffdf8;
+
 }
 
 
 .flower-section p {
+
   color: #746f68;
+
 }
 
 
 /* =================================
+
    GALLERY
+
 ================================= */
 
 .gallery-section {
+
   background: #fffdf8;
+
 }
 
 
 .gallery-section .section-heading {
+
   color: #7a746c;
+
 }
 
 
 .gallery-grid img {
+
   border-radius: 4px;
+
 }
 
 
 /* =================================
+
    INFORMATION
+
 ================================= */
 
 .reception-notice-section {
+
   background: #f2ebdd;
 
   border: 0;
 
   color: #59554f;
+
 }
 
 
 .information-heading {
+
   color: #777169;
+
 }
 
 
 .reception-notice-title {
+
   color: #777169;
+
 }
 
 
 .reception-notice-text {
+
   color: #68635d;
+
 }
 
 
 /* =================================
+
    ACCOUNT
+
 ================================= */
 
 .account-section {
+
   padding-top: 80px;
 
   background: #faf7f0;
 
   color: #514e49;
+
 }
 
 
 .account-section .section-heading {
+
   color: #7a746c;
+
 }
 
 
 .account-message {
+
   margin: 0 0 24px;
 
   text-align: center;
@@ -247,34 +349,47 @@ body {
   font-size: 13px;
 
   line-height: 1.8;
+
 }
 
 
 .account-accordion {
+
   margin-top: 10px;
 
   border:
+
     1px solid
+
     rgba(
+
       110,
+
       105,
+
       98,
+
       0.16
+
     );
 
   border-radius: 6px;
 
   overflow: hidden;
+
 }
 
 
 .account-toggle {
+
   display: flex;
 
   justify-content: space-between;
+
   align-items: center;
 
   width: 100%;
+
   min-height: 52px;
 
   padding: 0 17px;
@@ -286,20 +401,25 @@ body {
   color: #5f5a54;
 
   font-size: 13px;
+
   font-weight: 500;
 
   text-align: left;
 
   cursor: pointer;
+
 }
 
 
 .account-toggle-label {
+
   line-height: 1.4;
+
 }
 
 
 .account-content {
+
   max-height: 0;
 
   overflow: hidden;
@@ -307,33 +427,51 @@ body {
   opacity: 0;
 
   transition:
+
     max-height
+
     0.45s
+
     cubic-bezier(
+
       0.22,
+
       1,
+
       0.36,
+
       1
+
     ),
+
     opacity
+
     0.3s
+
     ease;
+
 }
 
 
 .account-accordion.open
+
 .account-content {
+
   max-height: 400px;
 
   opacity: 1;
+
 }
 
 
 .account-accordion
+
 .account-row {
+
   display: flex;
 
   justify-content: space-between;
+
   align-items: center;
 
   min-height: 0;
@@ -343,26 +481,37 @@ body {
   padding: 13px 0;
 
   border-top:
+
     1px solid
+
     rgba(
+
       110,
+
       105,
+
       98,
+
       0.12
+
     );
+
 }
 
 
 .account-info {
+
   display: flex;
 
   flex-direction: column;
 
   min-width: 0;
+
 }
 
 
 .account-name {
+
   margin-bottom: 4px;
 
   color: #746e67;
@@ -370,20 +519,25 @@ body {
   font-size: 12px;
 
   line-height: 1.4;
+
 }
 
 
 .account-number {
+
   color: #514e49;
 
   font-size: 14px;
 
   line-height: 1.5;
+
 }
 
 
 .account-accordion
+
 .copy-button {
+
   flex-shrink: 0;
 
   margin-left: 12px;
@@ -391,7 +545,9 @@ body {
   padding: 6px 10px;
 
   border:
+
     1px solid
+
     #d2ccc2;
 
   border-radius: 4px;
@@ -403,115 +559,78 @@ body {
   font-size: 11px;
 
   cursor: pointer;
+
 }
 
 
 /* =================================
+
    ACCOUNT ARROW
+
 ================================= */
 
 .account-arrow {
+
   position: relative;
 
   flex-shrink: 0;
 
   width: 24px;
+
   height: 24px;
 
   font-size: 0;
 
   transition:
+
     transform
+
     0.3s
+
     ease;
+
 }
 
 
 .account-arrow::before {
+
   content: "";
 
   position: absolute;
 
   top: 50%;
+
   left: 50%;
 
   width: 7px;
+
   height: 7px;
 
   border-right:
+
     1px solid
+
     #8b847c;
 
   border-bottom:
+
     1px solid
+
     #8b847c;
 
   transform:
+
     translate(-50%, -65%)
+
     rotate(45deg);
+
 }
 
 
 .account-accordion.open
+
 .account-arrow {
+
   transform: rotate(180deg);
-}
 
-
-/* =================================
-   TEMPORARY DISPLAY FIX
-
-   현재 화면에서 본문 대부분이
-   사라지는 문제를 먼저 제거한다.
-================================= */
-
-.reveal-on-scroll {
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  transform: none !important;
-
-  transition: none !important;
-}
-
-
-.reveal-on-scroll.is-visible {
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  transform: none !important;
-}
-
-
-/*
-  첫 사진 아래 날짜/장소 역시
-  애니메이션과 무관하게 표시
-*/
-
-.wedding-info-opening {
-  overflow: visible;
-}
-
-
-.wedding-info-opening p {
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  clip-path: none !important;
-
-  animation: none !important;
-}
-
-
-.wedding-info-opening.is-visible p {
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  clip-path: none !important;
-
-  animation: none !important;
 }

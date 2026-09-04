@@ -1199,7 +1199,6 @@ if (galleryModal) {
 /* ====================================
    WEDDING INFO - FIRST SCROLL REVEAL
 ==================================== */
-
 function initializeWeddingInfoReveal() {
 
   const weddingInfo =
@@ -1261,12 +1260,19 @@ function initializeWeddingInfoReveal() {
     }
   );
 
+
+  /*
+    페이지를 처음 열었을 때
+    이미 화면 안에 들어와 있으면
+    스크롤을 기다리지 않고 실행
+  */
+  revealWeddingInfo();
+
 }
 
 /* ====================================
    SCROLL REVEAL
 ==================================== */
-
 function initializeScrollReveal() {
 
   const revealElements =
@@ -1284,98 +1290,126 @@ function initializeScrollReveal() {
 
   /*
     IntersectionObserver를
-    지원하지 않는 브라우저
-  */
+    지원하지 않는 브라우저에서는
+    애니메이션을 사용하지 않는다.
 
+    CSS 기본값이 '표시'이기 때문에
+    본문은 그대로 보인다.
+  */
   if (
     !(
       "IntersectionObserver"
       in window
     )
   ) {
-
-    revealElements.forEach(
-      (element) => {
-
-        element.classList.add(
-          "is-visible"
-        );
-
-      }
-    );
-
     return;
   }
 
 
-  const observer =
-    new IntersectionObserver(
+  try {
 
-      (entries) => {
+    const observer =
+      new IntersectionObserver(
 
-        entries.forEach(
-          (entry) => {
+        (entries) => {
 
-            if (
-              !entry.isIntersecting
-            ) {
-              return;
-            }
+          entries.forEach(
+            (entry) => {
 
-
-            /*
-              다음 화면 렌더링에서
-              클래스를 붙여야
-              transition이 확실하게 보임
-            */
-
-            window.requestAnimationFrame(
-              () => {
-
-                entry.target
-                  .classList.add(
-                    "is-visible"
-                  );
-
+              if (
+                !entry.isIntersecting
+              ) {
+                return;
               }
-            );
 
 
-            /*
-              최초 한 번만 실행
-            */
+              /*
+                다음 렌더링 프레임에서
+                is-visible을 붙여
+                transition이 확실히 실행되게 함
+              */
+              window.requestAnimationFrame(
+                () => {
 
-            observer.unobserve(
-              entry.target
-            );
+                  entry.target
+                    .classList.add(
+                      "is-visible"
+                    );
 
-          }
+                }
+              );
+
+
+              /*
+                애니메이션은
+                최초 한 번만 실행
+              */
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+          );
+
+        },
+
+        {
+          threshold: 0.08,
+
+          rootMargin:
+            "0px 0px -8% 0px"
+        }
+
+      );
+
+
+    /*
+      중요:
+
+      IntersectionObserver 생성에
+      성공한 뒤에만 reveal-ready를 붙인다.
+
+      따라서 JS 오류가 발생하면
+      CSS가 콘텐츠를 숨기지 않는다.
+    */
+    document.documentElement
+      .classList.add(
+        "reveal-ready"
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        observer.observe(
+          element
         );
 
-      },
-
-      {
-        threshold: 0.08,
-
-        rootMargin:
-          "0px 0px -8% 0px"
       }
-
     );
 
 
-  revealElements.forEach(
-    (element) => {
+  } catch (error) {
 
-      observer.observe(
-        element
+    /*
+      혹시 초기화 도중 문제가 생기면
+      reveal-ready를 제거해서
+      모든 콘텐츠를 다시 표시한다.
+    */
+    document.documentElement
+      .classList.remove(
+        "reveal-ready"
       );
 
-    }
-  );
+
+    console.error(
+      "Scroll reveal initialization failed:",
+      error
+    );
+
+  }
 
 }
-
 
 /*
   DOM이 완전히 준비된 다음
