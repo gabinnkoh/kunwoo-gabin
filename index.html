@@ -36,7 +36,7 @@
 
   <link
     rel="stylesheet"
-    href="css/version4.css?v=20260905-9"
+    href="css/version4.css?v=20260905-11"
   >
 
 </head>
@@ -369,14 +369,20 @@
 
       <div class="kakao-map-wrapper">
 
-      <div
-        id="kakaoMap"
-        class="map"
-      >
+        <div
+          id="kakaoMap"
+          class="map"
+        >
+        </div>
+
+        <div
+          id="kakaoMapTouchLayer"
+          class="kakao-map-touch-layer"
+          aria-hidden="true"
+        >
+        </div>
+
       </div>
-
-
-    </div>
 
 
 
@@ -1001,10 +1007,11 @@
           );
 
         /*
-          지도 완전 고정
+          카카오맵 자체 터치 동작은 모두 차단
         */
         map.setDraggable(false);
         map.setZoomable(false);
+
 
         const marker =
           new kakao.maps.Marker({
@@ -1013,6 +1020,228 @@
 
         marker.setMap(map);
 
+
+        /*
+          ====================================
+          CUSTOM TOUCH CONTROL
+          ====================================
+
+          한 손가락:
+          페이지 스크롤
+
+          두 손가락:
+          지도 확대 / 축소
+        */
+
+        const touchLayer =
+          document.getElementById(
+            "kakaoMapTouchLayer"
+          );
+
+        let pinchStartDistance = 0;
+        let pinchStartLevel = 0;
+        let isPinching = false;
+
+
+        /*
+          두 손가락 사이 거리 계산
+        */
+        function getTouchDistance(
+          touch1,
+          touch2
+        ) {
+
+          const x =
+            touch2.clientX -
+            touch1.clientX;
+
+          const y =
+            touch2.clientY -
+            touch1.clientY;
+
+          return Math.sqrt(
+            x * x +
+            y * y
+          );
+
+        }
+
+
+        if (touchLayer) {
+
+          touchLayer.addEventListener(
+            "touchstart",
+            (event) => {
+
+              /*
+                한 손가락이면
+                아무것도 하지 않음.
+
+                브라우저가 자연스럽게
+                페이지를 스크롤함.
+              */
+              if (
+                event.touches.length !== 2
+              ) {
+                return;
+              }
+
+
+              /*
+                두 손가락으로 시작하면
+                pinch 모드
+              */
+              isPinching = true;
+
+              pinchStartDistance =
+                getTouchDistance(
+                  event.touches[0],
+                  event.touches[1]
+                );
+
+              pinchStartLevel =
+                map.getLevel();
+
+            },
+            {
+              passive: true
+            }
+          );
+
+
+          touchLayer.addEventListener(
+            "touchmove",
+            (event) => {
+
+              /*
+                두 손가락일 때만
+                지도 확대 / 축소 처리
+              */
+              if (
+                event.touches.length !== 2 ||
+                !isPinching
+              ) {
+                return;
+              }
+
+
+              event.preventDefault();
+
+
+              const currentDistance =
+                getTouchDistance(
+                  event.touches[0],
+                  event.touches[1]
+                );
+
+
+              if (
+                !pinchStartDistance ||
+                !currentDistance
+              ) {
+                return;
+              }
+
+
+              const scale =
+                currentDistance /
+                pinchStartDistance;
+
+
+              /*
+                손가락을 벌림
+                → 확대
+              */
+              if (scale > 1.18) {
+
+                const newLevel =
+                  Math.max(
+                    1,
+                    pinchStartLevel - 1
+                  );
+
+                if (
+                  map.getLevel() !==
+                  newLevel
+                ) {
+                  map.setLevel(
+                    newLevel,
+                    {
+                      animate: false
+                    }
+                  );
+                }
+
+              }
+
+
+              /*
+                손가락을 오므림
+                → 축소
+              */
+              else if (scale < 0.82) {
+
+                const newLevel =
+                  Math.min(
+                    10,
+                    pinchStartLevel + 1
+                  );
+
+                if (
+                  map.getLevel() !==
+                  newLevel
+                ) {
+                  map.setLevel(
+                    newLevel,
+                    {
+                      animate: false
+                    }
+                  );
+                }
+
+              }
+
+            },
+            {
+              passive: false
+            }
+          );
+
+
+          touchLayer.addEventListener(
+            "touchend",
+            (event) => {
+
+              if (
+                event.touches.length < 2
+              ) {
+
+                isPinching = false;
+                pinchStartDistance = 0;
+
+              }
+
+            },
+            {
+              passive: true
+            }
+          );
+
+
+          touchLayer.addEventListener(
+            "touchcancel",
+            () => {
+
+              isPinching = false;
+              pinchStartDistance = 0;
+
+            },
+            {
+              passive: true
+            }
+          );
+
+        }
       });
 
     }
@@ -1024,7 +1253,7 @@
   <!-- EXISTING COMMON SCRIPT -->
 
   <script
-    src="script.js?v=20260905-9"
+    src="script.js?v=20260905-11"
   >
   </script>
 

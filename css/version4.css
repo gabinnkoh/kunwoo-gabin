@@ -1129,15 +1129,60 @@ img {
    MAP - FIXED / PAGE SCROLL ONLY
 ========================================= */
 
+/* =========================================
+   KAKAO MAP TOUCH
+========================================= */
+
+.kakao-map-wrapper {
+  position: relative;
+
+  width:
+    calc(100% + 50px);
+
+  height: 370px;
+
+  margin-left: -25px;
+}
+
+
+/*
+  wrapper 안에서는 원래 .map의
+  width / margin을 다시 정상화
+*/
+.kakao-map-wrapper .map {
+  width: 100%;
+  height: 100%;
+
+  margin-left: 0;
+}
+
+
+/*
+  실제 지도는 터치를 전혀 받지 않음
+*/
 #kakaoMap,
 #kakaoMap * {
   pointer-events: none !important;
-  touch-action: auto !important;
 }
 
-#googleMap,
-#googleMap iframe {
-  pointer-events: none !important;
+
+/*
+  모든 손가락 입력은
+  이 투명 레이어가 담당
+*/
+.kakao-map-touch-layer {
+  position: absolute;
+  z-index: 10;
+
+  inset: 0;
+
+  /*
+    한 손가락 세로 스크롤은
+    브라우저에 그대로 허용
+  */
+  touch-action: pan-y;
+
+  background: transparent;
 }
 
 /* =========================================
