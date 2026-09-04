@@ -666,8 +666,8 @@ accountAccordions.forEach(
 
           label.textContent =
             willOpen
-              ? `${side} 계좌번호 접기`
-              : `${side} 계좌번호 보기`;
+              ? `${side}`
+              : `${side}`;
 
         }
 

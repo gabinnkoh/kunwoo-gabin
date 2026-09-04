@@ -567,7 +567,7 @@
           </span>
 
           <span class="account-number">
-            00은행 123456789
+            농협 90308052066640
           </span>
 
         </div>
@@ -662,25 +662,9 @@
 
 <!-- Kakao Maps SDK -->
 <script
-  src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=877ccd7065d1d776c016af2014eda82e&autoload=false"
-  onload="console.error('★★ KAKAO MAP SDK FILE LOADED ★★')"
-  onerror="console.error('★★ KAKAO MAP SDK FILE LOAD FAILED ★★')">
+  src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=877ccd7065d1d776c016af2014eda82e&autoload=false">
 </script>
-
 <script>
-  console.error(
-    "★★ MAP CHECK ★★",
-    {
-      kakaoExists:
-        typeof kakao !== "undefined",
-
-      mapsExists:
-        typeof kakao !== "undefined" &&
-        !!kakao.maps
-    }
-  );
-
-
   if (
     typeof kakao !== "undefined" &&
     kakao.maps
@@ -688,33 +672,20 @@
 
     kakao.maps.load(function () {
 
-      console.error(
-        "★★ KAKAO MAPS LOAD CALLBACK ★★"
-      );
-
-
       const container =
         document.getElementById(
           "kakaoMap"
         );
 
-
       if (!container) {
-
-        console.error(
-          "★★ #kakaoMap 없음 ★★"
-        );
-
         return;
       }
-
 
       const position =
         new kakao.maps.LatLng(
           37.505603818492,
           126.88387163888
         );
-
 
       const map =
         new kakao.maps.Map(
@@ -725,27 +696,14 @@
           }
         );
 
-
       const marker =
         new kakao.maps.Marker({
           position: position
         });
 
-
       marker.setMap(map);
 
-
-      console.error(
-        "★★ KAKAO MAP COMPLETE ★★"
-      );
-
     });
-
-  } else {
-
-    console.error(
-      "★★ kakao.maps 객체가 없습니다 ★★"
-    );
 
   }
 </script>
