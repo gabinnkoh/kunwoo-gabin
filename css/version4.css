@@ -178,8 +178,7 @@ img {
 
   object-fit: cover;
 
-  transform:
-    scale(1.045);
+  transform: none;
 
   filter: none;
 
@@ -676,7 +675,6 @@ img {
   letter-spacing:
     .08em;
 
-  font-weight: 600;
 }
 
 
