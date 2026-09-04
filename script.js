@@ -1,3 +1,28 @@
+/* ====================================
+   FIXED MOBILE HERO HEIGHT
+==================================== */
+
+function setFixedHeroHeight() {
+
+  const hero =
+    document.querySelector(
+      ".v4-hero"
+    );
+
+  if (!hero) {
+    return;
+  }
+
+  const initialHeight =
+    window.innerHeight;
+
+  document.documentElement.style.setProperty(
+    "--initial-hero-height",
+    `${initialHeight}px`
+  );
+}
+
+setFixedHeroHeight();
 
 /* ====================================
    KAKAO SDK
