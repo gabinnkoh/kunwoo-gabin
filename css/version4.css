@@ -1120,9 +1120,72 @@ img {
   height: 100%;
 }
 
+.kakao-map-wrapper {
+  position: relative;
+}
+
+
+/*
+  지도 자체는 손가락 터치를 받지 않음.
+  따라서 지도 위에서도 페이지 스크롤이
+  항상 정상적으로 작동함.
+*/
 #kakaoMap,
 #kakaoMap * {
-  touch-action: none !important;
+  pointer-events: none !important;
+}
+
+
+/* 확대 / 축소 */
+
+.map-zoom-controls {
+  position: absolute;
+  z-index: 10;
+
+  right: 12px;
+  bottom: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background:
+    rgba(255, 255, 255, .92);
+
+  box-shadow:
+    0 1px 7px
+    rgba(0, 0, 0, .16);
+}
+
+
+.map-zoom-controls button {
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #222;
+
+  font-size: 24px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+
+.map-zoom-controls button + button {
+  border-top:
+    1px solid
+    rgba(0, 0, 0, .12);
 }
 
 /* =========================================
