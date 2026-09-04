@@ -699,6 +699,7 @@ accountAccordions.forEach(
   }
 );
 
+
 /* ====================================
    ACCOUNT COPY
 ==================================== */
@@ -713,10 +714,43 @@ document
       "click",
       async () => {
 
-        const account =
-          button.dataset.account;
+        /*
+          복사 버튼이 있는 계좌 행 찾기
+        */
+        const accountRow =
+          button.closest(
+            ".account-row"
+          );
 
-        if (!account) {
+        if (!accountRow) {
+          return;
+        }
+
+
+        /*
+          화면에 표시된 계좌번호 찾기
+        */
+        const accountNumberElement =
+          accountRow.querySelector(
+            ".account-number"
+          );
+
+        if (!accountNumberElement) {
+          return;
+        }
+
+
+        /*
+          화면에 표시된 내용에서
+          숫자만 추출
+        */
+        const accountNumber =
+          accountNumberElement
+            .textContent
+            .replace(/\D/g, "");
+
+
+        if (!accountNumber) {
           return;
         }
 
@@ -724,7 +758,9 @@ document
         try {
 
           await navigator.clipboard
-            .writeText(account);
+            .writeText(
+              accountNumber
+            );
 
 
           const originalText =
@@ -756,8 +792,6 @@ document
     );
 
   });
-
-
 
 /* ====================================
    GALLERY
