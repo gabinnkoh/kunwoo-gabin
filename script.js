@@ -825,7 +825,7 @@ const galleryImages =
     : [
 
         "images/gallery01.jpg",
-        "images/main.jpg",
+        "images/main_v4_2.JPG",
         "images/gallery02.jpg",
        
         "images/gallery03.jpg",
@@ -1665,6 +1665,7 @@ renderGalleryGrid();
 initializeWeddingInfoReveal();
 
 
+initializeGalleryTitleAnimation();
 /* ====================================
    VERSION 4 RANDOM HERO
 ==================================== */
@@ -1728,3 +1729,48 @@ if (v4HeroImage) {
   );
 
 }*/
+
+function initializeGalleryTitleAnimation() {
+
+  const galleryHeading =
+    document.querySelector(
+      ".v4-gallery-heading"
+    );
+
+  if (!galleryHeading) {
+    return;
+  }
+
+
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          galleryHeading.classList.add(
+            "is-title-visible"
+          );
+
+          observer.unobserve(
+            galleryHeading
+          );
+
+        });
+
+      },
+      {
+        threshold: 0.3
+      }
+    );
+
+
+  observer.observe(
+    galleryHeading
+  );
+
+}
