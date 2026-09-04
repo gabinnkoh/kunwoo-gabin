@@ -375,25 +375,6 @@
       >
       </div>
 
-      <div class="map-zoom-controls">
-
-        <button
-          id="mapZoomInButton"
-          type="button"
-          aria-label="지도 확대"
-        >
-          +
-        </button>
-
-        <button
-          id="mapZoomOutButton"
-          type="button"
-          aria-label="지도 축소"
-        >
-          −
-        </button>
-
-      </div>
 
     </div>
 
@@ -998,18 +979,24 @@
         }
 
 
-        const position =
+        const markerPosition =
           new kakao.maps.LatLng(
             37.505603818492,
             126.88387163888
+          );
+
+        const mapCenter =
+          new kakao.maps.LatLng(
+            37.5057,
+            126.8862
           );
 
         const map =
           new kakao.maps.Map(
             container,
             {
-              center: position,
-              level: 3
+              center: mapCenter,
+              level: 4
             }
           );
 
@@ -1021,7 +1008,7 @@
 
         const marker =
           new kakao.maps.Marker({
-            position: position
+            position: markerPosition
           });
 
         marker.setMap(map);
