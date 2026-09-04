@@ -268,8 +268,12 @@ function setLanguage(language) {
     );
 
 
+  const navigationSection =
+    document.getElementById(
+      "navigationSection"
+    );
 
-  if (language === "ja") {
+    if (language === "ja") {
 
     /*
       일본어:
@@ -280,7 +284,6 @@ function setLanguage(language) {
       accountSection.style.display =
         "none";
     }
-
 
     if (flowerSection) {
       flowerSection.style.display =
@@ -300,11 +303,21 @@ function setLanguage(language) {
       );
     }
 
-
     if (googleMap) {
       googleMap.classList.remove(
         "hidden"
       );
+    }
+
+
+    /*
+      일본어:
+      네비게이션 영역 숨김
+    */
+
+    if (navigationSection) {
+      navigationSection.style.display =
+        "none";
     }
 
 
@@ -319,7 +332,6 @@ function setLanguage(language) {
       accountSection.style.display =
         "";
     }
-
 
     if (flowerSection) {
       flowerSection.style.display =
@@ -339,11 +351,21 @@ function setLanguage(language) {
       );
     }
 
-
     if (googleMap) {
       googleMap.classList.add(
         "hidden"
       );
+    }
+
+
+    /*
+      한국어:
+      네비게이션 영역 표시
+    */
+
+    if (navigationSection) {
+      navigationSection.style.display =
+        "";
     }
 
   }
