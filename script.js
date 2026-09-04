@@ -825,7 +825,9 @@ const galleryImages =
     : [
 
         "images/gallery01.jpg",
+        "images/main.jpg",
         "images/gallery02.jpg",
+       
         "images/gallery03.jpg",
 
         "images/gallery04.jpg",
@@ -833,8 +835,7 @@ const galleryImages =
         "images/gallery06.jpg",
 
         "images/gallery07.jpg",
-        "images/gallery08.jpg",
-        "images/gallery09.jpg"
+        "images/gallery08.jpg"
 
       ];
 
@@ -843,6 +844,9 @@ const galleryImages =
 const mutedImages = [
 
   "images/gallery01.jpg",
+   
+  "images/gallery02.jpg",
+  "images/main.jpg",
   "images/gallery03.jpg",
   "images/gallery04.jpg"
 
