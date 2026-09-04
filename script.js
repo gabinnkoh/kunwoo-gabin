@@ -40,7 +40,7 @@ const translations = {
 
     familyIntroduction:
       "김광일 · 유금수 의 아들&nbsp;&nbsp;<strong>건우</strong><br>" +
-      "고석헌 · 현시은 의 딸&nbsp;&nbsp;&nbsp;&nbsp;<strong>가빈</strong>",
+      "고석헌 · 현시은 의 딸&nbsp;&nbsp;<strong>가빈</strong>",
 
     locationTitle:
       "LOCATION",
