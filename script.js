@@ -1659,3 +1659,68 @@ if (invitation) {
 renderGalleryGrid();
 
 initializeWeddingInfoReveal();
+
+
+/* ====================================
+   VERSION 4 RANDOM HERO
+==================================== */
+
+const v4HeroImage =
+  document.getElementById(
+    "v4HeroImage"
+  );
+
+
+if (v4HeroImage) {
+
+  const v4HeroImages = [
+
+    {
+      src:
+        "images/main_v4_1.jpg",
+
+      className:
+        "hero-1"
+    },
+
+    {
+      src:
+        "images/main_v4_2.jpg",
+
+      className:
+        "hero-2"
+    },
+
+    {
+      src:
+        "images/main_v4_3.jpg",
+
+      className:
+        "hero-3"
+    }
+
+  ];
+
+
+  const randomHeroIndex =
+    Math.floor(
+      Math.random() *
+      v4HeroImages.length
+    );
+
+
+  const selectedHero =
+    v4HeroImages[
+      randomHeroIndex
+    ];
+
+
+  v4HeroImage.src =
+    selectedHero.src;
+
+
+  v4HeroImage.classList.add(
+    selectedHero.className
+  );
+
+}

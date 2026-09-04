@@ -163,6 +163,11 @@ img {
 }
 
 
+
+/*
+  사진 자체를 수정하지 않고
+  CSS에서만 톤을 살짝 잡음
+*/
 .v4-hero-image {
   position: absolute;
 
@@ -173,23 +178,35 @@ img {
 
   object-fit: cover;
 
-  object-position:
-    center center;
-}
+  transform:
+    scale(1.045);
 
-
-/*
-  사진 자체를 수정하지 않고
-  CSS에서만 톤을 살짝 잡음
-*/
-
-.v4-hero-image {
   filter:
-    saturate(.82)
-    contrast(1.06)
-    brightness(.82);
+    brightness(.76)
+    saturate(.72)
+    contrast(1.08);
+
+  backface-visibility:
+    hidden;
 }
 
+
+.v4-hero-image.hero-1 {
+  object-position:
+    center 50%;
+}
+
+
+.v4-hero-image.hero-2 {
+  object-position:
+    center 47%;
+}
+
+
+.v4-hero-image.hero-3 {
+  object-position:
+    center 55%;
+}
 
 .v4-hero-shade {
   position: absolute;
