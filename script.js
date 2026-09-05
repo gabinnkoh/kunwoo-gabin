@@ -286,6 +286,10 @@ function setLanguage(language) {
       "kakaoMap"
     );
 
+  const kakaoMapWrapper =
+    document.getElementById(
+      "kakaoMapWrapper"
+    );
 
   const googleMap =
     document.getElementById(
@@ -322,8 +326,8 @@ function setLanguage(language) {
       Google Maps 표시
     */
 
-    if (kakaoMap) {
-      kakaoMap.classList.add(
+    if (kakaoMapWrapper) {
+      kakaoMapWrapper.classList.add(
         "hidden"
       );
     }
@@ -370,8 +374,8 @@ function setLanguage(language) {
       Google Maps 숨김
     */
 
-    if (kakaoMap) {
-      kakaoMap.classList.remove(
+    if (kakaoMapWrapper) {
+      kakaoMapWrapper.classList.remove(
         "hidden"
       );
     }
