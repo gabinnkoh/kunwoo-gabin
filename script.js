@@ -833,18 +833,18 @@ document
 
 const galleryImages = [
 
-  "images/gallery01.jpg",
-  "images/gallery02.jpg",
-  "images/gallery03.jpg",
-  "images/gallery04.jpg",
-  "images/gallery05.jpg",
-  "images/gallery06.jpg",
-  "images/gallery07.jpg",
-  "images/gallery08.jpg",
-  "images/gallery09.jpg",
-  "images/gallery10.jpg",
-  "images/gallery11.jpg",
-  "images/gallery12.jpg"
+  "images/gallery01.jpg?v=20260905-1",
+  "images/gallery02.jpg?v=20260905-1",
+  "images/gallery03.jpg?v=20260905-1",
+  "images/gallery04.jpg?v=20260905-1",
+  "images/gallery05.jpg?v=20260905-1",
+  "images/gallery06.jpg?v=20260905-1",
+  "images/gallery07.jpg?v=20260905-1",
+  "images/gallery08.jpg?v=20260905-1",
+  "images/gallery09.jpg?v=20260905-1",
+  "images/gallery10.jpg?v=20260905-1",
+  "images/gallery11.jpg?v=20260905-1",
+  "images/gallery12.jpg?v=20260905-1"
 
 ];
 
