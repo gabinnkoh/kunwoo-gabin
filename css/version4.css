@@ -1038,12 +1038,12 @@ img {
 
   margin-bottom: 7px;
 
-  font-size: 8px;
+  font-size: 10px;
 
   letter-spacing:
-    .08em;
+    .1em;
 
-  opacity: .45;
+  opacity: .75;
 }
 
 
@@ -1064,6 +1064,12 @@ img {
   font-weight: 500;
 }
 
+.calendar-sunday {
+  color: #d99791;
+}
+.calendar-saturday {
+  color: #9bbacf;
+}
 
 /* =========================================
    LOCATION
@@ -1537,30 +1543,27 @@ img {
 }
 
 
-/*
-  기존 JS가 img 9개를 넣음.
-  CSS만으로 에디토리얼 배치.
-*/
+
+/* =========================================
+   GALLERY COLLAGE
+========================================= */
 
 .gallery-grid {
   display: grid;
-
   grid-template-columns:
-    repeat(2, 1fr);
-
+    repeat(2, minmax(0, 1fr));
   grid-auto-flow: dense;
-
   gap: 5px;
 }
 
 
 .gallery-grid img {
-  width: 100%;
+  display: block;
 
+  width: 100%;
   height: 245px;
 
   object-fit: cover;
-
   cursor: pointer;
 
   filter:
@@ -1576,23 +1579,65 @@ img {
   opacity: .75;
 }
 
-
-.gallery-grid img:nth-child(1),
-.gallery-grid img:nth-child(6) {
-  grid-row:
-    span 2;
-
+/* 1번 - 기존 유지 */
+.gallery-grid img:nth-child(1) {
+  grid-column: 1;
+  grid-row: span 2;
   height: 495px;
 }
 
 
+/* 4번 - 기존 유지 */
 .gallery-grid img:nth-child(4) {
-  grid-column:
-    span 2;
-
+  grid-column: span 2;
   height: 310px;
 }
 
+/* =========================================
+   7 ~ 11 GALLERY LAYOUT
+========================================= */
+.gallery-grid img:nth-child(7) {
+  grid-column: 1;
+  grid-row: span 2;
+  height: 495px;
+}
+
+.gallery-grid img:nth-child(8) {
+  grid-column: 2;
+  height: 245px;
+}
+
+.gallery-grid img:nth-child(9) {
+  grid-column: 2;
+  height: 245px;
+}
+/*
+  10번
+  가로 2칸 × 세로 2칸
+  아래쪽 중심 크롭
+*/
+.gallery-grid img:nth-child(10) {
+  grid-column: span 2;
+  grid-row: span 2;
+
+  height: 495px;
+
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+
+/*
+  11, 12번
+  마지막 줄에 나란히 한 칸씩
+*/
+.gallery-grid img:nth-child(11),
+.gallery-grid img:nth-child(12) {
+  grid-column: auto;
+  grid-row: auto;
+
+  height: 245px;
+}
 
 /* =========================================
    INFORMATION
@@ -2189,7 +2234,7 @@ html[lang="ja"] body {
 ========================================= */
 
 @media
-(max-width: 370px) {
+(max-width: 420px) {
 
   .v4-title-large {
     font-size: 57px;
@@ -2210,12 +2255,86 @@ html[lang="ja"] body {
     height: 215px;
   }
 
-
-  .gallery-grid img:nth-child(1),
-  .gallery-grid img:nth-child(6) {
+  .gallery-grid img:nth-child(1){
     height: 435px;
   }
 
+  .gallery-grid img:nth-child(4){
+    height: 280px;
+  }
+
+  .gallery-grid img:nth-child(7){
+    height: 435px;
+  }
+
+  .gallery-grid img:nth-child(8),
+  .gallery-grid img:nth-child(9){
+    height: 215px;
+  }
+
+  .gallery-grid img:nth-child(10) {
+    height: 435px;
+  }
+
+  .gallery-grid img:nth-child(11),
+  .gallery-grid img:nth-child(12) {
+    height: 215px;
+  }
+
+}
+
+/* =========================================
+   GALLERY MORE
+========================================= */
+
+.gallery-more-wrap {
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 30px;
+}
+
+
+.gallery-more-button {
+  appearance: none;
+
+  border: 0;
+  border-bottom:
+    1px solid
+    rgba(20, 20, 18, .45);
+
+  padding:
+    4px
+    2px
+    7px;
+
+  background:
+    transparent;
+
+  color: #1a1a18 !important;
+
+  font-family:
+    inherit;
+
+  font-size:
+    12px;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    .12em;
+
+  cursor:
+    pointer;
+  opacity: 1;
+  -webkit-text-fill-color: #adada9;
+}
+
+
+.gallery-more-button:active {
+  opacity: .5;
 }
 
 /* =========================================
@@ -2832,3 +2951,484 @@ html[lang="ja"] body {
       rotate(30deg);
   }
 }
+
+/* =========================================
+   CALENDAR 19 SPARKLE
+========================================= */
+
+.wedding-day {
+  position: relative;
+  overflow: visible;
+}
+
+.wedding-day-number {
+  position: relative;
+  z-index: 3;
+}
+
+
+/* =========================================
+   SPARKLE AREA
+========================================= */
+
+.calendar-sparkles {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 50%;
+  top: 50%;
+
+  width: 104px;
+  height: 104px;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   STAR BASE
+========================================= */
+
+.calendar-sparkle {
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  opacity: 0;
+
+  /*
+    아래쪽에서 출발
+  */
+  --rise: 180px;
+
+  /*
+    별 밝기
+  */
+  --brightness: 1;
+}
+
+
+/*
+  + 모양 대신
+  중심은 조금 넓고
+  네 끝은 뾰족한 별빛
+*/
+
+.calendar-sparkle::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      var(--brightness)
+    );
+
+  clip-path: polygon(
+    50% 0%,
+    53% 44%,
+    100% 50%,
+    53% 56%,
+    50% 100%,
+    47% 56%,
+    0% 50%,
+    47% 44%
+  );
+
+  filter:
+    drop-shadow(
+      0 0 1.5px
+      rgba(
+        255,
+        255,
+        255,
+        .12
+      )
+    );
+}
+
+
+/* =========================================
+   SIZE VARIATION
+========================================= */
+
+/*
+  큰 별
+*/
+
+.sparkle-1,
+.sparkle-5 {
+  width: 13px;
+  height: 13px;
+}
+
+
+/*
+  중간 별
+*/
+
+.sparkle-3,
+.sparkle-7,
+.sparkle-9 {
+  width: 9px;
+  height: 9px;
+}
+
+
+/*
+  작은 별
+*/
+
+.sparkle-2,
+.sparkle-6,
+.sparkle-8 {
+  width: 6px;
+  height: 6px;
+}
+
+
+/*
+  아주 작은 별
+*/
+
+.sparkle-4,
+.sparkle-10 {
+  width: 4px;
+  height: 4px;
+}
+
+
+/* =========================================
+   BRIGHTNESS VARIATION
+========================================= */
+
+/*
+  밝은 별
+*/
+.sparkle-1 {
+  --brightness: .72;
+}
+
+.sparkle-2 {
+  --brightness: .28;
+}
+
+.sparkle-3 {
+  --brightness: .62;
+}
+
+.sparkle-4 {
+  --brightness: .32;
+}
+
+.sparkle-5 {
+  --brightness: .68;
+}
+
+.sparkle-6 {
+  --brightness: .25;
+}
+
+.sparkle-7 {
+  --brightness: .58;
+}
+
+.sparkle-8 {
+  --brightness: .30;
+}
+
+.sparkle-9 {
+  --brightness: .64;
+}
+
+.sparkle-10 {
+  --brightness: .24;
+}
+
+/* =========================================
+   FINAL POSITION AROUND 19
+   19에 조금 더 가깝게
+========================================= */
+
+.calendar-sparkle.sparkle-1 {
+  left: 22px;
+  top: 47px;
+}
+
+.calendar-sparkle.sparkle-2 {
+  left: 28px;
+  top: 32px;
+}
+
+.calendar-sparkle.sparkle-3 {
+  left: 39px;
+  top: 22px;
+}
+
+.calendar-sparkle.sparkle-4 {
+  left: 54px;
+  top: 20px;
+}
+
+.calendar-sparkle.sparkle-5 {
+  left: 67px;
+  top: 30px;
+}
+
+.calendar-sparkle.sparkle-6 {
+  left: 74px;
+  top: 45px;
+}
+
+.calendar-sparkle.sparkle-7 {
+  left: 67px;
+  top: 60px;
+}
+
+.calendar-sparkle.sparkle-8 {
+  left: 56px;
+  top: 68px;
+}
+
+.calendar-sparkle.sparkle-9 {
+  left: 39px;
+  top: 64px;
+}
+
+.calendar-sparkle.sparkle-10 {
+  left: 27px;
+  top: 59px;
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+.wedding-day.calendar-sparkle-active
+.calendar-sparkle {
+
+  animation-name:
+    calendarSparkleRise,
+    calendarSparkleGlow;
+
+  animation-duration:
+    1.25s,
+    var(--glow-duration);
+
+  animation-timing-function:
+    cubic-bezier(.22, .65, .32, 1),
+    ease-in-out;
+
+  animation-fill-mode:
+    forwards,
+    forwards;
+
+  animation-delay:
+    var(--rise-delay),
+    var(--glow-delay);
+}
+
+
+/* =========================================
+   TIMING VARIATION
+========================================= */
+
+.sparkle-1 {
+  --rise-delay: 0s;
+  --glow-delay: .95s;
+  --glow-duration: 3.1s;
+}
+
+.sparkle-2 {
+  --rise-delay: .08s;
+  --glow-delay: 1.03s;
+  --glow-duration: 2.3s;
+}
+
+.sparkle-3 {
+  --rise-delay: .15s;
+  --glow-delay: 1.10s;
+  --glow-duration: 2.8s;
+}
+
+.sparkle-4 {
+  --rise-delay: .04s;
+  --glow-delay: .99s;
+  --glow-duration: 2.8s;
+}
+
+.sparkle-5 {
+  --rise-delay: .20s;
+  --glow-delay: 1.15s;
+  --glow-duration: 3.0s;
+}
+
+.sparkle-6 {
+  --rise-delay: .11s;
+  --glow-delay: 1.06s;
+  --glow-duration: 2.5s;
+}
+
+.sparkle-7 {
+  --rise-delay: .25s;
+  --glow-delay: 1.20s;
+  --glow-duration: 3.3s;
+}
+
+.sparkle-8 {
+  --rise-delay: .06s;
+  --glow-delay: 1.01s;
+  --glow-duration: 3.8s;
+}
+
+.sparkle-9 {
+  --rise-delay: .17s;
+  --glow-delay: 1.12s;
+  --glow-duration: 3.8s;
+}
+
+.sparkle-10 {
+  --rise-delay: .29s;
+  --glow-delay: 1.24s;
+  --glow-duration: 3.1s;
+}
+
+
+/* =========================================
+   STEP 1
+   RISE FROM BELOW
+========================================= */
+
+@keyframes calendarSparkleRise {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(var(--rise))
+      scale(.2);
+  }
+
+  12% {
+    opacity: .18;
+  }
+
+  32% {
+    opacity: .55;
+  }
+
+  72% {
+    opacity: .85;
+  }
+
+  100% {
+    opacity: .72;
+
+    transform:
+      translateY(0)
+      scale(.82);
+  }
+}
+
+
+/* =========================================
+   STEP 2
+   SLOW TWINKLE AROUND 19
+========================================= */
+@keyframes calendarSparkleGlow {
+
+  0% {
+    opacity: .42;
+
+    transform:
+      translateY(0)
+      scale(.86);
+  }
+
+  20% {
+    opacity: .68;
+
+    transform:
+      translateY(0)
+      scale(.97);
+  }
+
+  40% {
+    opacity: .34;
+
+    transform:
+      translateY(0)
+      scale(.88);
+  }
+
+  60% {
+    opacity: .72;
+
+    transform:
+      translateY(0)
+      scale(1.02);
+  }
+
+  78% {
+    opacity: .38;
+
+    transform:
+      translateY(0)
+      scale(.91);
+  }
+
+  90% {
+    opacity: .58;
+
+    transform:
+      translateY(0)
+      scale(.96);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(-1px)
+      scale(.72);
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .wedding-day.calendar-sparkle-active
+  .calendar-sparkle {
+    animation: none;
+  }
+
+}
+
+/*
+  움직임 최소화 설정 사용자
+*/
+@media (
+  prefers-reduced-motion: reduce
+) {
+
+  .wedding-day.calendar-sparkle-active
+  .calendar-sparkle {
+    animation: none;
+  }
+
+}
+

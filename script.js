@@ -100,7 +100,7 @@ const translations = {
       "자가용 이용 시",
 
     carDescription:
-      "서울특별시 구로구 경인로 610 (1시간 30분 무료 주차)",
+      "서울특별시 구로구 경인로 610 <br>(1시간 30분 무료 주차)",
 
     receptionNoticeTitle:
       "<strong>안내드립니다.</strong>",
@@ -114,7 +114,10 @@ const translations = {
 
     accountMessage:
       "축하해 주시는 따뜻한 마음에 깊이 감사드립니다.<br>" +
-      "귀한 마음을 감사히 간직하겠습니다."
+      "귀한 마음을 감사히 간직하겠습니다.",
+
+    galleryMore:
+      "더보기",
 
   },
 
@@ -191,7 +194,10 @@ const translations = {
       "",
 
     accountMessage:
-      ""
+      "",
+
+    galleryMore:
+      "もっと見る",
 
   }
 
@@ -821,70 +827,31 @@ document
     );
 
   });
-
 /* ====================================
    GALLERY
 ==================================== */
 
-const isVersion3 =
-  document.body.classList.contains(
-    "version3"
-  );
-
-
-const galleryImages =
-  isVersion3
-
-    ? [
-
-        "images/gallery01.jpg",
-        "images/gallery03.jpg",
-        "images/gallery04.jpg",
-
-        "images/gallery07.jpg",
-        "images/gallery10.jpg",
-        "images/gallery09.jpg",
-
-        "images/gallery02.jpg",
-        "images/gallery05.jpg",
-        "images/gallery06.jpg"
-
-      ]
-
-    : [
-
-        "images/gallery01.jpg",
-        "images/main_v4_2.JPG",
-        "images/gallery02.jpg",
-       
-        "images/gallery03.jpg",
-
-        "images/gallery05.jpg",
-        "images/gallery04.jpg",
-        "images/gallery06.jpg",
-
-        "images/gallery07.jpg",
-        "images/gallery08.jpg"
-
-      ];
-
-
-
-const mutedImages = [
+const galleryImages = [
 
   "images/gallery01.jpg",
-   
   "images/gallery02.jpg",
-  "images/main.jpg",
   "images/gallery03.jpg",
-  "images/gallery04.jpg"
+  "images/gallery04.jpg",
+  "images/gallery05.jpg",
+  "images/gallery06.jpg",
+  "images/gallery07.jpg",
+  "images/gallery08.jpg",
+  "images/gallery09.jpg",
+  "images/gallery10.jpg",
+  "images/gallery11.jpg",
+  "images/gallery12.jpg"
 
 ];
 
+const initialGalleryCount = 9;
 
 let currentGalleryIndex =
   0;
-
 
 
 const galleryGrid =
@@ -911,10 +878,51 @@ const galleryCounter =
   );
 
 
+const galleryMoreButton =
+  document.getElementById(
+    "galleryMoreButton"
+  );
 
 /* ====================================
    GALLERY GRID
 ==================================== */
+
+function createGalleryImage(
+  imageSrc,
+  index
+) {
+
+  const image =
+    document.createElement(
+      "img"
+    );
+
+  image.src =
+    imageSrc;
+
+  image.alt =
+    `Wedding gallery ${index + 1}`;
+
+  image.loading =
+    "lazy";
+
+
+  image.addEventListener(
+    "click",
+    () => {
+
+      currentGalleryIndex =
+        index;
+
+      openGallery();
+
+    }
+  );
+
+
+  return image;
+}
+
 
 function renderGalleryGrid() {
 
@@ -927,64 +935,91 @@ function renderGalleryGrid() {
     "";
 
 
-  galleryImages.forEach(
-    (imageSrc, index) => {
+  /*
+    처음에는 1 ~ 9번만 표시
+  */
+  galleryImages
+    .slice(
+      0,
+      initialGalleryCount
+    )
+    .forEach(
+      (
+        imageSrc,
+        index
+      ) => {
 
-      const image =
-        document.createElement(
-          "img"
-        );
-
-
-      image.src =
-        imageSrc;
-
-
-      image.alt =
-        `Wedding gallery ${index + 1}`;
-
-
-      image.loading =
-        "lazy";
-
-
-      if (
-        isVersion3 &&
-        mutedImages.includes(
-          imageSrc
-        )
-      ) {
-
-        image.classList.add(
-          "muted-photo"
+        galleryGrid.appendChild(
+          createGalleryImage(
+            imageSrc,
+            index
+          )
         );
 
       }
+    );
+
+}
+/* ====================================
+   GALLERY MORE
+==================================== */
+
+function showMoreGalleryImages() {
+
+  if (!galleryGrid) {
+    return;
+  }
 
 
-      image.addEventListener(
-        "click",
-        () => {
+  /*
+    10 ~ 12번 추가
+  */
+  galleryImages
+    .slice(
+      initialGalleryCount
+    )
+    .forEach(
+      (
+        imageSrc,
+        extraIndex
+      ) => {
 
-          currentGalleryIndex =
-            index;
+        const realIndex =
+          initialGalleryCount +
+          extraIndex;
 
-          openGallery();
+        galleryGrid.appendChild(
+          createGalleryImage(
+            imageSrc,
+            realIndex
+          )
+        );
 
-        }
-      );
+      }
+    );
 
 
-      galleryGrid.appendChild(
-        image
-      );
 
-    }
-  );
+  /*
+    한 번 펼치면 더보기 버튼 제거
+  */
+  if (galleryMoreButton) {
+
+    galleryMoreButton.style.display =
+      "none";
+
+  }
 
 }
 
+if (galleryMoreButton) {
 
+  galleryMoreButton.addEventListener(
+    "click",
+    showMoreGalleryImages
+  );
+
+}
 
 /* ====================================
    OPEN / CLOSE
@@ -1034,7 +1069,6 @@ function closeGallery() {
 /* ====================================
    FULLSCREEN
 ==================================== */
-
 function updateFullscreenGallery() {
 
   if (!fullscreenImage) {
@@ -1048,26 +1082,6 @@ function updateFullscreenGallery() {
     ];
 
 
-  if (isVersion3) {
-
-    fullscreenImage.classList.toggle(
-      "muted-photo",
-      mutedImages.includes(
-        galleryImages[
-          currentGalleryIndex
-        ]
-      )
-    );
-
-  } else {
-
-    fullscreenImage.classList.remove(
-      "muted-photo"
-    );
-
-  }
-
-
   if (galleryCounter) {
 
     galleryCounter.textContent =
@@ -1076,6 +1090,7 @@ function updateFullscreenGallery() {
   }
 
 }
+
 
 
 
@@ -1521,6 +1536,78 @@ if (
 
 }
 
+function initializeCalendarSparkle() {
+
+  const weddingDay =
+    document.getElementById(
+      "weddingDay19"
+    );
+
+  if (!weddingDay) {
+    return;
+  }
+
+
+  /*
+    IntersectionObserver가 없는 경우
+    애니메이션 없이 정상 표시
+  */
+  if (
+    !(
+      "IntersectionObserver"
+      in window
+    )
+  ) {
+    return;
+  }
+
+
+  let hasPlayed = false;
+
+
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (
+              !entry.isIntersecting ||
+              hasPlayed
+            ) {
+              return;
+            }
+
+
+            hasPlayed = true;
+
+            weddingDay.classList.add(
+              "calendar-sparkle-active"
+            );
+
+            observer.disconnect();
+
+          }
+        );
+
+      },
+      {
+        /*
+          달력이 어느 정도
+          화면 안으로 올라온 시점
+        */
+        threshold: 0.3
+      }
+    );
+
+
+  observer.observe(
+    weddingDay
+  );
+
+}
+
 /* ====================================
    BOTTOM PULL EFFECT
 ==================================== */
@@ -1693,8 +1780,10 @@ renderGalleryGrid();
 
 initializeWeddingInfoReveal();
 
-
 initializeGalleryTitleAnimation();
+
+initializeCalendarSparkle();
+
 /* ====================================
    VERSION 4 RANDOM HERO
 ==================================== */
