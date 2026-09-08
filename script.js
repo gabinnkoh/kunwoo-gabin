@@ -76,13 +76,13 @@ const translations = {
 
     address:
       "서울특별시 구로구 경인로 610 (신도림동)<br>" +
-      "(tel) 02-852-5000",
+      "Tel. 02-852-5000",
 
     navigationTitle:
       "네비게이션",
 
     navigationDescription:
-      "앱을 열어 길 안내를 시작해보세요.",
+      "앱을 열어 길 안내를 시작하세요.",
 
     subwayTitle:
       "지하철 이용 시",
