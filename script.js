@@ -96,11 +96,18 @@ const translations = {
     shuttleDescription:
       "신도림역 1번 출구 (수시 운행)",
 
+    busTitle:
+      "버스 이용 시",
+
+    busDescription:
+      "신도림동.구로역 정류장에서 도보 1분<br>" +
+      "신도림중학교 정류장에서 도보 3분",
+
     carTitle:
       "자가용 이용 시",
 
     carDescription:
-      "서울특별시 구로구 경인로 610 <br>(1시간 30분 무료 주차)",
+      "더 링크 호텔 주차장 이용 1시간 30분 무료<br>(이후 15분당 1,000원)",
 
     receptionNoticeTitle:
       "<strong>안내드립니다.</strong>",
@@ -179,9 +186,9 @@ const translations = {
       "タクシーをご利用の場合",
 
     carDescription:
-      "서울특별시 구로구 경인로 610<br>" +
-      "610 Gyeongin-ro, Guro-gu, Seoul<br>" +
-      "ソウル特別市 九老区 京仁路 610",
+      "The Link Hotel Seoul<br>" +
+      "ソウル特別市 九老区 京仁路 610<br>" +
+      "610 Gyeongin-ro, Guro-gu, Seoul",
 
     receptionNoticeTitle:
       "<strong>ご案内</strong>",
@@ -232,47 +239,47 @@ function updateLanguageButton() {
 
 }
 
-function setLanguage(language) {
+function setLanguage(
+  language
+) {
 
   currentLanguage =
     language;
 
-
   document.documentElement.lang =
     language;
-
 
   document.title =
     translations[language].title;
 
 
-
   document
-    .querySelectorAll("[data-i18n]")
-    .forEach((element) => {
+    .querySelectorAll(
+      "[data-i18n]"
+    )
+    .forEach(
+      (element) => {
 
-      const key =
-        element.dataset.i18n;
+        const key =
+          element.dataset.i18n;
 
+        const translatedText =
+          translations[language][key];
 
-      const translatedText =
-        translations[language][key];
+        if (
+          translatedText !== undefined
+        ) {
 
+          element.innerHTML =
+            translatedText;
 
-      if (
-        translatedText !== undefined
-      ) {
-
-        element.innerHTML =
-          translatedText;
+        }
 
       }
-
-    });
+    );
 
 
   updateLanguageButton();
-
 
 
   const accountSection =
@@ -280,16 +287,9 @@ function setLanguage(language) {
       "accountSection"
     );
 
-
   const flowerSection =
     document.getElementById(
       "flowerSection"
-    );
-
-
-  const kakaoMap =
-    document.getElementById(
-      "kakaoMap"
     );
 
   const kakaoMapWrapper =
@@ -302,18 +302,25 @@ function setLanguage(language) {
       "googleMap"
     );
 
-
   const navigationSection =
     document.getElementById(
       "navigationSection"
     );
 
-    if (language === "ja") {
+  const busInfoDiv =
+    document.getElementById(
+      "busInfoDiv"
+    );
 
-    /*
-      일본어:
-      계좌 / 화환 숨김
-    */
+  const transportNumberCar =
+    document.getElementById(
+      "transportNumberCar"
+    );
+
+
+  if (
+    language === "ja"
+  ) {
 
     if (accountSection) {
       accountSection.style.display =
@@ -324,13 +331,6 @@ function setLanguage(language) {
       flowerSection.style.display =
         "none";
     }
-
-
-    /*
-      일본어:
-      카카오맵 숨김
-      Google Maps 표시
-    */
 
     if (kakaoMapWrapper) {
       kakaoMapWrapper.classList.add(
@@ -344,24 +344,22 @@ function setLanguage(language) {
       );
     }
 
-
-    /*
-      일본어:
-      네비게이션 영역 숨김
-    */
-
     if (navigationSection) {
       navigationSection.style.display =
         "none";
     }
 
+    if (busInfoDiv) {
+      busInfoDiv.style.display =
+        "none";
+    }
+
+    if (transportNumberCar) {
+      transportNumberCar.innerHTML =
+        "03";
+    }
 
   } else {
-
-    /*
-      한국어:
-      계좌 / 화환 표시
-    */
 
     if (accountSection) {
       accountSection.style.display =
@@ -372,13 +370,6 @@ function setLanguage(language) {
       flowerSection.style.display =
         "";
     }
-
-
-    /*
-      한국어:
-      카카오맵 표시
-      Google Maps 숨김
-    */
 
     if (kakaoMapWrapper) {
       kakaoMapWrapper.classList.remove(
@@ -392,19 +383,53 @@ function setLanguage(language) {
       );
     }
 
-
-    /*
-      한국어:
-      네비게이션 영역 표시
-    */
-
     if (navigationSection) {
       navigationSection.style.display =
         "";
     }
 
+    if (busInfoDiv) {
+      busInfoDiv.style.display =
+        "";
+    }
+
+    if (transportNumberCar) {
+      transportNumberCar.innerHTML =
+        "04";
+    }
+
   }
 
+
+  /* URL에 현재 언어 저장 */
+
+  const currentUrl =
+    new URL(
+      window.location.href
+    );
+
+  if (
+    language === "ja"
+  ) {
+
+    currentUrl.searchParams.set(
+      "lang",
+      "ja"
+    );
+
+  } else {
+
+    currentUrl.searchParams.delete(
+      "lang"
+    );
+
+  }
+
+  window.history.replaceState(
+    {},
+    "",
+    currentUrl
+  );
 
 
 }
@@ -415,32 +440,62 @@ function setLanguage(language) {
    INITIAL LANGUAGE
 ==================================== */
 
+const pageParams =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const urlLanguage =
+  pageParams.get(
+    "lang"
+  );
+
+
 const browserLanguage =
   navigator.language ||
   navigator.userLanguage;
 
 
 if (
+  urlLanguage === "ja"
+) {
+
+  /*
+    공유받은 일본어 링크
+    ?lang=ja
+  */
+  setLanguage(
+    "ja"
+  );
+
+} else if (
   browserLanguage &&
   browserLanguage
     .toLowerCase()
     .startsWith("ja")
 ) {
 
-  setLanguage("ja");
+  /*
+    URL 언어 정보가 없고
+    일본어 브라우저인 경우
+  */
+  setLanguage(
+    "ja"
+  );
 
 } else {
 
-  setLanguage("ko");
+  setLanguage(
+    "ko"
+  );
 
 }
-
 
 
 /* ====================================
    LANGUAGE BUTTON
 ==================================== */
-
 if (languageToggleButton) {
 
   languageToggleButton.addEventListener(
@@ -456,11 +511,14 @@ if (languageToggleButton) {
         nextLanguage
       );
 
+      updateShareButton(
+        nextLanguage
+      );
+
     }
   );
 
 }
-
 
 
 /* ====================================
@@ -1943,4 +2001,191 @@ window.addEventListener(
   {
     passive: false
   }
+);
+
+/* ====================================
+   SHARE
+==================================== */
+
+const shareButton =
+  document.getElementById(
+    "shareButton"
+  );
+
+
+const invitationBaseUrl =
+  "https://gabinnkoh.github.io/kunwoo-gabin/index.html";
+
+
+function updateShareButton(
+  language
+) {
+
+  if (!shareButton) {
+    return;
+  }
+
+
+  /* =========================
+     JAPANESE
+  ========================= */
+
+  if (language === "ja") {
+
+    shareButton.textContent =
+      "招待状のリンクをコピー";
+
+
+    shareButton.onclick =
+      async () => {
+
+        const invitationUrl =
+          new URL(
+            invitationBaseUrl
+          );
+
+
+        /*
+          일본어 정보 포함
+        */
+        invitationUrl.searchParams.set(
+          "lang",
+          "ja"
+        );
+
+
+        try {
+
+          await navigator.clipboard
+            .writeText(
+              invitationUrl.href
+            );
+
+
+          shareButton.textContent =
+            "コピーしました";
+
+
+          setTimeout(
+            () => {
+
+              shareButton.textContent =
+                "招待状のリンクをコピー";
+
+            },
+            1500
+          );
+
+        } catch (error) {
+
+          console.error(
+            "링크 복사 실패",
+            error
+          );
+
+        }
+
+      };
+
+  }
+
+
+  /* =========================
+     KOREAN
+  ========================= */
+
+  else {
+
+    shareButton.textContent =
+      "카카오톡 공유하기";
+
+
+    shareButton.onclick =
+      () => {
+
+        if (
+          typeof Kakao ===
+          "undefined"
+        ) {
+
+          console.error(
+            "Kakao SDK가 로드되지 않았습니다."
+          );
+
+          return;
+        }
+
+
+        if (
+          !Kakao.isInitialized()
+        ) {
+
+          Kakao.init(
+            "877ccd7065d1d776c016af2014eda82e"
+          );
+
+        }
+
+
+        Kakao.Share.sendDefault({
+
+          objectType:
+            "feed",
+
+
+          content: {
+
+            title:
+              "건우 & 가빈 결혼합니다",
+
+            description:
+              "2026년 12월 19일 토요일 오전 11시 40분\n더링크 플라자홀",
+
+            imageUrl:
+              "https://gabinnkoh.github.io/kunwoo-gabin/images/main.jpg",
+
+            link: {
+
+              mobileWebUrl:
+                invitationBaseUrl,
+
+              webUrl:
+                invitationBaseUrl
+
+            }
+
+          },
+
+
+          buttons: [
+
+            {
+
+              title:
+                "청첩장 보기",
+
+              link: {
+
+                mobileWebUrl:
+                  invitationBaseUrl,
+
+                webUrl:
+                  invitationBaseUrl
+
+              }
+
+            }
+
+          ]
+
+        });
+
+      };
+
+  }
+
+}
+
+updateShareButton(
+  currentLanguage
 );
