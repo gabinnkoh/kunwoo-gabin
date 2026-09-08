@@ -50,7 +50,7 @@ const translations = {
 
     weddingSummary:
       "2026년 12월 19일 토요일 11시 40분<br>" +
-      "더링크 플라자홀 (4F)",
+      "더 링크 서울, 플라자홀 (4F)",
 
     calendarDate:
       "2026년 12월 19일 토요일 오전 11시 40분",
@@ -88,14 +88,14 @@ const translations = {
       "지하철 이용 시",
 
     subwayDescription:
-      "1,2호선 신도림역 1번 출구 도보 10분<br>" +
-      "1호선 구로역 3번 출구 도보 5분",
+      "1,2호선 신도림역 1번 출구에서 도보 10분<br>" +
+      "1호선 구로역 3번 출구에서 도보 5분",
 
     shuttleTitle:
       "셔틀버스 이용 시",
 
     shuttleDescription:
-      "신도림역 1번 출구 (수시 운행)",
+      "신도림역 1번 출구에서 탑승(수시 운행)",
 
     busTitle:
       "버스 이용 시",
@@ -137,7 +137,7 @@ const translations = {
 
     weddingSummary:
       "2026年12月19日 土曜日 11時40分<br>" +
-      "THE LINK PLAZA HALL (4F)",
+      "THE LINK SEOUL, PLAZA HALL (4F)",
 
     calendarDate:
       "2026年12月19日 土曜日 午前11時40分",
@@ -163,7 +163,7 @@ const translations = {
 
     address:
       "ソウル特別市 九老区 京仁路610<br>" +
-      "(tel) 02-852-5000",
+      "Tel. 02-852-5000",
 
     navigationTitle:
       "ナビゲーション",
