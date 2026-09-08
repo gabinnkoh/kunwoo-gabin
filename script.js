@@ -75,7 +75,8 @@ const translations = {
       "4층 플라자홀",
 
     address:
-      "서울특별시 구로구 경인로 610 (신도림동)",
+      "서울특별시 구로구 경인로 610 (신도림동)<br>" +
+      "(tel) 02-852-5000",
 
     navigationTitle:
       "네비게이션",
@@ -87,7 +88,7 @@ const translations = {
       "지하철 이용 시",
 
     subwayDescription:
-      "1/2호선 신도림역 1번 출구 도보 10분<br>" +
+      "1,2호선 신도림역 1번 출구 도보 10분<br>" +
       "1호선 구로역 3번 출구 도보 5분",
 
     shuttleTitle:
@@ -161,7 +162,8 @@ const translations = {
       "4階 PLAZA HALL",
 
     address:
-      "ソウル特別市 九老区 京仁路610",
+      "ソウル特別市 九老区 京仁路610<br>" +
+      "(tel) 02-852-5000",
 
     navigationTitle:
       "ナビゲーション",
