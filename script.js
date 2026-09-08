@@ -108,7 +108,7 @@ const translations = {
       "자가용 이용 시",
 
     carDescription:
-      "더 링크 호텔 주차장 이용 1시간 30분 무료<br>(이후 15분당 1,000원)",
+      "더 링크 호텔 주차장 이용 <br>(1시간 30분 무료, 이후 15분당 1,000원)",
 
     receptionNoticeTitle:
       "<strong>안내드립니다.</strong>",
