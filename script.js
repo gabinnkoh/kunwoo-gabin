@@ -1667,23 +1667,25 @@ function initializeCalendarSparkle() {
 }
 
 /* ====================================
-   BOTTOM PULL EFFECT
+   ENDING PULL EFFECT
 ==================================== */
 
-const invitation =
+const endingSection =
   document.querySelector(
-    ".invitation"
+    ".v4-ending"
   );
 
 
 let bottomTouchStartY =
   0;
 
-
 let isBottomPulling =
   false;
 
 
+/*
+  페이지 최하단인지 확인
+*/
 
 function isPageBottom() {
 
@@ -1698,14 +1700,20 @@ function isPageBottom() {
 }
 
 
+if (endingSection) {
 
-if (invitation) {
+  /*
+    최하단에서 터치 시작
+  */
 
   window.addEventListener(
     "touchstart",
     (event) => {
 
-      if (!isPageBottom()) {
+      if (
+        event.touches.length !== 1 ||
+        !isPageBottom()
+      ) {
         return;
       }
 
@@ -1719,7 +1727,7 @@ if (invitation) {
         true;
 
 
-      invitation.classList.add(
+      endingSection.classList.add(
         "bottom-pulling"
       );
 
@@ -1730,6 +1738,10 @@ if (invitation) {
   );
 
 
+  /*
+    손가락을 위로 밀면
+    엔딩 사진도 위로 따라 올라감
+  */
 
   window.addEventListener(
     "touchmove",
@@ -1737,11 +1749,9 @@ if (invitation) {
 
       if (
         !isBottomPulling ||
-        !isPageBottom()
+        event.touches.length !== 1
       ) {
-
         return;
-
       }
 
 
@@ -1755,23 +1765,38 @@ if (invitation) {
         currentY;
 
 
+      /*
+        위로 움직인 경우에만 적용
+      */
+
       if (
         movement <= 0
       ) {
 
-        return;
+        endingSection.style.setProperty(
+          "--bottom-pull",
+          "0px"
+        );
 
+        return;
       }
 
 
+      /*
+        손가락 이동량보다 적게 움직여
+        약간의 저항감 부여
+
+        최대 28px
+      */
+
       const pullAmount =
         Math.min(
-          movement * 0.18,
-          28
+          movement * .22,
+          158
         );
 
 
-      invitation.style.setProperty(
+      endingSection.style.setProperty(
         "--bottom-pull",
         `${pullAmount}px`
       );
@@ -1783,8 +1808,11 @@ if (invitation) {
   );
 
 
+  /*
+    손을 놓으면 원위치
+  */
 
-  function releaseBottomPull() {
+  function releaseEndingPull() {
 
     if (!isBottomPulling) {
       return;
@@ -1795,12 +1823,12 @@ if (invitation) {
       false;
 
 
-    invitation.classList.remove(
+    endingSection.classList.remove(
       "bottom-pulling"
     );
 
 
-    invitation.style.setProperty(
+    endingSection.style.setProperty(
       "--bottom-pull",
       "0px"
     );
@@ -1808,10 +1836,9 @@ if (invitation) {
   }
 
 
-
   window.addEventListener(
     "touchend",
-    releaseBottomPull,
+    releaseEndingPull,
     {
       passive: true
     }
@@ -1820,14 +1847,13 @@ if (invitation) {
 
   window.addEventListener(
     "touchcancel",
-    releaseBottomPull,
+    releaseEndingPull,
     {
       passive: true
     }
   );
 
 }
-
 
 
 /* ====================================
@@ -1842,69 +1868,6 @@ initializeGalleryTitleAnimation();
 
 initializeCalendarSparkle();
 
-/* ====================================
-   VERSION 4 RANDOM HERO
-==================================== */
-/*
-const v4HeroImage =
-  document.getElementById(
-    "v4HeroImage"
-  );
-
-
-if (v4HeroImage) {
-
-  const v4HeroImages = [
-
-    {
-      src:
-        "images/main_v4_1.jpg",
-
-      className:
-        "hero-1"
-    },
-
-    {
-      src:
-        "images/main_v4_2.jpg",
-
-      className:
-        "hero-2"
-    },
-
-    {
-      src:
-        "images/main_v4_3.jpg",
-
-      className:
-        "hero-3"
-    }
-
-  ];
-
-
-  const randomHeroIndex =
-    Math.floor(
-      Math.random() *
-      v4HeroImages.length
-    );
-
-
-  const selectedHero =
-    v4HeroImages[
-      randomHeroIndex
-    ];
-
-
-  v4HeroImage.src =
-    selectedHero.src;
-
-
-  v4HeroImage.classList.add(
-    selectedHero.className
-  );
-
-}*/
 
 function initializeGalleryTitleAnimation() {
 

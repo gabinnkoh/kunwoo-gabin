@@ -1918,6 +1918,14 @@ img {
     .18em;
 }
 
+/* Thank you 글자 */
+.v4-ending-thankyou {
+  font-size: 22px;
+}
+
+.v4-ending-wrap {
+  background: #111;
+}
 
 .v4-ending h2 {
   margin: 0;
@@ -1929,7 +1937,7 @@ img {
 
   font-size:
     clamp(
-      78px,
+    78px,
       24vw,
       118px
     );
@@ -2980,22 +2988,65 @@ html[lang="ja"] body {
 
 }
 
-
 /* =========================================
-   SHARE
+   ENDING + SHARE
 ========================================= */
 
-.v4-share-section {
-  padding:
-    64px
-    25px
+.v4-ending {
+  position: relative;
+
+  overflow: hidden;
+
+  transform:
+    translateY(
+      calc(
+        -1 *
+        var(--bottom-pull, 0px)
+      )
+    );
+
+  will-change: transform;
+}
+
+
+/* 손을 놓았을 때만 원위치로 부드럽게 */
+
+.v4-ending:not(.bottom-pulling) {
+  transition:
+    transform
+    .48s
+    cubic-bezier(
+      .22,
+      1,
+      .36,
+      1
+    );
+}
+
+
+/* =========================================
+   SHARE ON ENDING PHOTO
+========================================= */
+
+.v4-ending-share {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 0;
+  right: 0;
+  bottom:
     calc(
-      78px +
+      34px +
       env(safe-area-inset-bottom)
     );
 
-  background:
-    #111;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  pointer-events: none;
 }
 
 
@@ -3003,49 +3054,79 @@ html[lang="ja"] body {
   margin:
     0
     0
-    18px;
+    10px;
 
   color:
     rgba(
       255,
       255,
       255,
-      .48
+      .55
     );
 
-  font-size:
-    10px;
+  font-size: 9px;
+  font-weight: 500;
 
-  font-weight:
-    500;
+  letter-spacing: .22em;
 
-  letter-spacing:
-    .2em;
+  transition:
+    opacity .2s ease,
+    letter-spacing .2s ease;
 }
 
 
 .v4-share-button {
-  display:
-    flex;
+  padding: 4px 0;
 
-  align-items:
-    center;
+  border: 0;
 
-  justify-content:
-    space-between;
+  background: transparent;
 
-  width:
-    100%;
+  color: #fff;
 
-  min-height:
-    64px;
+  font-family: inherit;
 
-  padding:
-    0
-    24px;
+  font-size: 13px;
+  font-weight: 400;
 
-  border:
-    1px solid
+  line-height: 1.4;
+
+  letter-spacing: .03em;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  -webkit-appearance: none;
+  appearance: none;
+
+  text-shadow:
+    0 1px 8px
+    rgba(0, 0, 0, .25);
+}
+
+
+.v4-share-button::after {
+  content: "↗";
+
+  display: inline-block;
+
+  margin-left: 7px;
+
+  font-size: 14px;
+
+  font-weight: 300;
+
+  transition:
+    transform .25s ease;
+}
+
+
+/* 당기는 동안 SHARE도 아주 미세하게 반응 */
+
+.v4-ending.bottom-pulling
+.v4-share-label {
+  color:
     rgba(
       255,
       255,
@@ -3053,86 +3134,15 @@ html[lang="ja"] body {
       .9
     );
 
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
-  color:
-    #fff;
-
-  font-family:
-    inherit;
-
-  font-size:
-    16px;
-
-  font-weight:
-    400;
-
-  line-height:
-    1.4;
-
-  letter-spacing:
-    .02em;
-
-  text-align:
-    left;
-
-  white-space:
-    nowrap;
-
-  cursor:
-    pointer;
-
-  -webkit-appearance:
-    none;
-
-  appearance:
-    none;
-
-  transition:
-    background .2s ease,
-    color .2s ease;
+  letter-spacing: .27em;
 }
 
 
+.v4-ending.bottom-pulling
 .v4-share-button::after {
-  content:
-    "↗";
-
-  flex-shrink:
-    0;
-
-  margin-left:
-    20px;
-
-  font-size:
-    18px;
-
-  font-weight:
-    300;
-
-  line-height:
-    1;
-}
-
-
-.v4-share-button:active {
-  background:
-    #fff;
-
-  color:
-    #111;
-}
-
-
-html[lang="ja"]
-.v4-share-button {
-  font-size:
-    15px;
-
-  letter-spacing:
-    .01em;
+  transform:
+    translate(
+      2px,
+      -2px
+    );
 }
