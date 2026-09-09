@@ -777,8 +777,8 @@ accountAccordions.forEach(
             label.textContent.includes(
               "신랑"
             )
-              ? "신랑측"
-              : "신부측";
+              ? "신랑 측"
+              : "신부 측";
 
 
           label.textContent =
@@ -1360,9 +1360,11 @@ if (galleryModal) {
 
 }
 
+
 /* ====================================
-   WEDDING INFO - FIRST SCROLL REVEAL
+   WEDDING INFO - OPENING
 ==================================== */
+
 function initializeWeddingInfoReveal() {
 
   const weddingInfo =
@@ -1376,61 +1378,58 @@ function initializeWeddingInfoReveal() {
   }
 
 
-  let hasStarted = false;
-
-
-  function revealWeddingInfo() {
-
-    if (hasStarted) {
-      return;
-    }
-
-
-    const rect =
-      weddingInfo.getBoundingClientRect();
-
-
-    const isVisible =
-      rect.top < window.innerHeight &&
-      rect.bottom > 0;
-
-
-    if (!isVisible) {
-      return;
-    }
-
-
-    hasStarted = true;
-
+  if (
+    !(
+      "IntersectionObserver"
+      in window
+    )
+  ) {
 
     weddingInfo.classList.add(
       "is-visible"
     );
 
-
-    window.removeEventListener(
-      "scroll",
-      revealWeddingInfo
-    );
-
+    return;
   }
 
 
-  window.addEventListener(
-    "scroll",
-    revealWeddingInfo,
-    {
-      passive: true
-    }
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (
+              !entry.isIntersecting
+            ) {
+              return;
+            }
+
+
+            weddingInfo.classList.add(
+              "is-visible"
+            );
+
+
+            observer.disconnect();
+
+          }
+        );
+
+      },
+      {
+        threshold: 0.35,
+
+        rootMargin:
+          "0px 0px -12% 0px"
+      }
+    );
+
+
+  observer.observe(
+    weddingInfo
   );
-
-
-  /*
-    페이지를 처음 열었을 때
-    이미 화면 안에 들어와 있으면
-    스크롤을 기다리지 않고 실행
-  */
-  revealWeddingInfo();
 
 }
 
@@ -1729,9 +1728,13 @@ if (endingSection) {
         true;
 
 
-      endingSection.classList.add(
-        "bottom-pulling"
-      );
+      /*
+        손가락을 따라 움직일 때는
+        transition 없이 즉시 반응
+      */
+
+      endingSection.style.transition =
+        "none";
 
     },
     {
@@ -1741,8 +1744,7 @@ if (endingSection) {
 
 
   /*
-    손가락을 위로 밀면
-    엔딩 사진도 위로 따라 올라감
+    위로 더 당기는 동작
   */
 
   window.addEventListener(
@@ -1768,50 +1770,72 @@ if (endingSection) {
 
 
       /*
-        위로 움직인 경우에만 적용
+        아래 방향으로 움직이는 건
+        별도 효과 적용하지 않음
       */
 
       if (
         movement <= 0
       ) {
 
-        endingSection.style.setProperty(
-          "--bottom-pull",
-          "0px"
-        );
+        endingSection.style.transform =
+          "translate3d(0, 0, 0)";
 
         return;
       }
 
 
       /*
-        손가락 이동량보다 적게 움직여
-        약간의 저항감 부여
+        중요:
+        브라우저 자체의 하단 rubber-band를 막음.
 
-        최대 28px
+        그렇지 않으면
+        우리가 만든 애니메이션 +
+        Safari 기본 오버스크롤이 동시에 발생해서
+        사진이 늘어나 보일 수 있음.
+      */
+
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+
+
+
+      /*
+        손가락 이동량의 18%만 따라가도록 해서
+        끌어당기는 저항감 생성.
+
+        최대 32px.
       */
 
       const pullAmount =
         Math.min(
-          movement * .22,
-          158
+          movement * 0.18,
+          32
         );
 
 
-      endingSection.style.setProperty(
-        "--bottom-pull",
-        `${pullAmount}px`
-      );
+      /*
+        사진의 크기는 전혀 변경하지 않고
+        엔딩 section 전체 위치만 이동
+      */
+
+      endingSection.style.transform =
+        `translate3d(
+          0,
+          -${pullAmount}px,
+          0
+        )`;
 
     },
     {
-      passive: true
+      passive: false
     }
   );
 
 
   /*
-    손을 놓으면 원위치
+    손을 놓으면 원래 자리로 복귀
   */
 
   function releaseEndingPull() {
@@ -1825,14 +1849,27 @@ if (endingSection) {
       false;
 
 
-    endingSection.classList.remove(
-      "bottom-pulling"
-    );
+    endingSection.style.transition =
+      "transform .5s cubic-bezier(.22, 1, .36, 1)";
 
 
-    endingSection.style.setProperty(
-      "--bottom-pull",
-      "0px"
+    endingSection.style.transform =
+      "translate3d(0, 0, 0)";
+
+
+    /*
+      복귀가 끝난 뒤
+      inline transition 정리
+    */
+
+    window.setTimeout(
+      () => {
+
+        endingSection.style.transition =
+          "";
+
+      },
+      520
     );
 
   }
@@ -1856,7 +1893,6 @@ if (endingSection) {
   );
 
 }
-
 
 /* ====================================
    START
@@ -1959,7 +1995,9 @@ window.addEventListener(
       손가락을 아래쪽으로 끌 때만 차단
     */
     if (currentY > topTouchStartY) {
-      event.preventDefault();
+      if (event.cancelable) {
+        event.preventDefault();
+      }
     }
 
   },

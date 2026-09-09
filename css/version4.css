@@ -192,8 +192,27 @@ img {
 
   backface-visibility:
     hidden;
+
+  
+  animation:
+    v4HeroImageFade
+    2.4s
+    ease-out
+    forwards;
 }
 
+
+@keyframes v4HeroImageFade {
+
+  0% {
+    opacity: .72;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
 
 .v4-hero-image.hero-1 {
   object-position:
@@ -1703,12 +1722,6 @@ img {
 }
 
 
-.account-accordion:last-child {
-  border-bottom:
-    1px solid
-    rgba(0,0,0,.28);
-}
-
 
 .account-toggle {
   display: flex;
@@ -1844,39 +1857,74 @@ img {
   cursor: pointer;
 }
 
-
 /* =========================================
    ENDING
 ========================================= */
+
+.v4-ending-wrap {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #111;
+}
+
 
 .v4-ending {
   position: relative;
 
   width: 100%;
 
-  height:
-    100svh;
+  height: 100svh;
 
   min-height: 680px;
 
   overflow: hidden;
 
-  background:
-    #111;
+  background: #111;
+
+  transform:
+    translate3d(
+      0,
+      0,
+      0
+    );
+
+  will-change: transform;
 }
 
 
-.v4-ending img {
+/*
+  사진은 엔딩 프레임에 완전히 고정
+  당김 애니메이션에서 크기를 변경하지 않음
+*/
+
+.v4-ending > img {
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
   width: 100%;
   height: 100%;
 
+  max-width: none;
+
   object-fit: cover;
+
+  transform: none !important;
+
+  transition: none !important;
+
+  animation: none !important;
 
   filter:
     saturate(.68)
     brightness(.66);
 }
-
 
 .v4-ending-overlay {
   position: absolute;
@@ -1918,15 +1966,6 @@ img {
     .18em;
 }
 
-/* Thank you 글자 */
-.v4-ending-thankyou {
-  font-size: 22px;
-}
-
-.v4-ending-wrap {
-  background: #111;
-}
-
 .v4-ending h2 {
   margin: 0;
 
@@ -1937,17 +1976,17 @@ img {
 
   font-size:
     clamp(
-    78px,
-      24vw,
-      118px
+      60px,
+      19vw,
+      92px
     );
 
-  line-height: .73;
+  line-height: .78;
 
   font-weight: 400;
 
   letter-spacing:
-    -.065em;
+    -.055em;
 }
 
 
@@ -2161,14 +2200,59 @@ html.reveal-ready
    WEDDING INFO OPENING
 ========================================= */
 
-.wedding-info-opening p {
-  margin: 0;
-  opacity: 1;
-  clip-path: none;
-  animation: none;
-  transform: none;
+.wedding-info-opening {
+  overflow: hidden;
 }
 
+.wedding-info-opening p {
+  margin: 0;
+
+  opacity: 1;
+
+  clip-path:
+    inset(
+      0
+      100%
+      0
+      0
+    );
+
+  transform: none;
+
+  animation: none;
+}
+
+.wedding-info-opening.is-visible p {
+  animation:
+    v4WeddingOpenLeftToRight
+    6.4s
+    cubic-bezier(.22, 1, .36, 1)
+    forwards;
+}
+
+@keyframes v4WeddingOpenLeftToRight {
+
+  from {
+    clip-path:
+      inset(
+        0
+        100%
+        0
+        0
+      );
+  }
+
+  to {
+    clip-path:
+      inset(
+        0
+        0
+        0
+        0
+      );
+  }
+
+}
 
 
 @keyframes v4WeddingOpen {
@@ -2988,41 +3072,6 @@ html[lang="ja"] body {
 
 }
 
-/* =========================================
-   ENDING + SHARE
-========================================= */
-
-.v4-ending {
-  position: relative;
-
-  overflow: hidden;
-
-  transform:
-    translateY(
-      calc(
-        -1 *
-        var(--bottom-pull, 0px)
-      )
-    );
-
-  will-change: transform;
-}
-
-
-/* 손을 놓았을 때만 원위치로 부드럽게 */
-
-.v4-ending:not(.bottom-pulling) {
-  transition:
-    transform
-    .48s
-    cubic-bezier(
-      .22,
-      1,
-      .36,
-      1
-    );
-}
-
 
 /* =========================================
    SHARE ON ENDING PHOTO
@@ -3145,4 +3194,39 @@ html[lang="ja"] body {
       2px,
       -2px
     );
+}
+
+/* =========================================
+   HERO WHITE OPENING
+========================================= */
+
+.v4-hero::after {
+  content: "";
+
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+
+  background: #fff;
+
+  pointer-events: none;
+
+  animation:
+    v4HeroWhiteReveal
+    2.6s
+    cubic-bezier(.45, 0, .25, 1)
+    forwards;
+}
+
+
+@keyframes v4HeroWhiteReveal {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
 }
