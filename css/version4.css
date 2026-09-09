@@ -2203,90 +2203,32 @@ html.reveal-ready
 .wedding-info-opening {
   overflow: hidden;
 }
+/* =========================================
+   WEDDING INFO REVEAL
+   BOTTOM → TOP
+========================================= */
 
 .wedding-info-opening p {
   margin: 0;
 
-  opacity: 1;
+  opacity: 0;
 
-  clip-path:
-    inset(
-      0
-      100%
-      0
-      0
-    );
+  transform:
+    translateY(18px);
 
-  transform: none;
-
-  animation: none;
+  transition:
+    opacity .9s ease,
+    transform 1s
+    cubic-bezier(.22, 1, .36, 1);
 }
+
 
 .wedding-info-opening.is-visible p {
-  animation:
-    v4WeddingOpenLeftToRight
-    6.4s
-    cubic-bezier(.22, 1, .36, 1)
-    forwards;
+  opacity: 1;
+
+  transform:
+    translateY(0);
 }
-
-@keyframes v4WeddingOpenLeftToRight {
-
-  from {
-    clip-path:
-      inset(
-        0
-        100%
-        0
-        0
-      );
-  }
-
-  to {
-    clip-path:
-      inset(
-        0
-        0
-        0
-        0
-      );
-  }
-
-}
-
-
-@keyframes v4WeddingOpen {
-
-  0% {
-    opacity: 0;
-
-    clip-path:
-      inset(
-        0
-        50%
-        0
-        50%
-      );
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 1;
-
-    clip-path:
-      inset(
-        0
-        0
-        0
-        0
-      );
-  }
-
-}
-
 
 /* =========================================
    JAPANESE
