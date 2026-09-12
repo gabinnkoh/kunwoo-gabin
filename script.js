@@ -133,7 +133,7 @@ const translations = {
   ja: {
 
     title:
-      "キム・ゴヌ ♥ コ・ガビン 結婚式のご案内",
+      "ゴヌ ♥ ガビン(ミカ) 結婚式のご案内",
 
     weddingSummary:
       "2026年12月19日 土曜日 11時40分<br>" +
@@ -152,7 +152,7 @@ const translations = {
 
     familyIntroduction:
       "キム・グァンイル · ユ・グムス の息子&nbsp;&nbsp;<strong>ゴヌ</strong><br>" +
-      "コ・ソクホン · ヒョン・シウン の娘&nbsp;&nbsp;<strong>ガビン</strong>",
+      "コ・ソクホン · ヒョン・シウン の娘&nbsp;&nbsp;<strong>ガビン(ミカ)</strong>",
 
     locationTitle:
       "LOCATION",
