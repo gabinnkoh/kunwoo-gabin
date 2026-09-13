@@ -447,51 +447,22 @@ const pageParams =
     window.location.search
   );
 
+const urlLanguage = urlParams.get("lang");
+const browserLanguage = navigator.language;
+const pageDefaultLanguage =
+  document.documentElement.dataset.defaultLanguage;
 
-const urlLanguage =
-  pageParams.get(
-    "lang"
-  );
-
-
-const browserLanguage =
-  navigator.language ||
-  navigator.userLanguage;
-
-
-if (
-  urlLanguage === "ja"
-) {
-
-  /*
-    공유받은 일본어 링크
-    ?lang=ja
-  */
-  setLanguage(
-    "ja"
-  );
-
+if (urlLanguage === "ja") {
+  setLanguage("ja");
+} else if (pageDefaultLanguage === "ja") {
+  setLanguage("ja");
 } else if (
   browserLanguage &&
-  browserLanguage
-    .toLowerCase()
-    .startsWith("ja")
+  browserLanguage.toLowerCase().startsWith("ja")
 ) {
-
-  /*
-    URL 언어 정보가 없고
-    일본어 브라우저인 경우
-  */
-  setLanguage(
-    "ja"
-  );
-
+  setLanguage("ja");
 } else {
-
-  setLanguage(
-    "ko"
-  );
-
+  setLanguage("ko");
 }
 
 
@@ -2014,7 +1985,6 @@ const shareButton =
   document.getElementById(
     "shareButton"
   );
-
 
 const invitationBaseUrl =
   "https://gabinnkoh.github.io/kunwoo-gabin/index.html";
