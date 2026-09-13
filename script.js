@@ -447,7 +447,7 @@ const pageParams =
     window.location.search
   );
 
-const urlLanguage = urlParams.get("lang");
+const urlLanguage = pageParams.get("lang");
 const browserLanguage = navigator.language;
 const pageDefaultLanguage =
   document.documentElement.dataset.defaultLanguage;
