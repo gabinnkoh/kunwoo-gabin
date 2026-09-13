@@ -2044,17 +2044,8 @@ function updateShareButton(
 
         const invitationUrl =
           new URL(
-            invitationBaseUrl
+            "https://gabinnkoh.github.io/kunwoo-gabin/ja.html"
           );
-
-
-        /*
-          일본어 정보 포함
-        */
-        invitationUrl.searchParams.set(
-          "lang",
-          "ja"
-        );
 
 
         try {
