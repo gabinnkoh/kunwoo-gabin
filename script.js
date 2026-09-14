@@ -429,7 +429,7 @@ const galleryImages = [
   "images/gallery07.jpg?v=20260905-15",
   "images/ending.jpg?v=20260905-15",
   "images/gallery09.jpg?v=20260905-15",
-  "images/gallery10.jpg?v=20260905-15",
+  "images/gallery10.jpg?v=20260914-1",
   "images/gallery08.jpg?v=20260905-15",
   "images/gallery12.jpg?v=20260905-15"
 ];
