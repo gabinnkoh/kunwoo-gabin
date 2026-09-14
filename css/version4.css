@@ -879,7 +879,7 @@ img {
 }
 
 /* =========================================
-   ENDING
+   ENDING (FIXED SIZE - NO RESIZE BUG)
 ========================================= */
 
 .v4-ending-wrap {
@@ -887,31 +887,38 @@ img {
   width: 100%;
   overflow: hidden;
   background: #111;
+  /* 모바일 오버스크롤 바운스로 인한 크기 왜곡 방지 */
+  contain: paint layout;
 }
 
 .v4-ending {
   position: relative;
   width: 100%;
+  /* 100svh 대신 min/max-height로 안정적인 고정 높이 확보 */
   height: 100svh;
   min-height: 680px;
+  max-height: 920px;
   overflow: hidden;
   background: #111;
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
+/* 사진 자체는 항상 컨테이너에 꽉 찬 채로 절대 크기가 변하지 않음 */
 .v4-ending > img {
   position: absolute;
-  inset: 0;
-  display: block;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
+  object-position: center center;
   transform: none !important;
   transition: none !important;
   animation: none !important;
   filter: saturate(.68) brightness(.66);
+  pointer-events: none;
 }
 
 .v4-ending-overlay {

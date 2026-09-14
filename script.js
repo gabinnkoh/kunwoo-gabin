@@ -633,7 +633,7 @@ function initializeGalleryTitleAnimation() {
 }
 
 /* ====================================
-   ENDING PULL EFFECT
+   ENDING PULL EFFECT (FIXED)
 ==================================== */
 
 function initializeEndingPull() {
@@ -643,40 +643,58 @@ function initializeEndingPull() {
   let bottomTouchStartY = 0;
   let isBottomPulling = false;
 
+  // 푸터 영역까지 고려하여 스크롤이 완전히 끝에 도달했는지 확인 (오차 범위 10px 허용)
   function isPageBottom() {
-    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    const scrollBottom = window.innerHeight + window.scrollY;
+    const docHeight = document.documentElement.scrollHeight;
+    return scrollBottom >= docHeight - 10;
   }
 
-  window.addEventListener("touchstart", (event) => {
-    if (event.touches.length !== 1 || !isPageBottom()) return;
-    bottomTouchStartY = event.touches[0].clientY;
-    isBottomPulling = true;
-    endingSection.style.transition = "none";
-  }, { passive: true });
+  window.addEventListener(
+    "touchstart",
+    (event) => {
+      if (event.touches.length !== 1 || !isPageBottom()) return;
+      bottomTouchStartY = event.touches[0].clientY;
+      isBottomPulling = true;
+      endingSection.style.transition = "none";
+    },
+    { passive: true }
+  );
 
-  window.addEventListener("touchmove", (event) => {
-    if (!isBottomPulling || event.touches.length !== 1) return;
-    const currentY = event.touches[0].clientY;
-    const movement = bottomTouchStartY - currentY;
+  window.addEventListener(
+    "touchmove",
+    (event) => {
+      if (!isBottomPulling || event.touches.length !== 1) return;
+      const currentY = event.touches[0].clientY;
+      const movement = bottomTouchStartY - currentY;
 
-    if (movement <= 0) {
-      endingSection.style.transform = "translate3d(0, 0, 0)";
-      return;
-    }
+      // 아래로 내리는 동작은 기본 스크롤에 맡김
+      if (movement <= 0) {
+        endingSection.style.transform = "translate3d(0, 0, 0)";
+        return;
+      }
 
-    if (event.cancelable) event.preventDefault();
-    const pullAmount = Math.min(movement * 0.18, 32);
-    endingSection.style.transform = `translate3d(0, -${pullAmount}px, 0)`;
-  }, { passive: false });
+      // 모바일 기본 오버스크롤(사진이 고무줄처럼 늘어나는 현상) 원천 차단
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+
+      // 사진 크기는 건드리지 않고, 최대 24px까지만 텐션감 있게 이동
+      const pullAmount = Math.min(movement * 0.15, 24);
+      endingSection.style.transform = `translate3d(0, -${pullAmount}px, 0)`;
+    },
+    { passive: false }
+  );
 
   function releaseEndingPull() {
     if (!isBottomPulling) return;
     isBottomPulling = false;
-    endingSection.style.transition = "transform .5s cubic-bezier(.22, 1, .36, 1)";
+    endingSection.style.transition = "transform .45s cubic-bezier(.22, 1, .36, 1)";
     endingSection.style.transform = "translate3d(0, 0, 0)";
+
     window.setTimeout(() => {
       endingSection.style.transition = "";
-    }, 520);
+    }, 470);
   }
 
   window.addEventListener("touchend", releaseEndingPull, { passive: true });
