@@ -45,6 +45,30 @@
 
 <body class="version4">
 
+<!-- =================================
+       BACKGROUND MUSIC CONTROLLER
+  ================================== -->
+  <div class="music-switch">
+    <button
+      id="musicToggleButton"
+      class="music-button"
+      type="button"
+      aria-label="배경음악 제어"
+    >
+      <span class="music-icon-wrap" id="musicIconWrap">
+        <!-- 재생 아이콘 SVG (기본) -->
+        <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </span>
+      <span class="music-label">MUSIC</span>
+    </button>
+  </div>
+
+  <!-- 숨겨진 유튜브 플레이어 컨테이너 -->
+  <div id="ytPlayerContainer" style="display: none; position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none;">
+    <div id="ytPlayer"></div>
+  </div>
 
   <!-- =================================
        LANGUAGE
@@ -959,8 +983,15 @@
 
       </section>
     </div>
-
-
+<!-- =================================
+         CREDIT FOOTER
+    ================================== -->
+    <footer class="v4-credit-footer">
+      <p class="v4-credit-text">
+        Made by Kunwoo & Gabin<br>
+        BGM Source · YouTube '박태원 taewon' (I Will - The Beatles Cover)
+      </p>
+    </footer>
 
   </main>
 

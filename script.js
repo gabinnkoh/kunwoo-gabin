@@ -705,6 +705,144 @@ function initializeTopOverscrollPrevention() {
 }
 
 /* ====================================
+   BACKGROUND MUSIC (YOUTUBE API)
+==================================== */
+
+let ytPlayer = null;
+let isMusicPlaying = false;
+let musicCheckInterval = null;
+
+const MUSIC_START_SEC = 8;
+const MUSIC_END_SEC = 120; // 2분
+
+// 일시정지 아이콘 (❚❚)
+const pauseIconSvg = `
+  <svg viewBox="0 0 24 24" width="9" height="9" fill="currentColor">
+    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+  </svg>
+`;
+/* ====================================
+   BACKGROUND MUSIC ICONS
+==================================== */
+
+// 정지 상태: 재생 아이콘 (▶)
+const playIconSvg = `
+  <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+    <path d="M8 5v14l11-7z"/>
+  </svg>
+`;
+
+// 재생 상태: 움직이는 이퀄라이저 바 3개
+const playingWaveHtml = `
+  <span class="music-wave-bars">
+    <i class="bar"></i>
+    <i class="bar"></i>
+    <i class="bar"></i>
+  </span>
+`;
+
+function updateMusicButtonUI(isPlaying) {
+  const iconWrap = document.getElementById("musicIconWrap");
+  if (!iconWrap) return;
+  
+  // 재생 중이면 움직이는 이퀄라이저, 멈춤 상태면 재생(▶) 아이콘
+  iconWrap.innerHTML = isPlaying ? playingWaveHtml : playIconSvg;
+}
+function initializeMusicPlayer() {
+  const musicButton = document.getElementById("musicToggleButton");
+  if (!musicButton) return;
+
+  // 1. YouTube IFrame API 스크립트 비동기 로드
+  if (!window.YT) {
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  }
+
+  // 2. API 준비 완료 시 플레이어 생성
+  window.onYouTubeIframeAPIReady = function () {
+    ytPlayer = new YT.Player("ytPlayer", {
+      videoId: "2M7sArWrLwY",
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        disablekb: 1,
+        fs: 0,
+        rel: 0,
+        playsinline: 1,
+        start: MUSIC_START_SEC,
+        end: MUSIC_END_SEC
+      },
+      events: {
+        onReady: onPlayerReady,
+        onStateChange: onPlayerStateChange
+      }
+    });
+  };
+
+  // 모바일 브라우저 정책 대응 (첫 화면 터치 시 자동 재생 시도)
+  function tryAutoPlayOnFirstTouch() {
+    if (ytPlayer && typeof ytPlayer.playVideo === "function" && !isMusicPlaying) {
+      ytPlayer.seekTo(MUSIC_START_SEC);
+      ytPlayer.playVideo();
+    }
+    window.removeEventListener("touchstart", tryAutoPlayOnFirstTouch);
+    window.removeEventListener("click", tryAutoPlayOnFirstTouch);
+  }
+
+  window.addEventListener("touchstart", tryAutoPlayOnFirstTouch, { once: true, passive: true });
+  window.addEventListener("click", tryAutoPlayOnFirstTouch, { once: true, passive: true });
+
+  // 3. 버튼 클릭 시 재생/멈춤 토글
+  musicButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (!ytPlayer || typeof ytPlayer.playVideo !== "function") return;
+
+    if (isMusicPlaying) {
+      ytPlayer.pauseVideo();
+    } else {
+      const currentTime = ytPlayer.getCurrentTime();
+      if (currentTime < MUSIC_START_SEC || currentTime >= MUSIC_END_SEC) {
+        ytPlayer.seekTo(MUSIC_START_SEC);
+      }
+      ytPlayer.playVideo();
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  // 준비 완료 시 8초 위치로 대기
+  event.target.seekTo(MUSIC_START_SEC);
+}
+
+function onPlayerStateChange(event) {
+  // YT.PlayerState.PLAYING === 1
+  if (event.data === 1) {
+    isMusicPlaying = true;
+    updateMusicButtonUI(true);
+
+    // 2분(120초) 도달 시 다시 8초로 이동하여 루프 재생
+    if (musicCheckInterval) clearInterval(musicCheckInterval);
+    musicCheckInterval = setInterval(() => {
+      if (ytPlayer && ytPlayer.getCurrentTime) {
+        const current = ytPlayer.getCurrentTime();
+        if (current >= MUSIC_END_SEC || current < MUSIC_START_SEC - 1) {
+          ytPlayer.seekTo(MUSIC_START_SEC);
+        }
+      }
+    }, 500);
+  } else {
+    isMusicPlaying = false;
+    updateMusicButtonUI(false);
+    if (musicCheckInterval) {
+      clearInterval(musicCheckInterval);
+      musicCheckInterval = null;
+    }
+  }
+}
+
+/* ====================================
    INITIAL BOOTSTRAP
 ==================================== */
 
@@ -742,6 +880,9 @@ function bootstrap() {
   initializeGalleryTitleAnimation();
   initializeEndingPull();
   initializeTopOverscrollPrevention();
+
+  // ★ 음악 플레이어 초기화 추가 ★
+  initializeMusicPlayer();
 }
 
 if (document.readyState === "loading") {
