@@ -57,7 +57,7 @@
 
   <link
     rel="stylesheet"
-    href="css/version4.css?v=20260909-5"
+    href="css/version4.css?v=20260914-1"
   >
 
 </head>
@@ -69,7 +69,7 @@
   <!-- =================================
        LANGUAGE
   ================================== -->
-
+<!--
   <div class="language-switch">
 
     <button
@@ -81,6 +81,7 @@
     </button>
 
   </div>
+  -->
 
 
 
@@ -95,7 +96,7 @@
 
     <img
       id="v4HeroImage"
-      src="images/main.jpg?v=20260909-1"
+      src="images/main.jpg?v=20260914-1"
       alt="Wedding"
       class="v4-hero-image"
     >
@@ -963,7 +964,7 @@
 
         </div>
 
-
+<!--
         <div class="v4-ending-share">
 
           <p class="v4-share-label">
@@ -979,7 +980,7 @@
           </button>
 
         </div>
-
+-->
       </section>
     </div>
 
@@ -1047,9 +1048,27 @@
     </div>
 
   </div>
-
-
-
+<!-- =================================
+       FLOATING ACTION GROUP (BOTTOM RIGHT)
+  ================================== -->
+  <div id="floatingActionGroup" class="floating-action-group">
+    <button
+      id="languageToggleButton"
+      class="floating-circle-button"
+      type="button"
+      aria-label="언어 변경"
+    >
+      KOR
+    </button>
+    <button
+      id="shareButton"
+      class="floating-circle-button"
+      type="button"
+      aria-label="공유하기"
+    >
+      <!-- JS에서 아이콘 주입 -->
+    </button>
+  </div>
   <!-- =================================
        KAKAO SDK
   ================================== -->
@@ -1361,7 +1380,7 @@
   <!-- EXISTING COMMON SCRIPT -->
 
   <script
-    src="script.js?v=20260913-2"
+    src="script.js?v=20260914-1"
   >
   </script>
 
