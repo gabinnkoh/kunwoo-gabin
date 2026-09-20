@@ -54,7 +54,7 @@ const translations = {
     subwayDescription:
       "1,2호선 신도림역 1번 출구에서 도보 10분<br>1호선 구로역 3번 출구에서 도보 5분",
     shuttleTitle: "셔틀버스 이용 시",
-    shuttleDescription: "신도림역 1번 출구에서 탑승(수시 운행)",
+    shuttleDescription: "신도림역 1번 출구 맞은편에서 탑승(수시 운행)",
     busTitle: "버스 이용 시",
     busDescription:
       "신도림동.구로역 정류장에서 도보 1분<br>신도림중학교 정류장에서 도보 3분",
@@ -95,7 +95,7 @@ const translations = {
     subwayDescription:
       "1・2号線 新道林駅 1番出口から徒歩10分<br>1号線 九老駅 3番出口から徒歩5分",
     shuttleTitle: "シャトルバスをご利用の場合",
-    shuttleDescription: "新道林駅 1番出口より随時運行",
+    shuttleDescription: "新道林駅 1番出口の向かい側で乗車(随時運行)",
     carTitle: "タクシーをご利用の場合",
     carDescription:
       "The Link Hotel Seoul<br>ソウル特別市 九老区 京仁路 610<br>610 Gyeongin-ro, Guro-gu, Seoul",
